@@ -11,12 +11,23 @@ def prompt():
     # Open file selection window
     files = filedialog.askopenfilenames()
 
+    # Store a list of context or query, preparing for combining as a prompt later
+    context = []
+    query = []
+
     for file_path in files:
         # Get the class name of train set
         file_name = os.path.basename(file_path)
         class_name, type = get_class_and_type(file_name)
-        string = format_prompt(file_path, class_name)
-        write_string_to_file(string, class_name, type)
+        string = format_context_or_query(file_path, class_name, type)
+        if (type == "learn"):
+            context.append(string)
+        else:
+            query.append(string)
+
+    prompt_query = "Now classify following data. The format should be: [Column 1, Column 2, ...] -- Class"
+    result = "\n".join(context) + prompt_query + "\n".join(query)
+    write_string_to_file(result, class_name, type)
 
 # Deal with the name of file
 # Decide the type of prompt by suffix
@@ -29,24 +40,38 @@ def get_class_and_type(string):
     else:
         raise ValueError("Wrong File name")
 
-# Format data to prompt
-# First transfer txt to matrix, then transpose to get each column
-# Prefix contains the information of class name and number of columns
-# Then add detailed number to each column description
-def format_prompt(file_path, class_name):
+# Format data to context or query
+def format_context_or_query(file_path, class_name, type):
+    transposed_matrix = txt_to_matrix(file_path)
+    prompt_result = ""
+    if (type == "learn"):
+        prompt_context = "There are " + str(len(transposed_matrix[0])) + " " + class_name + ", and each has " + str(len(transposed_matrix)) + " columns."
+        prompt_result += prompt_context
+    data = format_data(file_path)
+    prompt_result += data
+    return prompt_result
+
+# Transfer matrix to prompt
+# Add detailed number to each column description
+def format_data(file_path):
+    transposed_matrix = txt_to_matrix(file_path)
+    prompt_data = ""
+    for i in range(len(transposed_matrix)):
+        temp_string = "Each column " + str(i + 1) + " is " + ",".join(map(str, transposed_matrix[i])) + ". "
+        prompt_data += temp_string
+    return prompt_data
+
+# Transfer txt to matrix, then transpose it to get each column 
+def txt_to_matrix(file_path):
     with open(file_path, "r") as file:
         lines = file.readlines()
         matrix = [list(map(float, line.strip().split())) for line in lines]
         transposed_matrix = np.transpose(matrix)
-        prompt_prefix = "There are " + str(len(matrix)) + " " + class_name + ", and each has " + str(len(transposed_matrix)) + " columns."
-        for i in range(len(transposed_matrix)):
-            temp_string = "Each column " + str(i + 1) + " is " + ",".join(map(str, transposed_matrix[i])) + ". "
-            prompt_prefix += temp_string
-        return prompt_prefix
+        return transposed_matrix
 
 # Type means train set or test set
 def write_string_to_file(string, class_name, type):
-    file_path = "prompt_" + class_name + "_" + type + ".txt"
+    file_path = "prompt_" + class_name + ".txt"
     with open(file_path, 'w') as file:
         file.write(string)
 
