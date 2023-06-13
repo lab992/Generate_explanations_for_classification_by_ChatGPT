@@ -19,7 +19,7 @@ def prompt():
 
     # Store a list of context or query, preparing for combining as a prompt later
     context_data = ""
-    context_class = ""
+    context_label = ""
     query = ""
 
     for file_path in files:
@@ -29,14 +29,14 @@ def prompt():
         if (type == LEARN and target == X):
             context_data += format_context(file_path, class_name)
         elif (type == LEARN and target == Y):
-            context_class += format_class(file_path)
+            context_label += format_label(file_path)
         elif (type == TEST and target == X):
             query += format_query(file_path)
         else:
             raise ValueError("Wrong File")
-    result = context_data + "\n" + context_class + "\n" + query
+    result = context_data + context_label + "\n" + query
     write_string_to_file(result, class_name)    
-    return context_data + "\n" + context_class, query
+    return context_data + "\n" + context_label, query
 
 
 # Deal with the name of file
@@ -72,12 +72,12 @@ def format_context(file_path, class_name):
 
 # Format data to  query
 def format_query(file_path):
-    transposed_matrix = txt_to_matrix(file_path)
-    prompt_query = "Now classify following " + str(len(transposed_matrix[0])) + " data to class 0.0 or 1.0.\n"
-    data = format_data(file_path)
-    prompt_query += data
-    prompt_query += "\nGive me the answer"
-    return prompt_query
+    prompt_query = "Try to classify\n"
+    with open(file_path, "r") as file:
+        test = file.read()
+        prompt_query += test
+        prompt_query += "\nto Label 0.0 or 1.0, with the help of dataset given above. Don't show me the code. Give me the label in format: [label1, label2 ...]"
+        return prompt_query
 
 # Transfer matrix to prompt
 # Add detailed number to each column description
@@ -89,7 +89,7 @@ def format_data(file_path):
         prompt_data += temp_string
     return prompt_data
 
-def format_class(file_path):
+def format_label(file_path):
     transposed_matrix = txt_to_matrix(file_path)
     prompt_data = "Each class is "
     for i in range(len(transposed_matrix)):
