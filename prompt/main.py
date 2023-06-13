@@ -21,6 +21,7 @@ def prompt():
     context_data = ""
     context_label = ""
     query = ""
+    test_label = []
 
     for file_path in files:
         # Get the class name of train set
@@ -32,11 +33,13 @@ def prompt():
             context_label += format_label(file_path)
         elif (type == TEST and target == X):
             query += format_query(file_path)
+        elif (type == TEST and target == Y):
+            test_label.extend(txt_to_array(file_path))
         else:
             raise ValueError("Wrong File")
-    result = context_data + context_label + "\n" + query
-    write_string_to_file(result, class_name)    
-    return context_data + "\n" + context_label, query
+    # result = context_data + context_label + "\n" + query
+    # write_string_to_file(result, class_name)    
+    return context_data + "\n" + context_label, query, test_label
 
 
 # Deal with the name of file
@@ -72,11 +75,14 @@ def format_context(file_path, class_name):
 
 # Format data to  query
 def format_query(file_path):
-    prompt_query = "Try to classify\n"
+    prompt_query = "Try to classify following\n"
     with open(file_path, "r") as file:
         test = file.read()
+        lines = test.split('\n')
+        num_lines = len(lines) - 1
         prompt_query += test
-        prompt_query += "\nto Label 0.0 or 1.0, with the help of dataset given above. Don't show me the code. Give me the label in format: [label1, label2 ...]"
+        prompt_query += "to Label 0.0 or 1.0, with the help of dataset given above. Don't show me the code. "
+        prompt_query += "Give me the label in format: [label 1, label 2, ..., label " + str(num_lines) +"]."
         return prompt_query
 
 # Transfer matrix to prompt
@@ -111,10 +117,31 @@ def write_string_to_file(string, class_name):
     with open(file_path, 'w') as file:
         file.write(string)
 
+def label_result_to_array(string):
+    stripped_string = string.strip("[]")
+    elements = stripped_string.split(", ")
+    array = [float(element) for element in elements]
+    return array
+
+def txt_to_array(file_path):
+    array = []
+    with open(file_path, "r") as file:
+        for line in file:
+            value = float(line.strip())
+            array.append(value)
+        return array
+
+def false_rate(array1, array2):
+    assert len(array1) == len(array2)
+    count = sum([1 for a, b in zip(array1, array2) if a != b])
+    result = count / len(array1)
+    percentage = round(result * 100, 4)
+    return f"{percentage}%"
+
 if __name__ == "__main__":
     openai.api_key = "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"
 
-    context, query = prompt()
+    context, query, test_label = prompt()
 
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -123,5 +150,10 @@ if __name__ == "__main__":
             {"role": "user", "content": query},
         ]
     )
+    # print(context)
+    # print(query)
+    print(completion.choices[0].message["content"])
+    print(false_rate(label_result_to_array(completion.choices[0].message["content"]), test_label))
+    
 
-    print(completion.choices[0].message)
+
