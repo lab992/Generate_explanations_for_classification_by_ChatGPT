@@ -2,6 +2,7 @@ import os
 import numpy as np
 import tkinter as tk
 import openai
+import time
 from tkinter import filedialog
 
 X = 0
@@ -59,8 +60,10 @@ def get_class_and_type_and_target(string):
         raise ValueError("Wrong File name")
     if class_name.endswith("X"):
         target += X
+        class_name += string[:-2]
     elif class_name.endswith("Y"):
         target += Y
+        class_name += string[:-2]
     else:
         raise ValueError("Wrong File name")
     return class_name, type, target
@@ -73,7 +76,7 @@ def format_context(file_path, class_name):
     prompt_context += data
     return prompt_context
 
-# Format data to  query
+# Format data to query
 def format_query(file_path):
     prompt_query = "Try to classify following\n"
     with open(file_path, "r") as file:
@@ -143,17 +146,43 @@ if __name__ == "__main__":
 
     context, query, test_label = prompt()
 
-    completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": context},
-            {"role": "user", "content": query},
-        ]
-    )
-    # print(context)
-    # print(query)
-    print(completion.choices[0].message["content"])
-    print(false_rate(label_result_to_array(completion.choices[0].message["content"]), test_label))
+    # print(completion.choices[0].message["content"])
+    # print(false_rate(label_result_to_array(completion.choices[0].message["content"]), test_label))
+
+    count = 0
+
+    while (count < 10):
+        try:
+            completion = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": context},
+                    {"role": "user", "content": query},
+                ]
+            )
+
+            gpt_result = label_result_to_array(completion.choices[0].message["content"])
+
+            if (len(gpt_result) != len(test_label)):
+                continue
+
+            filename = "fertility.txt"
+
+            with open(filename, "a") as file:
+                file.write(', '.join(map(str, gpt_result)))
+                file.write("\n")
+            
+            count += 1
+            print("ok")
+            time.sleep(25)
+        except ValueError:
+            print("error")
+            pass
+        except Exception as e:
+            raise e
+
+
+    
     
 
 
