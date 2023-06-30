@@ -24,8 +24,9 @@ def false_rate(array1, array2):
     return f"{percentage}%"
 
 if __name__ == "__main__": 
-    target = [1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0]
+    target1 = [1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0]
+    target2 = [0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0]
     array = []
     array.append(txt_to_array())
     for i in range(len(array[0])):
-        print(false_rate(target, array[0][i]))
+        print(false_rate(target2, array[0][i]))

@@ -19,8 +19,11 @@ def prompt():
     files = filedialog.askopenfilenames()
 
     # Store a list of context or query, preparing for combining as a prompt later
+    role = "You are a data analyst, your job is to classify the given time series dataset."
+    context_description = ""
+    context_data_matrix = []
+    context_data_label = []
     context_data = ""
-    context_label = ""
     query = ""
     test_label = []
 
@@ -29,18 +32,20 @@ def prompt():
         file_name = os.path.basename(file_path)
         class_name, type, target = get_class_and_type_and_target(file_name)
         if (type == LEARN and target == X):
-            context_data += format_context(file_path, class_name)
+            context_description += format_context(file_path, class_name)
+            context_data_matrix.extend(txt_to_matrix(file_path))
         elif (type == LEARN and target == Y):
-            context_label += format_label(file_path)
+            context_data_label.extend(txt_to_matrix(file_path))
         elif (type == TEST and target == X):
             query += format_query(file_path)
         elif (type == TEST and target == Y):
             test_label.extend(txt_to_array(file_path))
         else:
             raise ValueError("Wrong File")
+    context_data += format_data(context_data_matrix, context_data_label)
     # result = context_data + context_label + "\n" + query
     # write_string_to_file(result, class_name)    
-    return context_data + "\n" + context_label, query, test_label
+    return role + "\n" + context_description + "\n" + context_data, query, test_label
 
 
 # Deal with the name of file
@@ -70,11 +75,10 @@ def get_class_and_type_and_target(string):
 
 # Format data to context
 def format_context(file_path, class_name):
-    transposed_matrix = txt_to_matrix(file_path)
-    prompt_context = "There are " + str(len(transposed_matrix[0])) + " " + class_name + ", and each has " + str(len(transposed_matrix)) + " columns.\n"
-    data = format_data(file_path)
-    prompt_context += data
-    return prompt_context
+    matrix = txt_to_matrix(file_path)
+    prompt_description = "There are " + str(len(matrix)) + " " + class_name + ", and each has " + str(len(matrix[0])) + " columns.\n"
+    prompt_format = "The dataset will be given in format: [column 1, column 2, ..., column "+ str(len(matrix[0])) +", label]."
+    return prompt_description + prompt_format
 
 # Format data to query
 def format_query(file_path):
@@ -90,29 +94,35 @@ def format_query(file_path):
 
 # Transfer matrix to prompt
 # Add detailed number to each column description
-def format_data(file_path):
-    transposed_matrix = txt_to_matrix(file_path)
-    prompt_data = ""
-    for i in range(len(transposed_matrix)):
-        temp_string = "Each column " + str(i + 1) + " is " + ",".join(map(str, transposed_matrix[i])) + ".\n"
-        prompt_data += temp_string
-    return prompt_data
+def format_data(context_data_matrix, context_data_label):
+    prompt_data = context_data_matrix[:]
+    assert len(context_data_matrix) == len(context_data_label)
+    # it seems that this step modify original data, fix it later
+    for i in range(len(context_data_matrix)):
+        prompt_data[i].append(context_data_label[i][0])
 
-def format_label(file_path):
-    transposed_matrix = txt_to_matrix(file_path)
-    prompt_data = "Each class is "
-    for i in range(len(transposed_matrix)):
-        temp_string = ",".join(map(str, transposed_matrix[i])) + ". "
-        prompt_data += temp_string
-    return prompt_data
+    string_matrix = ""
+    for row in prompt_data:
+        row_str = "[" + ",".join(str(element) for element in row) + "]"
+        string_matrix += row_str + "\n"
+
+    return string_matrix
+
+# def format_label(file_path):
+#     transposed_matrix = txt_to_matrix(file_path)
+#     prompt_data = "Each class is "
+#     for i in range(len(transposed_matrix)):
+#         temp_string = ",".join(map(str, transposed_matrix[i])) + ". "
+#         prompt_data += temp_string
+#     return prompt_data
 
 # Transfer txt to matrix, then transpose it to get each column 
 def txt_to_matrix(file_path):
     with open(file_path, "r") as file:
         lines = file.readlines()
         matrix = [list(map(float, line.strip().split())) for line in lines]
-        transposed_matrix = np.transpose(matrix)
-        return transposed_matrix
+        # transposed_matrix = np.transpose(matrix)
+        return matrix
 
 # Type means train set or test set
 def write_string_to_file(string, class_name):
@@ -145,41 +155,43 @@ if __name__ == "__main__":
     openai.api_key = "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"
 
     context, query, test_label = prompt()
+    print(context)
+    print(query)
 
     # print(completion.choices[0].message["content"])
     # print(false_rate(label_result_to_array(completion.choices[0].message["content"]), test_label))
 
-    count = 0
+    # count = 0
 
-    while (count < 10):
-        try:
-            completion = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": context},
-                    {"role": "user", "content": query},
-                ]
-            )
+    # while (count < 8):
+    #     try:
+    #         completion = openai.ChatCompletion.create(
+    #             model="gpt-3.5-turbo",
+    #             messages=[
+    #                 {"role": "system", "content": context},
+    #                 {"role": "user", "content": query},
+    #             ]
+    #         )
 
-            gpt_result = label_result_to_array(completion.choices[0].message["content"])
+    #         gpt_result = label_result_to_array(completion.choices[0].message["content"])
 
-            if (len(gpt_result) != len(test_label)):
-                continue
+    #         if (len(gpt_result) != len(test_label)):
+    #             continue
 
-            filename = "fertility.txt"
+    #         filename = "fertility2.txt"
 
-            with open(filename, "a") as file:
-                file.write(', '.join(map(str, gpt_result)))
-                file.write("\n")
+    #         with open(filename, "a") as file:
+    #             file.write(', '.join(map(str, gpt_result)))
+    #             file.write("\n")
             
-            count += 1
-            print("ok")
-            time.sleep(25)
-        except ValueError:
-            print("error")
-            pass
-        except Exception as e:
-            raise e
+    #         count += 1
+    #         print("ok")
+    #         time.sleep(25)
+    #     except ValueError:
+    #         print("error")
+    #         pass
+    #     except Exception as e:
+    #         raise e
 
 
     
