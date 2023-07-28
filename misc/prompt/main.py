@@ -152,14 +152,22 @@ def false_rate(array1, array2):
     return f"{percentage}%"
 
 if __name__ == "__main__":
-    openai.api_key = "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"
+    openai.api_key = "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"
 
     context, query, test_label = prompt()
     print(context)
     print(query)
 
-    # print(completion.choices[0].message["content"])
-    # print(false_rate(label_result_to_array(completion.choices[0].message["content"]), test_label))
+    completion = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo",
+                    messages=[
+                        {"role": "system", "content": context},
+                        {"role": "user", "content": query},
+                    ]
+                )
+
+    print(completion.choices[0].message["content"])
+    print(false_rate(label_result_to_array(completion.choices[0].message["content"]), test_label))
 
     # count = 0
 

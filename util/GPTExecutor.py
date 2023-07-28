@@ -12,7 +12,7 @@ class GPTExecutor:
 
 
     def gpt_execution(context, query):
-        openai.api_key = "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"
+        openai.api_key = "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"
 
         count = 0
 

@@ -17,9 +17,12 @@ def my_extraction():
     timeseries, y = load_robot_execution_failures()
 
     # Extract the features from the single pattern
-    extracted_features = impute(extract_features(
-        timeseries, column_id="id", column_sort="time"
-    ))
+    # extracted_features = impute(extract_features(
+    #     timeseries, column_id="id", column_sort="time"
+    # ))
+
+    features_filtered_direct = extract_relevant_features(timeseries, y,
+                                                     column_id='id', column_sort='time')
     
     # filtered_features = select_features(
     #     extracted_features, y
@@ -28,12 +31,12 @@ def my_extraction():
     # df = extract_relevant_features(timeseries, y, column_id='id', column_sort='time')
     # filtered_features.to_csv('filtered_features.csv')
     
-    relevance_table = calculate_relevance_table(
-        extracted_features, y
-    )
-    timeseries.to_csv('original')
+    # relevance_table = calculate_relevance_table(
+    #     extracted_features, y
+    # )
+    features_filtered_direct.to_csv('extracted_features.csv')
 
-    return relevance_table
+    return extracted_features
     
 if __name__ == "__main__":
     my_extraction()
