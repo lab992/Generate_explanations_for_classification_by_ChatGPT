@@ -1,7 +1,7 @@
 
 def context_gen():
     role = "You are a data analyst, your job is to classify the given time series dataset."
-    introduction = ("The gesture acquisition device is a Nintendo Wiimote remote controller with built-in three-axis accelerometer."
+    background = ("The gesture acquisition device is a Nintendo Wiimote remote controller with built-in three-axis accelerometer."
                     "Time series are of different lengths."
                     "Data is acceleration in x-axis dimension. It is classified to 10 gestures"
                     )
@@ -21,24 +21,19 @@ def context_gen():
     
     # 528 tokens
     
-    data += pd_to_text()
-    
-    return role + "\n" + introduction + "\n" + classes + "\n" + data_description + "\n" + data
+    feature = feature_gen()
 
-def pd_to_text():
-    string = 'a'
-    return string
+    return role + "\n" + background + "\n" + classes + "\n" + data_description + "\n" + feature
 
-def query():
+def query_gen():
     mission = "Try to classify following\n"
-    mission += pd_to_text()
+    mission += feature_gen()
     pass
 
-def feature_importance():
-    # feature + question
+def feature_gen():
     pass
 
-def related_knowledge():
+def explanation_gen():
     pass
 
 class PromptGenerator:
