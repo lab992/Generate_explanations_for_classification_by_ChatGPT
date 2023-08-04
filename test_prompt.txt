@@ -1,0 +1,3 @@
+You are a data analyst, your job is to classify time series by the given features. The gesture acquisition device is a Nintendo Wiimote remote controller with built-in three-axis accelerometer. Data was acceleration in x-axis dimension and now its features are calculated. It is classified to 2 gestures：'pick-up' and 'shake'.
+There are 5 features. The order is absolute_energy, variance_larger_than_standard_deviation, absolute_maximum, absolute_sum_of_changes, maximum.
+Following is a set of 60 data features. The first 30 data are 'pick-up', the rest 30 data are 'shake'.

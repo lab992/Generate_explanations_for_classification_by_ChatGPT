@@ -1,6 +1,6 @@
 
 def context_gen():
-    role = "You are a data analyst, your job is to classify the given time series dataset."
+    role = "You are a data analyst, your job is to classify  time series by the given features."
     background = ("The gesture acquisition device is a Nintendo Wiimote remote controller with built-in three-axis accelerometer."
                     "Time series are of different lengths."
                     "Data is acceleration in x-axis dimension. It is classified to 10 gestures"
@@ -20,6 +20,8 @@ def context_gen():
                         "The first column of each line is the class, the rest columns are acceleration in x-axis dimension:")
     
     # 528 tokens
+    # 预留 1000 token给query和回答
+    # 每个数字4 token，大概7位有效数字
     
     feature = feature_gen()
 

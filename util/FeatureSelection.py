@@ -1,9 +1,12 @@
 from tsfresh import select_features
 from tsfresh.utilities.dataframe_functions import impute
+from tsfresh import select_features,extract_features
 
-    # X_train = X_train.iloc[:, :X_train.shape[1] - 115]
-    # extracted_fea tures = extract_features(X_train)
-    # impute(X_train)
-    # features_filtered = select_features(extracted_features, y_train)
+def cal_features(X, y):
 
-    # features_filtered.to_csv('filtered.csv')
+    extracted_features = extract_features(X, column_id="id", column_sort="time")
+
+    impute(extracted_features)
+    features_filtered = select_features(extracted_features, y)
+
+    features_filtered.to_csv('filtered.csv')
