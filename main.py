@@ -5,6 +5,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.feature_selection import SelectKBest
 # from tsfresh.transformers import RelevantFeatureAugmenter
 # from tsfresh import extract_features, select_features
+from tsfresh import select_features,extract_features
 from tsfresh.utilities.dataframe_functions import impute
 
 import matplotlib.pyplot as plt
@@ -16,14 +17,15 @@ def pipeline():
 
     X_train, X_test, y_train, y_test = IO.read_file()
 
-    # define pipeline
+    # # define pipeline
     # pipeline = Pipeline([
     #     ('imputer', SimpleImputer()),  # 填补缺失值
     #     ('scaler', StandardScaler()),  # 标准化
-    #     ('selector', SelectKBest(k=10))
-    #     # ('prompt', PromptGenerator(X_train, X_test, y_train))
-    #     # ('GPT', GPTExecutor())
+    #     ('prompt', PromptGenerator(X_train, X_test, y_train))
+    #     ('GPT', GPTExecutor())
     # ])
+
+    print("OK")
 
     # pipeline.fit(X_train, y_train)
 
@@ -37,5 +39,13 @@ def pipeline():
     # print(selected_feature_indices)
 
 
+    extracted_features = extract_features(X_train, column_id="id", column_sort="time")
+
+    impute(extracted_features)
+    features_filtered = select_features(extracted_features, y_train)
+
+    features_filtered.to_csv('filtered.csv')
+
+
 if __name__ == "__main__":
-    pipeline()
+    pipeline() 
