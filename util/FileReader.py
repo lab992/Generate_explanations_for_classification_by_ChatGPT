@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import filedialog
 import pandas as pd
 
-def read_file():
+def read_file_acc():
     # Create main window
     root = tk.Tk()
     root.withdraw()
@@ -31,8 +31,8 @@ def read_file():
         else:
             raise ValueError("Wrong file.")
 
-    structured_train = data_format(train_data)
-    structured_test = data_format(test_data)
+    structured_train = data_format_acc(train_data)
+    structured_test = data_format_acc(test_data)
     X_train = structured_train.iloc[:, 1:]
     X_test = structured_test.iloc[:, 1:]
     y_train = train_data.iloc[:, 0]
@@ -40,7 +40,7 @@ def read_file():
     
     return X_train, X_test, y_train, y_test
     
-def data_format(data):
+def data_format_acc(data):
     num_rows, num_columns = data.shape
     result = pd.DataFrame(columns=['lable', 'id', 'time', 'acceleration'])
     for i in range(num_rows):
@@ -54,3 +54,41 @@ def data_format(data):
         result = pd.concat([result, df])
     result = result.dropna().reset_index(drop=True)
     return result
+
+def read_file_basket():
+    # Create main window
+    root = tk.Tk()
+    root.withdraw()
+
+    # Open file selection window
+    files = filedialog.askopenfilenames()
+
+    result = None
+
+    for file_path in files:
+        # Get the class name of train set
+        file_name = os.path.basename(file_path)
+
+        user, frequency, label = file_name_classifier(file_name)
+
+        df = pd.read_table(file_path, skiprows=3, sep = ',')
+
+        num_rows = len(df)
+        df['User'] = [user] * num_rows
+        df['Frequency'] = [frequency] * num_rows
+        df['Label'] = [label] * num_rows
+
+        result = pd.concat([result, df])
+    
+    result = result.dropna().reset_index(drop=True)
+
+    print("ok")
+    return result
+
+        
+def file_name_classifier(file_name):
+    split = file_name[:-4].split('_')
+    user = split[0]
+    frequency = split[1][-1]
+    label = split[1][:-1]
+    return user, frequency, label

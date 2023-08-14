@@ -13,8 +13,9 @@ import pandas as pd
 
 def pipeline():
 
-    X_train, X_test, y_train, y_test = FileReader.read_file()
+    # X_train, X_test, y_train, y_test = FileReader.read_file_acc()
 
+    train= FileReader.read_file_basket()
     # # define pipeline
     # pipeline = Pipeline([
     #     ('imputer', SimpleImputer()),  # 填补缺失值
