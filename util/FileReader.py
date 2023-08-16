@@ -20,6 +20,21 @@ def read_file_acc():
     train_data = None
     test_data = None
 
+    def data_format_acc(data):
+        num_rows, num_columns = data.shape
+        result = pd.DataFrame(columns=['lable', 'id', 'time', 'acceleration'])
+        for i in range(num_rows):
+            row = data.iloc[i]
+            df = pd.DataFrame({
+                'lable': [row[0]] * len(row[1:]),
+                'id': [i] * len(row[1:]),
+                'time': [i * 0.1 for i in range(len(row[1:]))],
+                'acceleration': row[1:]               
+            })
+            result = pd.concat([result, df])
+        result = result.dropna().reset_index(drop=True)
+        return result
+
     for file_path in files:
         # Get the class name of train set
         file_name = os.path.basename(file_path)
@@ -40,20 +55,7 @@ def read_file_acc():
     
     return X_train, X_test, y_train, y_test
     
-def data_format_acc(data):
-    num_rows, num_columns = data.shape
-    result = pd.DataFrame(columns=['lable', 'id', 'time', 'acceleration'])
-    for i in range(num_rows):
-        row = data.iloc[i]
-        df = pd.DataFrame({
-            'lable': [row[0]] * len(row[1:]),
-            'id': [i] * len(row[1:]),
-            'time': [i * 0.1 for i in range(len(row[1:]))],
-            'acceleration': row[1:]               
-        })
-        result = pd.concat([result, df])
-    result = result.dropna().reset_index(drop=True)
-    return result
+
 
 def read_file_basket():
     # Create main window
@@ -65,6 +67,13 @@ def read_file_basket():
 
     result = None
 
+    def file_name_classifier(file_name):
+        split = file_name[:-4].split('_')
+        user = split[0]
+        frequency = split[1][-1]
+        label = split[1][:-1]
+        return user, frequency, label
+    
     for file_path in files:
         # Get the class name of train set
         file_name = os.path.basename(file_path)
@@ -80,15 +89,51 @@ def read_file_basket():
 
         result = pd.concat([result, df])
     
+    result['id'] = (result['Frequency'] != result['Frequency'].shift()).cumsum()
     result = result.dropna().reset_index(drop=True)
 
     print("ok")
     return result
 
         
-def file_name_classifier(file_name):
-    split = file_name[:-4].split('_')
-    user = split[0]
-    frequency = split[1][-1]
-    label = split[1][:-1]
-    return user, frequency, label
+def read_file_HMP():
+    # 创建主窗口
+    root = tk.Tk()
+    root.withdraw()
+
+    # 选择文件夹按钮的回调函数
+    selected_folders = filedialog.askdirectory(multiple=True)  # 允许选择多个文件夹
+
+    result = None
+
+    # 处理选择的文件夹
+    file_pair = []
+
+    for folder_path in selected_folders:
+        folder_name = os.path.basename(folder_path)
+
+        # 遍历文件夹中的所有文件
+        for file_name in os.listdir(folder_path):
+            if file_name.endswith('.txt'):
+                file_path = os.path.join(folder_path, file_name)
+                file_pair.append(folder_name, file_path)
+
+    for i in range(len(file_pair)):
+        folder_name, file_path = file_pair[i]
+
+        df = pd.read_table(file_path, sep = '\s+')
+
+        column_names = ['x', 'y', 'z']
+        df = pd.DataFrame(df, columns=column_names)
+
+        num_rows = len(df)
+        df['time'] = [i * 0.1 for i in range(num_rows)]
+        df['label'] = [folder_name] * num_rows
+        df['id'] = [i] * num_rows
+
+        result = pd.concat([result, df])
+        
+
+    result = result.dropna().reset_index(drop=True)
+
+

@@ -15,7 +15,7 @@ def pipeline():
 
     # X_train, X_test, y_train, y_test = FileReader.read_file_acc()
 
-    train= FileReader.read_file_basket()
+    train= FileReader.read_file_HMP()
     # # define pipeline
     # pipeline = Pipeline([
     #     ('imputer', SimpleImputer()),  # 填补缺失值
