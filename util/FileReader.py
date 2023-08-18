@@ -66,6 +66,7 @@ def read_file_basket():
     files = filedialog.askopenfilenames()
 
     result = None
+    y = []
 
     def file_name_classifier(file_name):
         split = file_name[:-4].split('_')
@@ -85,15 +86,21 @@ def read_file_basket():
         num_rows = len(df)
         df['User'] = [user] * num_rows
         df['Frequency'] = [frequency] * num_rows
-        df['Label'] = [label] * num_rows
+        # df['Label'] = [label] * num_rows
 
         result = pd.concat([result, df])
+        y.append(label)
     
-    result['id'] = (result['Frequency'] != result['Frequency'].shift()).cumsum()
-    result = result.dropna().reset_index(drop=True)
+    result['id'] = (result['Frequency'] != result['Frequency'].shift()).cumsum() - 1
 
-    print("ok")
-    return result
+    new_df = result[['id', 'Time (s)', ' X (m/s2)']]
+
+    new_df = new_df.dropna().reset_index(drop=True)
+
+    result_y = pd.Series(y)
+
+    return new_df, result_y
+
 
         
 def read_file_HMP():
@@ -102,38 +109,55 @@ def read_file_HMP():
     root.withdraw()
 
     # 选择文件夹按钮的回调函数
-    selected_folders = filedialog.askdirectory(multiple=True)  # 允许选择多个文件夹
+    folders = []
+
+    while True:
+        folder = filedialog.askdirectory()
+        if not folder:
+            break  # 用户点击取消
+        folders.append(folder)
+    for folder in folders:
+        print("Selected folder:", folder)
 
     result = None
+    y = []
 
     # 处理选择的文件夹
     file_pair = []
 
-    for folder_path in selected_folders:
+    for folder_path in folders:
         folder_name = os.path.basename(folder_path)
 
         # 遍历文件夹中的所有文件
         for file_name in os.listdir(folder_path):
             if file_name.endswith('.txt'):
                 file_path = os.path.join(folder_path, file_name)
-                file_pair.append(folder_name, file_path)
+                file_pair.append((folder_name, file_path))
+
+    print('ok')
 
     for i in range(len(file_pair)):
         folder_name, file_path = file_pair[i]
 
-        df = pd.read_table(file_path, sep = '\s+')
+        data = pd.read_table(file_path, sep = ' ', header=None)
 
-        column_names = ['x', 'y', 'z']
-        df = pd.DataFrame(df, columns=column_names)
+        num_rows = len(data)
+        df = pd.DataFrame({
+                # 'lable': [folder_name] * num_rows,
+                'id': [i] * num_rows,
+                'time': [i * 0.1 for i in range(num_rows)],
+                'x': data.iloc[:, 0]
+                # 'y': data.iloc[:, 1],
+                # 'z': data.iloc[:, 2]       
+            })
 
-        num_rows = len(df)
-        df['time'] = [i * 0.1 for i in range(num_rows)]
-        df['label'] = [folder_name] * num_rows
-        df['id'] = [i] * num_rows
 
         result = pd.concat([result, df])
-        
+        y.append(folder_name)
 
     result = result.dropna().reset_index(drop=True)
+
+    result_y = pd.Series(y)
+    return result, result_y
 
 

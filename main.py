@@ -1,4 +1,4 @@
-from util import FileReader, PromptGenerator, GPTExecutor
+from util import FileReader, PromptGenerator, GPTExecutor, FeatureSelection
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
@@ -15,7 +15,10 @@ def pipeline():
 
     # X_train, X_test, y_train, y_test = FileReader.read_file_acc()
 
-    train= FileReader.read_file_HMP()
+    X, y = FileReader.read_file_basket()
+
+    # X, y = FileReader.read_file_HMP()
+    
     # # define pipeline
     # pipeline = Pipeline([
     #     ('imputer', SimpleImputer()),  # 填补缺失值
@@ -25,6 +28,10 @@ def pipeline():
     # ])
 
     print("OK")
+
+    # FeatureSelection.cal_features(X_train, y_train)
+
+    FeatureSelection.cal_features(X, y)
 
     # pipeline.fit(X_train, y_train)
 
