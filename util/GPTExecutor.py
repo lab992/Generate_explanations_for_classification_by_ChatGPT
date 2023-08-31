@@ -1,8 +1,11 @@
 import openai
 import time
 
-def judge_correctness():
-    pass
+def judge_correctness(array1, array2):
+    count = sum([1 for a, b in zip(array1, array2) if a == b])
+    result = count / len(array1)
+    percentage = round(result * 100, 4)
+    return f"{percentage}%"
 
 class GPTExecutor:
 
@@ -16,7 +19,7 @@ class GPTExecutor:
 
         count = 0
 
-        run_times = 15
+        run_times = 20
 
         while (count < run_times):
             try:
