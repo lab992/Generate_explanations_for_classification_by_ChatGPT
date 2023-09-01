@@ -17,18 +17,48 @@ def context_gen(train_data):
                 "3 – one move to the right"
                 "4 – one move to the left"
                 )
+    
+    # decision tree
+    # features = ("The dataset has 11 columns. The first column is label and the rest are 10 features in order: "
+    #             'standard_deviation, '
+    #             'number_crossing_m__m_1, '
+    #             'fft_coefficient__attr_"angle"__coeff_1, '
+    #             'fourier_entropy__bins_5, '
+    #             'linear_trend__attr_"slope", '
+    #             'fourier_entropy__bins_2, '
+    #             'range_count__max_0__min_-1000000000000.0, '
+    #             'autocorrelation__lag_5, '
+    #             'index_mass_quantile__q_0.4, '
+    #             'mean_n_absolute_max__number_of_maxima_7. '
+    #             )
+
+    # Gradient
+    # features = ("The dataset has 11 columns. The first column is label and the rest are 10 features in order: "
+    #         'cid_ce__normalize_False, '
+    #         'agg_linear_trend__attr_"slope"__chunk_len_10__f_agg_"var", '
+    #         'cwt_coefficients__coeff_4__w_20__widths_(2, 5, 10, 20), '
+    #         'linear_trend__attr_"pvalue", '
+    #         'permutation_entropy__dimension_7__tau_1, '
+    #         'fft_coefficient__attr_"real"__coeff_5, '
+    #         'agg_linear_trend__attr_"stderr"__chunk_len_5__f_agg_"var", '
+    #         'root_mean_square, '
+    #         'number_crossing_m__m_1, '
+    #         'change_quantiles__f_agg_"var"__isabs_True__qh_1.0__ql_0.4. '
+    #         )
+
+    # Random Forest
     features = ("The dataset has 11 columns. The first column is label and the rest are 10 features in order: "
-                'standard_deviation, '
-                'number_crossing_m__m_1, '
-                'fft_coefficient__attr_"angle"__coeff_1, '
-                'fourier_entropy__bins_5, '
-                'linear_trend__attr_"slope", '
-                'fourier_entropy__bins_2, '
-                'range_count__max_0__min_-1000000000000.0, '
-                'autocorrelation__lag_5, '
-                'index_mass_quantile__q_0.4, '
-                'mean_n_absolute_max__number_of_maxima_7. '
-                )
+        'fft_coefficient__attr_"imag"__coeff_1, '
+        'abs_energy, '
+        'root_mean_square, '
+        'fourier_entropy__bins_5, '
+        'standard_deviation, '
+        'fourier_entropy__bins_2, '
+        'fourier_entropy__bins_10, '
+        'fourier_entropy__bins_100, '
+        'absolute_sum_of_changes, '
+        'agg_autocorrelation__f_agg_"var"__maxlag_40. '
+        )
                 
     data_description = ("Following is the dataset of 300 data: \n")
     

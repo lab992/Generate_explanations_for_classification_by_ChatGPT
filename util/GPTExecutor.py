@@ -18,7 +18,7 @@ def gpt_execution(context, query):
 
     count = 0
 
-    run_times = 30
+    run_times = 50
 
     while (count < run_times):
         try:
@@ -44,7 +44,7 @@ def gpt_execution(context, query):
             count += 1
             print("OK")
 
-            time.sleep(21)
+            time.sleep(22)
         except ValueError:
             print("error")
             pass

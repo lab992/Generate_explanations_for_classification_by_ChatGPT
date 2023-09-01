@@ -30,7 +30,7 @@ def pipeline():
     context, query = PromptGenerator.prompt_gen()
     GPTExecutor.gpt_execution(context, query)
 
-    # with open("prompt_decision.txt", "w") as f:
+    # with open("prompt_RF.txt", "w") as f:
     #     f.writelines(context)
     #     f.writelines(query)
 
