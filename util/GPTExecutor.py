@@ -7,44 +7,47 @@ def judge_correctness(array1, array2):
     percentage = round(result * 100, 4)
     return f"{percentage}%"
 
-class GPTExecutor:
+def gpt_result_to_array(string):
+    stripped_string = string.strip("[]")
+    elements = stripped_string.split(", ")
+    array = [float(element) for element in elements]
+    return array
 
-    def __init__(self, context, query):
-        self.context = context
-        self.query = query
+def gpt_execution(context, query):
+    openai.api_key = "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"
 
+    count = 0
 
-    def gpt_execution(context, query):
-        openai.api_key = "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"
+    run_times = 30
 
-        count = 0
+    while (count < run_times):
+        try:
+            completion = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": context},
+                    {"role": "user", "content": query},
+                ]
+            )
 
-        run_times = 20
+            gpt_result = completion.choices[0].message["content"]
 
-        while (count < run_times):
-            try:
-                completion = openai.ChatCompletion.create(
-                    model="gpt-3.5-turbo",
-                    messages=[
-                        {"role": "system", "content": context},
-                        {"role": "user", "content": query},
-                    ]
-                )
+            filename = "explain.txt"
 
-                gpt_result = completion.choices[0].message["content"]
+            answer = [1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4]
 
-                filename = "explain.txt"
+            with open(filename, "a") as file:
+                file.write(gpt_result)
+                file.write("  " + judge_correctness(gpt_result_to_array(gpt_result), answer))
+                file.write("\n")
+            
+            count += 1
+            print("OK")
 
-                with open(filename, "a") as file:
-                    file.write(', '.join(map(str, gpt_result)))
-                    file.write("\n")
-                
-                count += 1
-
-                time.sleep(25)
-            except ValueError:
-                print("error")
-                pass
-            except Exception as e:
-                raise e
-        return
+            time.sleep(21)
+        except ValueError:
+            print("error")
+            pass
+        except Exception as e:
+            raise e
+    return

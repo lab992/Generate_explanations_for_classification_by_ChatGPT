@@ -27,8 +27,14 @@ def pipeline():
     #     ('GPT', GPTExecutor())
     # ])
 
-    FeatureSelection.n_features_selection()
-    print("OK")
+    context, query = PromptGenerator.prompt_gen()
+    GPTExecutor.gpt_execution(context, query)
+
+    # with open("prompt_decision.txt", "w") as f:
+    #     f.writelines(context)
+    #     f.writelines(query)
+
+    # print("OK")
 
     # FeatureSelection.cal_features(X_train, y_train)
 
