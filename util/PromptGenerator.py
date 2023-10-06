@@ -9,13 +9,19 @@ def prompt_gen():
 def context_gen(train_data):
     role = "You are a data analyst, your job is to classify time series by the given features."
     background = ("The gesture acquisition device is a Nintendo Wiimote remote controller with built-in three-axis accelerometer."
-                    "Data is acceleration in x-axis dimension. It is classified to 4 gestures"
+                    "Data is acceleration in x-axis dimension. It is classified to 2 gestures"
                     )
     classes = ("The gestures are (class label - English translation): "
-                "1 – pick-up"
+                # "1 – pick-up"
                 "2 – shake"
-                "3 – one move to the right"
+                # "3 – one move to the right"
                 "4 – one move to the left"
+                # "5 – one move to up"
+                # "6 – one move to down"
+                # "7 – one left circle"
+                # "8 – one right circle"
+                # "9 – one move toward the screen"
+                # "10 – one move away from the screen"
                 )
     
     # decision tree
@@ -33,32 +39,32 @@ def context_gen(train_data):
     #             )
 
     # Gradient
-    # features = ("The dataset has 11 columns. The first column is label and the rest are 10 features in order: "
-    #         'cid_ce__normalize_False, '
-    #         'agg_linear_trend__attr_"slope"__chunk_len_10__f_agg_"var", '
-    #         'cwt_coefficients__coeff_4__w_20__widths_(2, 5, 10, 20), '
-    #         'linear_trend__attr_"pvalue", '
-    #         'permutation_entropy__dimension_7__tau_1, '
-    #         'fft_coefficient__attr_"real"__coeff_5, '
-    #         'agg_linear_trend__attr_"stderr"__chunk_len_5__f_agg_"var", '
-    #         'root_mean_square, '
-    #         'number_crossing_m__m_1, '
-    #         'change_quantiles__f_agg_"var"__isabs_True__qh_1.0__ql_0.4. '
-    #         )
+    features = ("The dataset has 11 columns. The first column is label and the rest are 10 features in order: "
+            'cid_ce__normalize_False, '
+            'agg_linear_trend__attr_"slope"__chunk_len_10__f_agg_"var", '
+            'cwt_coefficients__coeff_4__w_20__widths_(2, 5, 10, 20), '
+            'linear_trend__attr_"pvalue", '
+            'permutation_entropy__dimension_7__tau_1, '
+            'fft_coefficient__attr_"real"__coeff_5, '
+            'agg_linear_trend__attr_"stderr"__chunk_len_5__f_agg_"var", '
+            'root_mean_square, '
+            'number_crossing_m__m_1, '
+            'change_quantiles__f_agg_"var"__isabs_True__qh_1.0__ql_0.4. '
+            )
 
     # Random Forest
-    features = ("The dataset has 11 columns. The first column is label and the rest are 10 features in order: "
-        'fft_coefficient__attr_"imag"__coeff_1, '
-        'abs_energy, '
-        'root_mean_square, '
-        'fourier_entropy__bins_5, '
-        'standard_deviation, '
-        'fourier_entropy__bins_2, '
-        'fourier_entropy__bins_10, '
-        'fourier_entropy__bins_100, '
-        'absolute_sum_of_changes, '
-        'agg_autocorrelation__f_agg_"var"__maxlag_40. '
-        )
+    # features = ("The dataset has 11 columns. The first column is label and the rest are 10 features in order: "
+    #     'fft_coefficient__attr_"imag"__coeff_1, '
+    #     'abs_energy, '
+    #     'root_mean_square, '
+    #     'fourier_entropy__bins_5, '
+    #     'standard_deviation, '
+    #     'fourier_entropy__bins_2, '
+    #     'fourier_entropy__bins_10, '
+    #     'fourier_entropy__bins_100, '
+    #     'absolute_sum_of_changes, '
+    #     'agg_autocorrelation__f_agg_"var"__maxlag_40. '
+    #     )
                 
     data_description = ("Following is the dataset of 300 data: \n")
     
@@ -69,7 +75,7 @@ def context_gen(train_data):
     return role + "\n" + background + "\n" + classes + "\n" + features + "\n" + data_description + "\n" + feature_to_txt(train_data)
 
 def query_gen(test_data):
-    task = ("Try to classify following 20 data to these 4 labels, with the help of dataset given above."
+    task = ("Try to classify following 20 data to these 2 classes, with the help of dataset given above."
                "You should not show the code but give the answer directly."
                "You must give me the label in format: [label 1, label 2, ..., label 20]"
                "You must check whether there are exactly 20 labels in your answer." + "\n")
@@ -114,8 +120,13 @@ def feature_gen():
     # 将包含数组的 Series 转换为列表
     array_list = array_series.tolist()
 
-    train_data = array_list[0:15] + array_list[30:45] + array_list[60:75] + array_list[90:105]
-    test_temp_data = array_list[20:25] + array_list[50:55] + array_list[80:85] + array_list[110:115]
+    # 取label 1-4，每个15个 （train）
+    # train_data = array_list[0:15] + array_list[30:45] + array_list[60:75] + array_list[90:105]
+    # 取label 1-4，每个5个 （tesr）
+    # test_temp_data = array_list[20:25] + array_list[50:55] + array_list[80:85] + array_list[110:115]
+
+    train_data = array_list[30:50] + array_list[90:110]
+    test_temp_data = array_list[50:60] + array_list[110:120]
     test_data = [array[1:] for array in test_temp_data]
 
     return train_data, test_data

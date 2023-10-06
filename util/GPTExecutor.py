@@ -14,11 +14,11 @@ def gpt_result_to_array(string):
     return array
 
 def gpt_execution(context, query):
-    openai.api_key = "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"
+    openai.api_key = "sk-jusJclmsI4KD70DqAdFcDe7a97344a898e9791464367Bb36"
 
     count = 0
 
-    run_times = 50
+    run_times = 1
 
     while (count < run_times):
         try:
@@ -34,7 +34,7 @@ def gpt_execution(context, query):
 
             filename = "explain.txt"
 
-            answer = [1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4]
+            answer = [2,2,2,2,2,2,2,2,2,2,4,4,4,4,4,4,4,4,4,4]
 
             with open(filename, "a") as file:
                 file.write(gpt_result)
