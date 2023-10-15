@@ -18,7 +18,7 @@ def gpt_execution(context, query):
 
     count = 0
 
-    run_times = 1
+    run_times = 50
 
     while (count < run_times):
         try:
@@ -34,7 +34,7 @@ def gpt_execution(context, query):
 
             filename = "explain.txt"
 
-            answer = [2,2,2,2,2,2,2,2,2,2,4,4,4,4,4,4,4,4,4,4]
+            answer = [2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3]
 
             with open(filename, "a") as file:
                 file.write(gpt_result)

@@ -14,8 +14,8 @@ def context_gen(train_data):
     classes = ("The gestures are (class label - English translation): "
                 # "1 – pick-up"
                 "2 – shake"
-                # "3 – one move to the right"
-                "4 – one move to the left"
+                "3 – one move to the right"
+                # "4 – one move to the left"
                 # "5 – one move to up"
                 # "6 – one move to down"
                 # "7 – one left circle"
@@ -125,8 +125,8 @@ def feature_gen():
     # 取label 1-4，每个5个 （tesr）
     # test_temp_data = array_list[20:25] + array_list[50:55] + array_list[80:85] + array_list[110:115]
 
-    train_data = array_list[30:50] + array_list[90:110]
-    test_temp_data = array_list[50:60] + array_list[110:120]
+    train_data = array_list[30:50] + array_list[60:80]
+    test_temp_data = array_list[50:60] + array_list[80:90]
     test_data = [array[1:] for array in test_temp_data]
 
     return train_data, test_data

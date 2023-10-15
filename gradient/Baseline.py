@@ -6,6 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
+from sklearn.dummy import DummyClassifier
 # from sklearn.impute import KNNImputer
 
 
@@ -28,17 +29,22 @@ def rf():
     file_2 = filedialog.askopenfilename()
     test = pd.read_table(file_2, sep = '\s+', header=None)
     
-    X_train, y_train = split(train.iloc[0:120, :])
-    X_test, y_test = split(test.iloc[0:280, :])
+    X_train, y_train = split(train.iloc[list(range(60,70)) + list(range(90,100))])
+
+    # test ABCD 各10个
+    X_test, y_test = split(test.iloc[list(range(140,160)) + list(range(210,230))])
 
     # 创建XGBoost分类器
-    model = xgb.XGBClassifier(objective='binary:logistic', eval_metric='logloss')
+    # model = xgb.XGBClassifier(objective='binary:logistic', eval_metric='logloss')
 
     # 构建随机森林模型
-    # model = RandomForestClassifier(n_estimators=100, random_state=42)
+    model = RandomForestClassifier(n_estimators=100, random_state=42)
 
     # 决策树
     # model = DecisionTreeClassifier(random_state=42)
+
+    # Dummy classifier
+    # model = DummyClassifier(strategy='stratified', random_state = 42)
 
     le = LabelEncoder()
     y_train = le.fit_transform(y_train)
