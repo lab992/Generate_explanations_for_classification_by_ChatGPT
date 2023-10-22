@@ -6,7 +6,7 @@ from sklearn import datasets
 from sklearn.tree import DecisionTreeClassifier, export_graphviz, plot_tree, export_text
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
-from decision_rule import get_rules,merge_nodes
+from decision_rule import get_rules,merge_nodes, merge_rules
 
 def split(dataset):
     X = dataset.iloc[:, 1:]
@@ -48,7 +48,7 @@ def accuracy():
     clf = model.fit(X_train, y_train)
 
     # Apply the merge function
-    # merge_nodes(clf.tree_)
+    merge_nodes(clf.tree_)
 
     # # 在测试集上进行预测
     # y_pred = model.predict(X_test)
@@ -60,22 +60,24 @@ def accuracy():
     #     f.write(export_text(clf))
 
     rules = get_rules(clf, X_train.columns.to_numpy(), ["2","3","4"])
-
-    for i in range(len(rules)):
-        with open("f_5_min_6_unmerged.txt", 'a') as f:
-            f.write(rules[i])
+    
+    merged_rules = merge_rules(rules)
+    
+    for i in range(len(merged_rules)):
+        with open("f_5_min_6_full_merged.txt", 'a') as f:
+            f.write(merged_rules[i])
             f.write('\n')
 
 
-    fig = plt.figure(figsize=(100, 80))
-    _ = plot_tree(
-        clf,
-        feature_names = X_train.columns.to_numpy(),
-        class_names = ["2","3","4"],
-        filled = True
-    )
+    # fig = plt.figure(figsize=(50, 40))
+    # _ = plot_tree(
+    #     clf,
+    #     feature_names = X_train.columns.to_list(),
+    #     class_names = ["2","3","4"],
+    #     filled = True
+    # )
 
-    fig.savefig("decision_tree_f_5_min_6.png")
+    # fig.savefig("decision_tree_f_5_min_6_MERGED2.png")
 
 
 def feature_ex():

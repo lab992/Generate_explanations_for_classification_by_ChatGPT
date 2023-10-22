@@ -1,12 +1,10 @@
 import numpy as np
 from sklearn.tree import _tree
 
-# 输入 tree.export_text(clf)
-# 遍历树，找所有x-class的分类情况
-
 # Function to merge nodes with the same class
 def merge_nodes(tree, node_id=0):
-    if tree.children_left[node_id] != tree.children_right[node_id]:  # If not a leaf node
+    # If not a leaf node
+    if tree.children_left[node_id] != tree.children_right[node_id]:  
         merge_nodes(tree, tree.children_left[node_id])
         merge_nodes(tree, tree.children_right[node_id])
 
@@ -14,8 +12,8 @@ def merge_nodes(tree, node_id=0):
         if tree.value[tree.children_left[node_id]].argmax() == tree.value[tree.children_right[node_id]].argmax():
             # Merge the children by updating the values in the parent node
             tree.value[node_id] = tree.value[tree.children_left[node_id]] + tree.value[tree.children_right[node_id]]
-            tree.children_left[node_id] = tree.children_right[node_id]  # Make the left child point to the right child
-
+            # Make the left child point to the right child
+            tree.children_left[node_id] = tree.children_right[node_id]
 
 def get_rules(tree, feature_names, class_names):
     tree_ = tree.tree_
@@ -69,6 +67,28 @@ def get_rules(tree, feature_names, class_names):
         rules += [rule]
         
     return rules
+
+def merge_rules(rules):
+    for i in range(len(rules)):
+        fst = rules[i].split('and')
+        for j in range(i + 1, len(rules)):
+            snd = rules[j].split('and')
+            fst_then_class = fst[-1][-14:]
+            snd_then_class = snd[-1][-14:]
+            if len(fst) == len(snd) and fst[:-1] == snd[:-1] and fst_then_class == snd_then_class and compare_strings(fst[-1], snd[-1]):
+                and_string = 'and'.join(fst[:-1])
+                final_result = and_string + fst_then_class
+                rules[i] = final_result
+                rules[j] = final_result
+    return list(set(rules))
+                        
+def compare_strings(str1, str2):
+    if abs(len(str1) - len(str2)) == 1:
+        return True
+    else:
+        return False
+
+
 
 def class_description():
     return
