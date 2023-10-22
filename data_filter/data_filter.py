@@ -41,7 +41,7 @@ def average(intervall):
         single_array = []
         while (not (np.isnan(min_max[i][j + intervall]))):
             num = (sum(min_max[i][j : j + intervall])) / intervall
-            single_array.append(int(round(num * 10, 0)))
+            single_array.append(int(round(num * 9, 0)))
             j += intervall
         average_array.append(single_array)
     
@@ -52,11 +52,11 @@ def average(intervall):
     #             file.write(str(df[j]))
     #             file.write("\n")
 
-    with open('class_4_avg_2.txt', "a") as file:
-        for j in range(len(average_array[210:260])):
-            file.write(str(average_array[j + 210]))
+    with open('9_class_2_avg_2.txt', "a") as file:
+        for j in range(len(average_array[70:120])):
+            file.write(str(average_array[j + 70]))
             file.write("\n")
-    return average_array
+    # return average_array
 
 def transformer(intervall):
     root = tk.Tk()

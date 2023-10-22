@@ -29,19 +29,19 @@ def rf():
     file_2 = filedialog.askopenfilename()
     test = pd.read_table(file_2, sep = '\s+', header=None)
     
-    X_train, y_train = split(train.iloc[list(range(60,70)) + list(range(90,100))])
+    X_train, y_train = split(train.iloc[list(range(30,60)) + list(range(60,90))])
 
     # test ABCD 各10个
-    X_test, y_test = split(test.iloc[list(range(140,160)) + list(range(210,230))])
+    X_test, y_test = split(test.iloc[list(range(70,140)) + list(range(140,210))])
 
     # 创建XGBoost分类器
     # model = xgb.XGBClassifier(objective='binary:logistic', eval_metric='logloss')
 
     # 构建随机森林模型
-    model = RandomForestClassifier(n_estimators=100, random_state=42)
+    # model = RandomForestClassifier(n_estimators=100, random_state=42)
 
     # 决策树
-    # model = DecisionTreeClassifier(random_state=42)
+    model = DecisionTreeClassifier(random_state=42)
 
     # Dummy classifier
     # model = DummyClassifier(strategy='stratified', random_state = 42)

@@ -20,14 +20,14 @@ def read_file_acc():
     train_data = None
     test_data = None
 
-    def data_format_acc(data):
+    def data_format_acc(data, bias):
         num_rows, num_columns = data.shape
         result = pd.DataFrame(columns=['lable', 'id', 'time', 'acceleration'])
         for i in range(num_rows):
             row = data.iloc[i]
             df = pd.DataFrame({
                 'lable': [row[0]] * len(row[1:]),
-                'id': [i] * len(row[1:]),
+                'id': [i + bias] * len(row[1:]),
                 'time': [i * 0.1 for i in range(len(row[1:]))],
                 'acceleration': row[1:]               
             })
@@ -45,9 +45,11 @@ def read_file_acc():
             test_data = pd.read_table(file_path, sep = '\s+', header=None)
         else:
             raise ValueError("Wrong file.")
-
-    structured_train = data_format_acc(train_data)
-    structured_test = data_format_acc(test_data)
+        
+    train_data = train_data.iloc[30:120]
+    test_data = test_data.iloc[70:280]
+    structured_train = data_format_acc(train_data, 30)
+    structured_test = data_format_acc(test_data, 70)
     X_train = structured_train.iloc[:, 1:]
     X_test = structured_test.iloc[:, 1:]
     y_train = train_data.iloc[:, 0]

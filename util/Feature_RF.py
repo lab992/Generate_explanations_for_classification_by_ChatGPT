@@ -13,8 +13,15 @@ def rf():
     # Open file selection window
     files = filedialog.askopenfilename()
     data = pd.read_csv(files)
-    y = data['target']
-    X = data.drop('target', axis=1).iloc[:, 1:]
+    # y = data['target']
+    # X = data.drop('target', axis=1).iloc[:, 1:]
+    X = data.iloc[:, 1:]
+    target_values = [2, 3, 4]
+    repeat_counts = [30, 30, 30]
+
+    # 使用 Pandas 创建 Series
+    y = pd.Series([val for val, count in zip(target_values, repeat_counts) for _ in range(count)], name='target')
+
     feature_names = X.columns
 
     # 构建随机森林模型
@@ -38,7 +45,7 @@ def rf():
     feature_info_list.sort(key=lambda x: x[2], reverse=True)
 
     # 获取前20个最重要的特征信息
-    top_feature_info = feature_info_list[:20]
+    top_feature_info = feature_info_list[:10]
 
     # 打印最重要的20个特征的信息
     for index, name, score in top_feature_info:

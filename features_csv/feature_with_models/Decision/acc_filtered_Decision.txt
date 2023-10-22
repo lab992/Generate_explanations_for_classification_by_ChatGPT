@@ -1,4 +1,4 @@
-acceleration__standard_deviation, Importance Score = 0.0895
+xacceleration__standard_deviation, Importance Score = 0.0895
 acceleration__number_crossing_m__m_1, Importance Score = 0.0750
 acceleration__fourier_entropy__bins_5, Importance Score = 0.0647
 acceleration__agg_linear_trend__attr_"intercept"__chunk_len_10__f_agg_"min", Importance Score = 0.0584    

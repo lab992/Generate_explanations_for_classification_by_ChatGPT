@@ -8,16 +8,16 @@ import pandas as pd
 
 def cal_features(X, y):
 
-    extracted_features = extract_features(X, column_id="id", column_sort="Time (s)")
-    # extracted_features = extract_features(X, column_id="id", column_sort="time")
+    # extracted_features = extract_features(X, column_id="id", column_sort="Time (s)")
+    extracted_features = extract_features(X, column_id="id", column_sort="time")
 
     # extracted_features.to_csv('HMP_extracted.csv')
 
     impute(extracted_features)
 
-    features_filtered = select_features(extracted_features, y)
+    # features_filtered = select_features(extracted_features, y)
 
-    features_filtered.to_csv('BASKET_filtered.csv')
+    extracted_features.to_csv('234_acc_extracted_test.csv')
 
 def n_features_selection():
 
@@ -33,11 +33,13 @@ def n_features_selection():
 
     features = pd.read_table(txt, header=None)
     array_features = features.values.flatten()
-    array_columns = np.insert(array_features, 0, "target")
+    # array_columns = np.insert(array_features, 0, "target")
 
-    selected = data[array_columns]
+    selected = data[array_features]
 
-    selected.to_csv("gradient_selected.csv")
+    selected.to_csv("decision_selected_test.csv")
+
+
 
 
 

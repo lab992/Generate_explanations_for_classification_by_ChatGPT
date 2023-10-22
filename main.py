@@ -1,4 +1,4 @@
-# from util import FileReader, PromptGenerator, GPTExecutor, FeatureSelection
+from util import FileReader, PromptGenerator, GPTExecutor, FeatureSelection
 from util import PromptGenerator, GPTExecutor
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
@@ -28,8 +28,8 @@ def pipeline():
     #     ('GPT', GPTExecutor())
     # ])
 
-    context, query = PromptGenerator.prompt_gen()
-    GPTExecutor.gpt_execution(context, query)
+    # context, query = PromptGenerator.prompt_gen()
+    # GPTExecutor.gpt_execution(context, query)
 
     # with open("prompt_RF.txt", "w") as f:
     #     f.writelines(context)
@@ -37,7 +37,9 @@ def pipeline():
 
     # print("OK")
 
-    # FeatureSelection.cal_features(X_train, y_train)
+    # FeatureSelection.cal_features(X_test, y_test)
+
+    FeatureSelection.n_features_selection()
 
     # FeatureSelection.cal_features(X, y)
 
