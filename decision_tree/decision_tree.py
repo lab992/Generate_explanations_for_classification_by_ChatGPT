@@ -7,6 +7,8 @@ from sklearn.tree import DecisionTreeClassifier, export_graphviz, plot_tree, exp
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
 from decision_rule import get_rules,merge_nodes, merge_rules
+from feature_to_prompt import feature_to_prompt, gen_context, array_to_query
+from GPTExecutor import gpt_execution
 
 def split(dataset):
     X = dataset.iloc[:, 1:]
@@ -56,17 +58,21 @@ def accuracy():
     # accuracy = accuracy_score(y_test, y_pred)
     # print(f'Accuracy: {accuracy}')
 
-    # with open("tsfresh_feature.txt", 'w') as f:
-    #     f.write(export_text(clf))
-
     rules = get_rules(clf, X_train.columns.to_numpy(), ["2","3","4"])
     
     merged_rules = merge_rules(rules)
     
-    for i in range(len(merged_rules)):
-        with open("f_5_min_6_full_merged.txt", 'a') as f:
-            f.write(merged_rules[i])
-            f.write('\n')
+    test_sets = feature_to_prompt(X_test, rules)
+    test_test_sets = array_to_query(test_sets)
+
+    context = gen_context()
+
+    gpt_execution(context, test_test_sets)
+
+    # for i in range(len(merged_rules)):
+    #     with open("f_5_min_6_full_merged.txt", 'a') as f:
+    #         f.write(merged_rules[i])
+    #         f.write('\n')
 
 
     # fig = plt.figure(figsize=(50, 40))
@@ -79,62 +85,6 @@ def accuracy():
 
     # fig.savefig("decision_tree_f_5_min_6_MERGED2.png")
 
-
-def feature_ex():
-    # # 加载数据集（以鸢尾花数据集为例）
-    # root = tk.Tk()
-    # root.withdraw()
-
-    # # Open file selection window
-    # files = filedialog.askopenfilename()
-    # data = pd.read_csv(files)
-    # two_to_four = data.iloc[list(range(30, 120))]
-    # y = two_to_four['target']
-    # X = two_to_four.drop('target', axis=1).iloc[:, 1:]
-    # feature_names = X.columns
-
-    iris = datasets.load_iris()
-    X = iris.data
-    y = iris.target
-
-    # 决策树
-    model = DecisionTreeClassifier(random_state=42)
-
-    clf = model.fit(X, y)
-
-    feature_names = iris.feature_names,
-    class_names = iris.target_names,
-
-
-    fig = plt.figure(figsize=(25, 20))
-    _ = plot_tree(
-        clf,
-        feature_names = iris.feature_names,
-        class_names = iris.target_names,
-        filled = True
-    )
-
-    fig.savefig("decision_tree.png")
-
-    # # 获取特征重要性得分
-    # feature_importance = model.feature_importances_
-
-    # # 创建特征索引、名称和重要性得分的元组列表
-    # feature_info_list = [(index, name, score) for index, name, score in zip(range(len(feature_names)), feature_names, feature_importance)]
-
-    # # 根据重要性得分降序排列
-    # feature_info_list.sort(key=lambda x: x[2], reverse=True)
-
-    # # 获取前20个最重要的特征信息
-    # top_feature_info = feature_info_list[:20]
-
-    # # 打印最重要的20个特征的信息
-    # for index, name, score in top_feature_info:
-    #     print(f"{name}, Importance Score = {score:.4f}")
-
-    # with open("tsfresh_test.dot", 'w') as f:
-    #     f = export_graphviz(clf, out_file=f)
         
 if __name__ == "__main__":
     accuracy()
-    # feature_ex()
