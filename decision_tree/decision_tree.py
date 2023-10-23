@@ -67,7 +67,12 @@ def accuracy():
 
     context = gen_context()
 
-    gpt_execution(context, test_test_sets)
+    # gpt_execution(context, test_test_sets)
+
+    
+    with open("prompt_test_0.txt", "a") as file:
+        file.write(context + test_test_sets[0])
+
 
     # for i in range(len(merged_rules)):
     #     with open("f_5_min_6_full_merged.txt", 'a') as f:
