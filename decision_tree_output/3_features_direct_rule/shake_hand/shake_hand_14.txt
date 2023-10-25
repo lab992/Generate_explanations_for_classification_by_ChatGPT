@@ -1,0 +1,38 @@
+Based on the provided description, the given data sample can be classified as 'shake hand'. 
+
+Explanation:
+The description states that for 'shake hand', there should be a lot of changes in direction. Observing the given data sample, the presence of a lot of changes in direction indicates a non-linear pattern. This can be attributed to the shaking motion involved in a hand gesture. 
+
+Additionally, the description mentions a slight decreasing trend. Although the trend is not specified to be strictly decreasing, the given sample does exhibit a general decrease in acceleration values over time. This aligns with the description of a slight decreasing trend.
+
+Lastly, the presence of a lot of increasing values in the data sample also supports the classification as 'shake hand'. This suggests that there are significant fluctuations in acceleration, which can be associated with the shaking motion involved in a hand gesture.
+
+Therefore, the classification of the given data sample is: [Class: shake hand].
+Based on the given description, the data sample can be classified as 'move to left'. 
+
+Explanation:
+The description states that there are few changes in the direction, a slight decreasing trend, and a lot of increasing values. However, the presence of a lot of changes in the direction contradicts with the requirement for 'move to left' which specifies few changes in the direction. Therefore, based on the given information, we can conclude that the sample does not correspond to the 'shake hand' class as it has a lot of changes in the direction.
+
+Hence, the classification for the given data sample is [Class: move to left].
+Based on the given description, the sample can be classified as 'move to left'.
+
+Explanation: 
+
+According to the description, there are a lot of changes in the direction. This means that the acceleration in the x-axis is frequently changing its sign, indicating a back-and-forth movement. 
+
+Additionally, there is a slight decreasing trend in the acceleration. This suggests that the overall acceleration is gradually decreasing over time.
+
+Lastly, there are a lot of increasing values in the acceleration. This indicates that there are instances where the acceleration increases in the positive direction before decreasing again.
+
+Combining these characteristics, we can infer that the gesture associated with this sample is 'move to left'. 
+
+[Class: move to left]
+Based on your description, the data sample can be classified as "shake hand" [Class: shake hand].
+
+Explanation: The description states that if there are a lot of changes in the direction, then the gesture is "shake hand". In the given data sample, there is a lot of changes in the direction, indicating a gesture involving shaking hands. Additionally, it is mentioned that there's a slight decreasing trend and a lot of increasing values, which are not the criteria for determining the class in this case. Therefore, the data sample is classified as "shake hand".
+Based on the given description, the data sample can be classified as 'shake hand'. 
+
+Explanation: 
+The description states that if there are few changes in the direction, a slight decreasing trend, and a lot of increasing values, then it corresponds to the gesture 'move to left'. In this case, the given data sample mentions a lot of changes in the direction, which indicates that the hand movement is not consistent. Additionally, there is a slight decreasing trend, suggesting that the movement is predominantly towards the left. Moreover, the presence of a lot of increasing values further implies the gesture 'move to left' as the direction of movement is towards the left. 
+
+[Class: move to left]

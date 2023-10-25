@@ -1,0 +1,58 @@
+Based on the description, we can infer the following classification:
+
+Since there are few changes in the direction, we can eliminate the 'shake hand' gesture. 
+
+Since there is a big decreasing trend, but few increasing values, we can classify this data sample as 'move to left' because the trend is predominantly downward with limited upward movements.
+
+Therefore, the classification for this data sample is: [Class: 'move to left'].
+Based on the description you provided, the data sample can be classified as 'move to left' because it meets the criteria of having few changes in the direction, a big decreasing trend, and few increasing values.
+
+Explanation: 
+
+1. Few changes in the direction: This means that the acceleration values mostly remain in the same direction without frequent changes. This indicates a consistent movement towards a particular direction.
+
+2. Big decreasing trend: The data sample shows a significant decreasing trend, implying that the acceleration values decrease consistently over time. This suggests a continuous movement to the left direction.
+
+3. Few increasing values: There are only a few instances where the acceleration values increase. This further supports the idea that the movement is predominantly towards the left direction.
+
+Therefore, based on the given description, the data sample can be classified as 'move to left'.
+
+[Class: move to left]
+Based on the given description, the data sample can be classified as 'move to left'. 
+
+Explanation:
+
+The key features mentioned in the description are:
+1. Few changes in the direction.
+2. Big decreasing trend.
+3. Few increasing values.
+
+In the given data sample, we have observed few changes in the direction, which means there are not many abrupt changes in the acceleration values in the x-axis dimension. 
+
+Additionally, there is a big decreasing trend observed in the data. This implies that the acceleration values are consistently decreasing over time.
+
+Lastly, there are few increasing values, which suggests that there are only a few instances where the acceleration values show an increase.
+
+Based on these features, the given data sample can be classified as 'move to left' because the key characteristics mentioned in the given class description ('move to left') are present in the data sample. 
+
+Therefore, the classification of the given data sample is: [Class: move to left].
+Based on the description given:
+- There's few changes in the direction.
+- There's a big decreasing trend.
+- There's few increasing values.
+
+This description matches the criteria for the gesture 'move to left'. 
+
+Explanation: The fact that there are few changes in the direction indicates that there is relatively stable movement in the x-axis dimension. The big decreasing trend suggests that there is a consistent decrease in acceleration values over time. Lastly, the presence of few increasing values implies that the movement is predominantly towards the left.
+
+[Class: move to left]
+Based on the given description, the data sample can be classified as follows:
+
+Class: 'move to left'
+
+Explanation:
+- The description states that there are few changes in the direction. This indicates that the acceleration values mostly remain in the same direction, which in this case would be towards the left.
+- The description also mentions a big decreasing trend. This means that the overall trend of the acceleration values is decreasing, indicating a movement towards the left.
+- The description further states that there are few increasing values. This implies that there might be occasional increases in the acceleration, but these increases are not frequent. 
+
+Therefore, based on the given description, the data sample can be classified as 'move to left'.

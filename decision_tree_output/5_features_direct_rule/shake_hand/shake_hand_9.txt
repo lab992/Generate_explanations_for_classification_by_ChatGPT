@@ -1,0 +1,60 @@
+Based on the given description, the data sample can be classified as 'move to left'.
+
+Explanation:
+- There's a lot of changes in the direction: This suggests the presence of shaking or movement.
+- There's a medium decreasing trend: This indicates a gradual decrease in acceleration.
+- There's a lot of increasing values: This implies a noticeable increase in acceleration.
+- The sample is stable: This means the acceleration values are relatively consistent.
+- There's a significant periodic pattern: This reveals the presence of a repeating pattern in the acceleration values.
+
+The description matches the criteria for 'move to left', which is characterized by few changes in direction, a big decreasing trend, and a stable sample. Additionally, the presence of significant periodic pattern supports this classification.
+
+[Class: move to left]
+Based on the given description, the sample can be classified as 'move to right'.
+
+Explanation:
+- There's a lot of changes in the direction: This indicates that the acceleration in the x-axis is changing frequently, which is not consistent with the 'shake hand' gesture.
+- There's a medium decreasing trend: The sample shows a moderate decrease in values over time, which is not a big decreasing trend as required for the 'move to left' gesture.
+- There's a lot of increasing values: The sample has a significant number of increasing values, which aligns with the requirement for the 'move to right' gesture.
+- The sample is stable: The description states that the sample is stable, which suggests that there is no complex or dynamic behavior, eliminating the possibility of 'shake hand'.
+- There's a significant periodic pattern: The presence of a significant periodic pattern indicates regular repetitive behavior, which is not expected in the 'move to left' gesture.
+
+[Class: move to right]
+Based on the given description, the classification of the data sample would be:
+
+[Class: shake hand]
+
+Explanation: 
+1. The description states that there's a lot of changes in the direction. This implies that the acceleration data in the x-axis is constantly changing, suggesting a shaking or vibrating movement.
+2. The medium decreasing trend indicates that there is a general downward trend in the acceleration values over time.
+3. The presence of a lot of increasing values indicates that there are frequent spikes or peaks in the acceleration data, which aligns with the idea of a shaking hand gesture.
+4. The fact that the sample is described as stable suggests that the acceleration values are not fluctuating too much, further supporting the notion of a steady shaking hand gesture.
+5. The significant periodic pattern indicates that there is a repeating pattern in the acceleration data, which again aligns with the idea of shaking hand gesture.
+
+[Class: shake hand]
+Based on the given description, the data sample can be classified as 'move to right'. 
+
+Explanation:
+- There's a lot of changes in the direction: According to the descriptions, 'shake hand' is associated with a lot of changes in the direction, whereas 'move to left' and 'move to right' are associated with few changes in the direction. Since the given sample has a lot of changes in the direction, it rules out the possibility of 'shake hand' and suggests the possibility of 'move to left' or 'move to right'.
+- There's a medium decreasing trend: Both 'move to left' and 'move to right' are associated with a decreasing trend, but the descriptions state that 'move to left' should have a big decreasing trend whereas 'move to right' should have a slight or medium decreasing trend. Since the given sample has a medium decreasing trend, it suggests the possibility of 'move to right'.
+- There's a lot of increasing values: Only 'move to right' is associated with a lot of increasing values, whereas the other gestures are associated with few increasing values. As the given sample has a lot of increasing values, it strengthens the possibility of 'move to right'.
+- The sample is stable: The descriptions state that 'move to left' should have a stable sample, whereas 'shake hand' and 'move to right' can have either stable or dynamic samples. Since the given sample is mentioned as stable, it rules out the possibility of 'shake hand' and suggests the possibility of 'move to left' or 'move to right'.
+- There's a significant periodic pattern: Only 'move to right' is associated with a sample having a significant periodic pattern. As the given sample has a significant periodic pattern, it confirms the classification as 'move to right'.
+
+Therefore, the data sample can be classified as [Class: move to right].
+
+Based on the description provided, let's evaluate the given data sample:
+
+- "There's a lot of changes in the direction": This condition indicates the gesture 'shake hand'.
+
+- "There's a medium decreasing trend": This condition does not give a clear indication of any particular gesture.
+
+- "There's a lot of increasing values": This condition indicates the gesture 'move to right'.
+
+- "The sample is stable": This condition indicates the gesture 'move to left'.
+
+- "There's a significant periodic pattern": This condition indicates the gesture 'move to right'.
+
+Combining these conditions, we can determine that the given data sample belongs to the gesture 'move to right' based on the significant periodic pattern and the high number of increasing values. 
+
+[Class: move to right]

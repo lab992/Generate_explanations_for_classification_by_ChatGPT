@@ -13,13 +13,6 @@ def gpt_result_to_array(string):
     array = [float(element) for element in elements]
     return array
 
-def gen_query(query, i):
-    query_array = ''
-    for i in range(0, len(query), 20):
-        start_index = i
-        end_index = min(i + 4, len(array) - 1)
-    return query_array
-
 def gpt_execution(context, query):
 
     roll1 = ("You are ChatGPT, a large language model trained by OpenAI.\n"
@@ -29,32 +22,39 @@ def gpt_execution(context, query):
 
     openai.api_key = "sk-jusJclmsI4KD70DqAdFcDe7a97344a898e9791464367Bb36"
 
-    count = 0
+    count = 45
 
-    run_times = 10
+    run_times = 60
 
     while (count < run_times):
         try:
-            completion = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": roll2},
-                    {"role": "user", "content": context + query[count]},
-                ]
-            )
+            for i in range(5):
+                completion = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo-0613",
+                    messages=[
+                        {"role": "system", "content": roll2},
+                        {"role": "user", "content": context + query[count]},
+                    ]
+                )
 
-            gpt_result = completion.choices[0].message["content"]
+                gpt_result = completion.choices[0].message["content"]
 
-            answer = [2,2,2,2,2,3,3,3,3,3,4,4,4,4,4]
+                if count < 20:
+                    with open("shake_hand_" + str(count) + ".txt", "a") as file:
+                        file.write(gpt_result)
+                        file.write("\n")
+                elif count > 39:
+                    with open("move_to_right_" + str(count - 40) + ".txt", "a") as file:
+                        file.write(gpt_result)
+                        file.write("\n")
+                else:
+                    with open("move_to_left_" + str(count - 20) + ".txt", "a") as file:
+                        file.write(gpt_result)
+                        file.write("\n")
 
-            with open("explain.txt", "a") as file:
-                file.write(gpt_result)
-                file.write("  " + judge_correctness(gpt_result_to_array(gpt_result), answer))
-                file.write("\n")
-
+                print(str(count))
+                time.sleep(21)
             count += 1
-            print("OK")
-            time.sleep(22)
 
         except ValueError:
             print("error: " + str(count))

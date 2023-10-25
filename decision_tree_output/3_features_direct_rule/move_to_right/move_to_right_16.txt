@@ -1,0 +1,52 @@
+Based on the description provided, the sample can be classified as 'move to right'.
+
+Explanation:
+The description states that there are few changes in the direction, a slight decreasing trend, and few increasing values. 
+
+Since there are few changes in the direction, it can be inferred that the movement is mainly in one direction, which is towards the right. The slight decreasing trend indicates that there is a gradual decrease in the acceleration values over time. Lastly, the presence of few increasing values suggests that there might be some sporadic increases in the acceleration, but they are not significant.
+
+Therefore, the classification for the given data sample is:
+[Class: move to right]
+Based on the provided description, the data sample can be classified as 'move to right'.
+
+Explanation: 
+According to the description, since there are few changes in the direction and a slight decreasing trend, this suggests that the movement is mostly in one direction with a slight decline over time. Additionally, the description states that there are few increasing values, implying that there is not much variability or upward movement in the data sample.
+
+Based on these characteristics, the gesture can be classified as 'move to right' as it aligns with the given criteria.
+
+Class: [move to right]
+Based on the given description, the data sample can be classified as 'move to right'.
+
+Explanation:
+- The description states that there are "few changes in the direction". This means that the acceleration values in the x-axis dimension do not change frequently or abruptly.
+- It also mentions that there is a "slight decreasing trend". This indicates that the acceleration values are gradually decreasing over time.
+- Lastly, it states that there are "few increasing values". This implies that there are not many instances where the acceleration values increase.
+
+Combining these descriptions, we can infer that the movement represented by the data sample is a slow and steady motion towards the right, with occasional decreases in acceleration. This matches the criteria for the 'move to right' gesture.
+
+Answer: [Class: move to right]
+Based on the given description of the three classes, let's analyze the provided data sample.
+
+The description states that "if there's few changes in the direction, a slight decreasing trend, and few increasing values, then it is 'move to right'."
+
+Looking at the data sample, we observe that there are few changes in the direction, which means that the acceleration values are mostly consistent and not fluctuating much. Additionally, we notice a slight decreasing trend, indicating that the acceleration values are gradually decreasing over time. Furthermore, there are few increasing values.
+
+Based on these observations, we can conclude that the provided data sample matches the description for the 'move to right' gesture.
+
+[Class: move to right]
+Based on the given description, the sample data can be classified as 'move to right'.
+
+Explanation:
+The given description specifies the following criteria for each gesture:
+
+- 'Shake hand': A lot of changes in the direction.
+- 'Move to left': Few changes in the direction, a big decreasing trend.
+- 'Move to right': Few changes in the direction, a slight decreasing trend, and few increasing values.
+
+In the given data sample, it is stated that there are "few changes in the direction". This means that the data points consistently show similar directions without frequent fluctuations. Additionally, it is mentioned that there is a "slight decreasing trend" present. This indicates that the data points are generally decreasing over time but only slightly.
+
+Lastly, the description states that there are "few increasing values". This implies that there are not many instances where the acceleration in the x-axis dimension increases.
+
+Combining these criteria, we can infer that the given data sample aligns with the description provided for the 'Move to right' gesture.
+
+[Class: Move to right]

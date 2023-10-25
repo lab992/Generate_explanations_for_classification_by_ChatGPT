@@ -23,11 +23,11 @@ def accuracy():
     file_1 = filedialog.askopenfilename()
     X_train = pd.read_csv(file_1).iloc[:, 1:]
     file_2 = filedialog.askopenfilename()
-    X_test = pd.read_csv(file_2).iloc[:, 1:]
+    X_test = pd.read_csv(file_2).iloc[:, 1:].iloc[list(range(0,20)) + list(range(70,90)) + list(range(140,160))]
 
     target_values = [2, 3, 4]
     repeat_counts_train = [30, 30, 30]
-    repeat_counts_test = [70, 70, 70]
+    repeat_counts_test = [20, 20, 20]
 
     # 使用 Pandas 创建 Series
     y_train = pd.Series([val for val, count in zip(target_values, repeat_counts_train) for _ in range(count)], name='target')
@@ -41,37 +41,39 @@ def accuracy():
     X_train = X_train.iloc[:, 0: 5]
     X_test = X_test.iloc[:, 0: 5]
 
-    model = DecisionTreeClassifier(random_state=42, min_samples_leaf=6)
+    # model = DecisionTreeClassifier(random_state=42, min_samples_leaf=3)
 
-    le = LabelEncoder()
-    y_train = le.fit_transform(y_train)
-    y_test = le.fit_transform(y_test)
-    # 训练模型
-    clf = model.fit(X_train, y_train)
+    # le = LabelEncoder()
+    # y_train = le.fit_transform(y_train)
+    # y_test = le.fit_transform(y_test)
+    # # 训练模型
+    # clf = model.fit(X_train, y_train)
 
-    # Apply the merge function
-    merge_nodes(clf.tree_)
+    # # # Apply the merge function
+    # # merge_nodes(clf.tree_)
 
     # # 在测试集上进行预测
     # y_pred = model.predict(X_test)
+    # print(y_pred)
     # # 计算准确度
     # accuracy = accuracy_score(y_test, y_pred)
     # print(f'Accuracy: {accuracy}')
 
-    rules = get_rules(clf, X_train.columns.to_numpy(), ["2","3","4"])
+    # rules = get_rules(clf, X_train.columns.to_numpy(), ["2","3","4"])
     
-    merged_rules = merge_rules(rules)
+    # merged_rules = merge_rules(rules)
     
-    test_sets = feature_to_prompt(X_test, rules)
-    test_test_sets = array_to_query(test_sets)
+    test_sets = feature_to_prompt(X_test).to_numpy()
+    # test_test_sets = array_to_query(test_sets)
 
     context = gen_context()
 
-    # gpt_execution(context, test_test_sets)
+
+    gpt_execution(context, test_sets)
 
     
-    with open("prompt_test_0.txt", "a") as file:
-        file.write(context + test_test_sets[0])
+    # with open("prompt_test_0.txt", "a") as file:
+    #     file.write(context + test_test_sets[0])
 
 
     # for i in range(len(merged_rules)):
@@ -88,7 +90,7 @@ def accuracy():
     #     filled = True
     # )
 
-    # fig.savefig("decision_tree_f_5_min_6_MERGED2.png")
+    # fig.savefig("decision_tree_f_5_min_9.png")
 
         
 if __name__ == "__main__":

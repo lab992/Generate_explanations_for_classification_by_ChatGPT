@@ -1,0 +1,60 @@
+Based on the given description, the data sample can be classified as 'shake hand'.
+
+Explanation:
+According to the description, if there are a lot of changes in direction and a big decreasing trend, then it indicates the gesture 'move to left'. However, since the sample also has a few increasing values, it does not fit the description completely.
+
+On the other hand, if there are a lot of changes in the direction, it aligns with the first condition for the 'shake hand' gesture. Additionally, the presence of a big decreasing trend corresponds to the second condition. The fact that there are a few increasing values can be considered as random variations and does not significantly deviate from the description. Therefore, based on the given description, the data sample is classified as 'shake hand'.
+
+[Class: shake hand]
+Based on the provided description, the data sample can be classified as 'shake hand'.
+
+Explanation:
+From the given description, the following features are observed:
+1. A lot of changes in the direction.
+2. Big decreasing trend.
+3. Few increasing values.
+
+According to the description for the 'shake hand' gesture, there are a lot of changes in direction. This implies that the acceleration values are constantly changing within a short span of time, which can resemble the shaking movement of a hand.
+
+Additionally, the description mentions a big decreasing trend, indicating that the majority of the acceleration values are decreasing. This aligns with the notion of shaking hands, as during the initial phase of shaking hands, the hand moves from a higher position to a lower position.
+
+Finally, the presence of few increasing values could potentially be attributed to minor fluctuations or adjustments made during the handshaking motion.
+
+Therefore, based on the description provided, the data sample can be classified as [Class: shake hand].
+Based on the given description, the sample can be classified as 'shake hand'.
+
+Explanation:
+According to the given description,
+- "If there's a lot of changes in the direction": This suggests that there are frequent changes in the direction of the acceleration in the x-axis dimension.
+- "There's a big decreasing trend": This implies that there is a significant overall decrease in the acceleration values.
+- "There's a few increasing values": This indicates that there are only a few instances of acceleration values increasing.
+
+The combination of frequent changes in direction, a significant overall decrease in values, and few instances of acceleration values increasing matches the description provided for 'shake hand'.
+
+[Class: shake hand]
+Based on the given description, the characteristics of the data sample can be analyzed as follows:
+
+1. There's a lot of changes in the direction.
+2. There's a big decreasing trend.
+3. There's a few increasing values.
+
+Analyzing these characteristics, we can infer that the data sample corresponds to the 'shake hand' gesture. Here's the explanation:
+
+1. There's a lot of changes in the direction: The 'shake hand' gesture typically involves rapid and frequent changes in the direction of movement. This aligns with the description provided.
+
+2. There's a big decreasing trend: The 'shake hand' gesture generally starts with a significant decreasing trend in the acceleration before the hand movement reverses. This aligns with the given description of a big decreasing trend.
+
+3. There's a few increasing values: While 'shake hand' involves frequent changes in direction, there may be relatively fewer instances of increasing values due to the periodic nature of the gesture.
+
+Based on the analysis, the data sample can be classified as [Class: shake hand].
+Based on the provided description, the given data sample can be classified as 'move to left'.
+
+Explanation:
+The description states that if there are a lot of changes in the direction, a big decreasing trend, and few increasing values, then it corresponds to 'move to left' gesture. 
+
+In the given data sample, there are a lot of changes in the direction, indicating frequent variations in the acceleration in the x-axis dimension. Additionally, there is a noticeable and consistent downward trend, suggesting a big decreasing trend. However, the description also mentions "few increasing values", and in the given data sample, it is mentioned that there are only a few increasing values present. 
+
+Thus, based on the provided description, the data sample is classified as [Class: move to left].
+Based on the given description, the data sample can be classified as 'move to left'.
+
+
