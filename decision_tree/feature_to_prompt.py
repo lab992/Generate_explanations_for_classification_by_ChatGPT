@@ -86,4 +86,30 @@ def array_to_query(dataset):
         result.append(sentence)
     return result
 
+def each_feature_description_context():
+    description = ("number_crossing means the amount of changes in the direction; "
+                   "agg_linear_trend__attr_'intercept'__chunk_len_5__f_agg_'min' means having a decreasing trend when the value is low; "
+                   "range_count__max_1000000000000.0__min_0 means the amount of increasing values. "
+                   "Your job now is to describe each feature with its meaning. "
+                   "When it comes to quantify, don't use numbers but use adjective like 'big', 'a lot of', etc. "
+                   )
+    mission = ("Now I will give you a data sample of this 3 feature. In the sample 'a, b, c', "
+               "a means number_crossing, "
+               "b means agg_linear_trend__attr_'intercept'__chunk_len_5__f_agg_'min', "
+               "c means range_count__max_1000000000000.0__min_0. "
+               "Please now describe this sample. You should not give any number or the name of feature. You should return only one sentence.  \n")
+    return description + mission
 
+def class_description_context():
+    background = ("I will give you a time-series data sample which is acceleration in x-axis dimension. "
+                 "This data sample is now described with 3 features: changes in the direction, decreasing trend, increasing values."
+                 "Your task is to classify my description of samples to 3 gestures ('shake hand', 'move to left', 'move to right'). "
+                 "I will now describe these 3 classes based on these 3 features:\n")
+    rules = ("If there are relatively few changes in direction, a noticeable decreasing trend in the acceleration values when they are low, and a significant proportion of values falling within a specific range, then classify as 'move to left'."
+            "If there are many changes in direction, regardless of the other features, classify as 'shake hand'."
+            "If there are relatively few changes in direction, a decreasing trend in the acceleration values when they are low, but a lesser proportion of values falling within a specific range, then classify as 'move to right'.")
+    mission = ("Try to classify the following sentence to these 3 classes. "
+            "You must classify according to the description of classes. You should also give me the explaination why this decription can infer to this gesture."
+            "Don't show me the code. "
+            "At the end of your explanation. You must repeat your answer in format: [Class: gesture].\n")
+    return background + rules + mission

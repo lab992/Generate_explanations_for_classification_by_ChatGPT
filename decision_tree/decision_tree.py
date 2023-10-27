@@ -7,7 +7,7 @@ from sklearn.tree import DecisionTreeClassifier, export_graphviz, plot_tree, exp
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
 from decision_rule import get_rules,merge_nodes, merge_rules
-from feature_to_prompt import feature_to_prompt, gen_context, array_to_query
+from feature_to_prompt import feature_to_prompt, gen_context, array_to_query, each_feature_description_context, class_description_context
 from GPTExecutor import gpt_execution
 
 def split(dataset):
@@ -38,19 +38,19 @@ def accuracy():
     # # test ABCD 各10个
     # X_test, y_test = split(test.iloc[list(range(70, 280))])
 
-    X_train = X_train.iloc[:, 0: 5]
-    X_test = X_test.iloc[:, 0: 5]
+    X_train = X_train.iloc[:, 0: 3]
+    X_test = X_test.iloc[:, 0: 3]
 
-    # model = DecisionTreeClassifier(random_state=42, min_samples_leaf=3)
+    model = DecisionTreeClassifier(random_state=42, min_samples_leaf=7)
 
-    # le = LabelEncoder()
-    # y_train = le.fit_transform(y_train)
-    # y_test = le.fit_transform(y_test)
-    # # 训练模型
-    # clf = model.fit(X_train, y_train)
+    le = LabelEncoder()
+    y_train = le.fit_transform(y_train)
+    y_test = le.fit_transform(y_test)
+    # 训练模型
+    clf = model.fit(X_train, y_train)
 
-    # # # Apply the merge function
-    # # merge_nodes(clf.tree_)
+    # Apply the merge function
+    merge_nodes(clf.tree_)
 
     # # 在测试集上进行预测
     # y_pred = model.predict(X_test)
@@ -59,17 +59,23 @@ def accuracy():
     # accuracy = accuracy_score(y_test, y_pred)
     # print(f'Accuracy: {accuracy}')
 
-    # rules = get_rules(clf, X_train.columns.to_numpy(), ["2","3","4"])
+    rules = get_rules(clf, X_train.columns.to_numpy(), ["2","3","4"])
     
-    # merged_rules = merge_rules(rules)
+    merged_rules = merge_rules(rules)
     
-    test_sets = feature_to_prompt(X_test).to_numpy()
-    # test_test_sets = array_to_query(test_sets)
+    # test_sets = feature_to_prompt(X_test).to_numpy()
+    # # test_test_sets = array_to_query(test_sets)
 
-    context = gen_context()
+    # context = '\n'.join(merged_rules) + each_feature_description_context()
+  
+    # gpt_execution(context, X_test.to_numpy())
 
 
-    gpt_execution(context, test_sets)
+
+    # context = gen_context()
+
+
+    # gpt_execution(context, test_sets)
 
     
     # with open("prompt_test_0.txt", "a") as file:
@@ -77,9 +83,9 @@ def accuracy():
 
 
     # for i in range(len(merged_rules)):
-    #     with open("f_5_min_6_full_merged.txt", 'a') as f:
+    #     with open("f_5_min_7_full_merged.txt", 'a') as f:
     #         f.write(merged_rules[i])
-    #         f.write('\n')
+    #         f.write('\n') 
 
 
     # fig = plt.figure(figsize=(50, 40))
@@ -90,8 +96,26 @@ def accuracy():
     #     filled = True
     # )
 
-    # fig.savefig("decision_tree_f_5_min_9.png")
+    # fig.savefig("decision_tree_f_5_min_8_MERGED.png")
 
-        
+def to_gpt_method():
+    root = tk.Tk()
+    root.withdraw()
+
+    file_txt = filedialog.askopenfilename()
+
+    with open(file_txt, 'r') as file:
+        content = file.read()
+
+    sentences_array = content.split('\n')
+
+    # Remove any empty strings from the array
+    sentences_array = [sentence for sentence in sentences_array if sentence]
+
+    context = class_description_context()
+
+    gpt_execution(context, sentences_array)
+
 if __name__ == "__main__":
-    accuracy()
+    # accuracy()
+    to_gpt_method()

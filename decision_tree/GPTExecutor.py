@@ -13,16 +13,10 @@ def gpt_result_to_array(string):
     array = [float(element) for element in elements]
     return array
 
-def gpt_execution(context, query):
-
-    roll1 = ("You are ChatGPT, a large language model trained by OpenAI.\n"
-        "Knowledge cutoff: 2021-09\n"
-        "Current date: 2023-10-15\n" )
+def pure_decision_tree_method(context, query):
     roll2 = "You are a data analyst."
 
-    openai.api_key = "sk-jusJclmsI4KD70DqAdFcDe7a97344a898e9791464367Bb36"
-
-    count = 45
+    count = 0
 
     run_times = 60
 
@@ -53,8 +47,10 @@ def gpt_execution(context, query):
                         file.write("\n")
 
                 print(str(count))
-                time.sleep(21)
+                time.sleep(1)
             count += 1
+
+
 
         except ValueError:
             print("error: " + str(count))
@@ -62,3 +58,88 @@ def gpt_execution(context, query):
 
         except Exception as e:
             raise e
+        
+def decision_tree_to_gpt(context, query):
+    roll2 = "You are a data analyst."
+
+    count = 0
+
+    run_times = 60
+
+    while (count < run_times):
+        q = query[count]
+        sample = [str(value) for value in q]
+        try:
+            completion = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo-0613",
+                    messages=[
+                        {"role": "system", "content": roll2},
+                        {"role": "user", "content": context + ''.join(sample)},
+                    ])
+            gpt_result = completion.choices[0].message["content"]
+
+            with open("transform.txt", "a") as file:
+                file.write(gpt_result)
+                file.write("\n")
+
+            print(count)
+            count += 1
+        
+        except ValueError:
+            print("error: " + str(count))
+            pass
+
+        except Exception as e:
+            raise e
+
+def gpt_execution(context, query):
+
+    roll1 = ("You are ChatGPT, a large language model trained by OpenAI.\n"
+        "Knowledge cutoff: 2021-09\n"
+        "Current date: 2023-10-15\n" )
+    roll2 = "You are a data analyst."
+
+    openai.api_key = "sk-jusJclmsI4KD70DqAdFcDe7a97344a898e9791464367Bb36"
+
+    count = 0
+
+    run_times = 60
+
+    while (count < run_times):
+        try:
+            for i in range(5):
+                completion = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo-0613",
+                    messages=[
+                        {"role": "system", "content": roll2},
+                        {"role": "user", "content": context + query[count]},
+                    ]
+                )
+
+                gpt_result = completion.choices[0].message["content"]
+
+                if count < 20:
+                    with open("shake_hand_" + str(count) + ".txt", "a") as file:
+                        file.write(gpt_result)
+                        file.write("\n")
+                elif count > 39:
+                    with open("move_to_right_" + str(count - 40) + ".txt", "a") as file:
+                        file.write(gpt_result)
+                        file.write("\n")
+                else:
+                    with open("move_to_left_" + str(count - 20) + ".txt", "a") as file:
+                        file.write(gpt_result)
+                        file.write("\n")
+
+                print(str(count))
+                time.sleep(1)
+            count += 1
+            
+        except ValueError:
+            print("error: " + str(count))
+            pass
+
+        except Exception as e:
+            raise e
+
+    
