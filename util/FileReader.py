@@ -44,10 +44,8 @@ def read_file_acc():
 
 def read_file_basket():
 
-    result = None
-    y = []
-
-    txt_files = glob.glob(os.path.join('selected_dataset/basket', '*.txt'))
+    train_files = glob.glob(os.path.join('selected_dataset/basket/train', '*.txt'))
+    test_files = glob.glob(os.path.join('selected_dataset/basket/test', '*.txt'))
 
     def file_name_classifier(file_name):
         split = file_name[:-4].split('_')
@@ -56,93 +54,97 @@ def read_file_basket():
         label = split[1][:-1]
         return user, frequency, label
 
-    # 逐个读取文件内容
-    for txt_file in txt_files:
-        # Get the class name of train set
-        file_name = os.path.basename(txt_file)
+    def read_dataset(files):
 
-        user, frequency, label = file_name_classifier(file_name)
+        result = None
+        y = []
+        for txt_file in files:
+            # Get the class name of train set
+            file_name = os.path.basename(txt_file)
 
-        df = pd.read_table(txt_file, skiprows=3, sep = ',')
+            user, frequency, label = file_name_classifier(file_name)
 
-        num_rows = len(df)
-        df['User'] = [user] * num_rows
-        df['Frequency'] = [frequency] * num_rows
-        # df['Label'] = [label] * num_rows
+            df = pd.read_table(txt_file, skiprows=3, sep = ',')
 
-        result = pd.concat([result, df])
-        y.append(label)
+            num_rows = len(df)
+            df['User'] = [user] * num_rows
+            df['Frequency'] = [frequency] * num_rows
+
+            result = pd.concat([result, df])
+            y.append(label)
+        
+        result['id'] = (result['Frequency'] != result['Frequency'].shift()).cumsum() - 1
+
+        new_df = result[['id', 'Time (s)', ' X (m/s2)']]
+
+        new_df.rename(columns={'Time (s)': 'time', ' X (m/s2)': 'x'}, inplace=True)
+
+        new_df = new_df.dropna().reset_index(drop=True)
+
+        result_y = pd.Series(y)
+
+        return new_df, result_y
     
-    result['id'] = (result['Frequency'] != result['Frequency'].shift()).cumsum() - 1
-
-    new_df = result[['id', 'Time (s)', ' X (m/s2)']]
-
-    new_df = new_df.dropna().reset_index(drop=True)
-
-    result_y = pd.Series(y)
-
-    return new_df, result_y
+    X_train, y_train = read_dataset(train_files)
+    X_test, y_test = read_dataset(test_files)
+    
+    return X_train, X_test, y_train, y_test
 
 
         
 def read_file_HMP():
-    # # 创建主窗口
-    # root = tk.Tk()
-    # root.withdraw()
 
-    # # 选择文件夹按钮的回调函数
-    # folders = []
+    train_folders = []
+    train_folders.append('selected_dataset/HMP/train/Descend_stairs')
+    train_folders.append('selected_dataset/HMP/train/Comb_hair')
+    train_folders.append('selected_dataset/HMP/train/Liedown_bed')
 
-    # while True:
-    #     folder = filedialog.askdirectory()
-    #     if not folder:
-    #         break  # 用户点击取消
-    #     folders.append(folder)
-    # for folder in folders:
-    #     print("Selected folder:", folder)
+    test_folders = []
+    test_folders.append('selected_dataset/HMP/test/Descend_stairs')
+    test_folders.append('selected_dataset/HMP/test/Comb_hair')
+    test_folders.append('selected_dataset/HMP/test/Liedown_bed')
 
-    result = None
-    y = []
+    def read_folders(folders):
+        result = None
+        y = []
+        file_pair = []
 
-    folders = []
-    folders.append('selected_dataset/HMP/Descend_stairs')
-    folders.append('selected_dataset/HMP/Comb_hair')
-    folders.append('selected_dataset/HMP/Liedown_bed')
+        for folder_path in folders:
+            folder_name = os.path.basename(folder_path)
 
-    # 处理选择的文件夹
-    file_pair = []
+            # 遍历文件夹中的所有文件
+            for file_name in os.listdir(folder_path):
+                if file_name.endswith('.txt'):
+                    file_path = os.path.join(folder_path, file_name)
+                    file_pair.append((folder_name, file_path))
 
-    for folder_path in folders:
-        folder_name = os.path.basename(folder_path)
+        for i in range(len(file_pair)):
+            folder_name, file_path = file_pair[i]
 
-        # 遍历文件夹中的所有文件
-        for file_name in os.listdir(folder_path):
-            if file_name.endswith('.txt'):
-                file_path = os.path.join(folder_path, file_name)
-                file_pair.append((folder_name, file_path))
+            data = pd.read_table(file_path, sep = ' ', header=None)
 
-    for i in range(len(file_pair)):
-        folder_name, file_path = file_pair[i]
-
-        data = pd.read_table(file_path, sep = ' ', header=None)
-
-        num_rows = len(data)
-        df = pd.DataFrame({
-                # 'lable': [folder_name] * num_rows,
-                'id': [i] * num_rows,
-                'time': [i * 0.1 for i in range(num_rows)],
-                'x': data.iloc[:, 0]
-                # 'y': data.iloc[:, 1],
-                # 'z': data.iloc[:, 2]       
-            })
+            num_rows = len(data)
+            df = pd.DataFrame({
+                    # 'lable': [folder_name] * num_rows,
+                    'id': [i] * num_rows,
+                    'time': [i * 0.1 for i in range(num_rows)],
+                    'x': data.iloc[:, 0]
+                    # 'y': data.iloc[:, 1],
+                    # 'z': data.iloc[:, 2]       
+                })
 
 
-        result = pd.concat([result, df])
-        y.append(folder_name)
+            result = pd.concat([result, df])
+            y.append(folder_name)
 
-    result = result.dropna().reset_index(drop=True)
+        result = result.dropna().reset_index(drop=True)
 
-    result_y = pd.Series(y)
-    return result, result_y
+        result_y = pd.Series(y)
+        return result, result_y
+    
+    X_train, y_train = read_folders(train_folders)
+    X_test, y_test = read_folders(test_folders)
+    return X_train, X_test, y_train, y_test
+
 
 
