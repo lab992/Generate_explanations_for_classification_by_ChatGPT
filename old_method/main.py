@@ -1,5 +1,5 @@
-from util import FileReader, PromptGenerator, GPTExecutor, FeatureSelection
-from util import PromptGenerator, GPTExecutor
+from pure_feature_based_method import FileReader, PromptGenerator, GPTExecutor, FeatureSelection
+from pure_feature_based_method import PromptGenerator, GPTExecutor
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
@@ -14,7 +14,7 @@ import pandas as pd
 
 def pipeline():
 
-    # X_train, X_test, y_train, y_test = FileReader.read_file_acc()
+    X_train, X_test, y_train, y_test = FileReader.read_file_acc()
 
     # X, y = FileReader.read_file_basket()
 

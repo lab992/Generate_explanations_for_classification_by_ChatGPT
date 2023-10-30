@@ -41,22 +41,48 @@ def average(intervall):
         single_array = []
         while (not (np.isnan(min_max[i][j + intervall]))):
             num = (sum(min_max[i][j : j + intervall])) / intervall
-            single_array.append(int(round(num * 9, 0)))
+            single_array.append(int(round(num * 10, 0)) - 5)
             j += intervall
         average_array.append(single_array)
     
-    # for i in range(4):
-    #     df = average_array[i * 30 : i * 30 + 30]
-    #     with open(str(i + 1) + '_origin_avg_4.txt', "a") as file:
-    #         for j in range(len(df)):
-    #             file.write(str(df[j]))
-    #             file.write("\n")
 
-    with open('9_class_2_avg_2.txt', "a") as file:
-        for j in range(len(average_array[70:120])):
-            file.write(str(average_array[j + 70]))
+    df1 = average_array[30:60]
+    df2 = average_array[60:90]
+    df3 = average_array[90:120]
+
+    result_array_1 = [trim_sequence(subarray) for subarray in df1]
+    result_array_2 = [trim_sequence(subarray) for subarray in df2]
+    result_array_3 = [trim_sequence(subarray) for subarray in df3]
+
+    # with open('class_2_trend_2.txt', "a") as file:
+    #     for j in range(len(df1)):
+    #         file.write(str(df1[j]))
+    #         file.write("\n")
+    
+    # with open('class_3_trend_2.txt', "a") as file:
+    #     for j in range(len(df2)):
+    #         file.write(str(df2[j]))
+    #         file.write("\n")
+
+    # with open('class_4_trend_2.txt', "a") as file:
+    #     for j in range(len(df3)):
+    #         file.write(str(df3[j]))
+    #         file.write("\n")
+
+    with open('class_2_average_2_modified.txt', "a") as file:
+        for j in range(len(result_array_1)):
+            file.write(str(result_array_1[j]))
             file.write("\n")
-    # return average_array
+    
+    with open('class_3_average_2_modified.txt', "a") as file:
+        for j in range(len(result_array_2)):
+            file.write(str(result_array_2[j]))
+            file.write("\n")
+
+    with open('class_4_average_2_modified.txt', "a") as file:
+        for j in range(len(result_array_3)):
+            file.write(str(result_array_3[j]))
+            file.write("\n")
 
 def transformer(intervall):
     root = tk.Tk()
@@ -95,16 +121,45 @@ def transformer(intervall):
     #             file.write(str(df[j]))
     #         file.write("\n")
 
-    df = []
-    df.extend(trend[0:10])
-    df.extend(trend[30:40])
-    df.extend(trend[80:90])
-    df.extend(trend[110:120])
-    with open('class_3_avg_2.txt', "a") as file:
-        for j in range(len(df)):
-            file.write(str(df[j]))
+    df1 = trend[30:60]
+    df2 = trend[60:90]
+    df3 = trend[90:120]
+
+    result_array_1 = [trim_sequence(subarray) for subarray in df1]
+    result_array_2 = [trim_sequence(subarray) for subarray in df2]
+    result_array_3 = [trim_sequence(subarray) for subarray in df3]
+
+    # with open('class_2_trend_2.txt', "a") as file:
+    #     for j in range(len(df1)):
+    #         file.write(str(df1[j]))
+    #         file.write("\n")
+    
+    # with open('class_3_trend_2.txt', "a") as file:
+    #     for j in range(len(df2)):
+    #         file.write(str(df2[j]))
+    #         file.write("\n")
+
+    # with open('class_4_trend_2.txt', "a") as file:
+    #     for j in range(len(df3)):
+    #         file.write(str(df3[j]))
+    #         file.write("\n")
+
+    with open('class_2_trend_2_modified.txt', "a") as file:
+        for j in range(len(result_array_1)):
+            file.write(str(result_array_1[j]))
             file.write("\n")
     
+    with open('class_3_trend_2_modified.txt', "a") as file:
+        for j in range(len(result_array_2)):
+            file.write(str(result_array_2[j]))
+            file.write("\n")
+
+    with open('class_4_trend_2_modified.txt', "a") as file:
+        for j in range(len(result_array_3)):
+            file.write(str(result_array_3[j]))
+            file.write("\n")
+
+
     # 转化成UND
     # result = []
     # for i in range(len(trend)):
@@ -119,5 +174,21 @@ def transformer(intervall):
     #     result.append(result_list)        
     
 
+def trim_sequence(arr):
+    sequence_to_remove = [0, -1, 1, -2, 2]
+
+    # 找到子数组开头不是序列的索引
+    start_index = 0
+    while start_index < len(arr) and arr[start_index] in sequence_to_remove:
+        start_index += 1
+
+    # 找到子数组结尾不是序列的索引
+    end_index = len(arr) - 1
+    while end_index >= 0 and arr[end_index] in sequence_to_remove:
+        end_index -= 1
+
+    # 返回去掉序列后的子数组
+    return arr[start_index:end_index + 1]
+
 if __name__ == "__main__":
-    average(2) 
+    average(2)
