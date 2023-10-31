@@ -1,4 +1,4 @@
-from pure_feature_based_method import FileReader, PromptGenerator, GPTExecutor, FeatureSelection
+from pure_feature_based_method import FileReader, PromptGenerator, GPTExecutor, FeatureSelection, Feature_RF
 from pure_feature_based_method import PromptGenerator, GPTExecutor
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
@@ -39,11 +39,15 @@ def pipeline():
 
     # FeatureSelection.cal_features(X_test, y_test)
 
-    FeatureSelection.n_features_selection()
+    FeatureSelection.cal_features(X_train, y_train)
+
+    # FeatureSelection.n_features_selection()
 
     # FeatureSelection.cal_features(X, y)
 
     # pipeline.fit(X_train, y_train)
+
+    # Feature_RF.rf()
 
 
 

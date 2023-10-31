@@ -10,7 +10,6 @@ def read_file_acc():
     test_data = None
 
     train_data = pd.read_table('selected_dataset/acc/AllGestureWiimoteX_TRAIN.txt', sep = '\s+', header=None)
-
     test_data = pd.read_table('selected_dataset/acc/AllGestureWiimoteX_TEST.txt', sep = '\s+', header=None)
 
     def data_format_acc(data, bias):
@@ -31,8 +30,11 @@ def read_file_acc():
     # Select Class 2,3,4
     train_data = train_data.iloc[30:120]
     test_data = test_data.iloc[70:280]
+    # test_data = test_data.iloc[list(range(70,90)) + list(range(140,160)) + list(range(210,230))]
+
     structured_train = data_format_acc(train_data, 30)
     structured_test = data_format_acc(test_data, 70)
+
     X_train = structured_train.iloc[:, 1:]
     X_test = structured_test.iloc[:, 1:]
     y_train = train_data.iloc[:, 0]
@@ -61,9 +63,7 @@ def read_file_basket():
         for txt_file in files:
             # Get the class name of train set
             file_name = os.path.basename(txt_file)
-
             user, frequency, label = file_name_classifier(file_name)
-
             df = pd.read_table(txt_file, skiprows=3, sep = ',')
 
             num_rows = len(df)
@@ -74,13 +74,9 @@ def read_file_basket():
             y.append(label)
         
         result['id'] = (result['Frequency'] != result['Frequency'].shift()).cumsum() - 1
-
         new_df = result[['id', 'Time (s)', ' X (m/s2)']]
-
         new_df.rename(columns={'Time (s)': 'time', ' X (m/s2)': 'x'}, inplace=True)
-
         new_df = new_df.dropna().reset_index(drop=True)
-
         result_y = pd.Series(y)
 
         return new_df, result_y
@@ -120,9 +116,7 @@ def read_file_HMP():
 
         for i in range(len(file_pair)):
             folder_name, file_path = file_pair[i]
-
             data = pd.read_table(file_path, sep = ' ', header=None)
-
             num_rows = len(data)
             df = pd.DataFrame({
                     # 'lable': [folder_name] * num_rows,
@@ -138,7 +132,6 @@ def read_file_HMP():
             y.append(folder_name)
 
         result = result.dropna().reset_index(drop=True)
-
         result_y = pd.Series(y)
         return result, result_y
     

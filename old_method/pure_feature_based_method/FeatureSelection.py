@@ -15,9 +15,10 @@ def cal_features(X, y):
 
     impute(extracted_features)
 
-    # features_filtered = select_features(extracted_features, y)
+    features_filtered = select_features(extracted_features, y)
+    features_filtered.to_csv('train.csv')
 
-    extracted_features.to_csv('234_acc_extracted_test.csv')
+    # extracted_features.to_csv('234_acc_extracted_test.csv')
 
 def n_features_selection():
 
