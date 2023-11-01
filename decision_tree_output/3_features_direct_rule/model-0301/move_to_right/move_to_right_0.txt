@@ -1,0 +1,16 @@
+Based on the provided description, the sample seems to belong to the 'move to left' category. The given features match with the description of the 'move to left' class, which includes few changes in direction, a big decreasing trend, and few increasing values. 
+[Class: move to left]
+Based on the given features, the described sample can be classified as 'move to left' gesture. The reason for this classification is that there are few changes in the direction which eliminates the possibility of 'shake hand' gesture. The presence of big decreasing trend indicates that the acceleration in x-axis is decreasing over time. Since there are only few increasing values, it also eliminates the possibility of 'move to right' gesture. 'Move to left' gesture is characterized by few changes in direction and a big decreasing trend. Therefore, the given sample can be classified as [Class: move to left] gesture.
+Based on the given description of classes, the given data sample can be classified as [Class: move to left]. 
+
+The description states that for 'move to left' gesture, there are few changes in the direction, a big decreasing trend, and few increasing values. 
+
+In the given data sample, there are few changes in the direction and a big decreasing trend, which indicates that the movement is towards the left. Additionally, there are few increasing values which further supports the movement towards the left. 
+
+Therefore, the given data sample can be classified as [Class: move to left].
+Based on the description of the classes, the given data sample can be classified as 'move to left'. This is because the description states that there are few changes in the direction, but a big decreasing trend. Additionally, it mentions that there are few increasing values. These features match with the description of 'move to left' gesture. 
+
+[Class: move to left]
+Based on the given description, the sample likely belongs to the 'move to left' gesture class. The feature of few changes in direction and a big decreasing trend suggests that the movement is in a consistent direction towards the left. The few increasing values indicate that there might be some small variations in the movement, but overall it is still predominantly towards the left. 
+
+[Class: move to left]

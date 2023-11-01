@@ -1,0 +1,17 @@
+According to the description of the classes, this data sample belongs to the 'move to left' gesture. 
+
+Explanation: The feature of "few changes in the direction" implies that the acceleration in the x-axis dimension is consistently heading towards the same direction without any abrupt movements. The feature of "big decreasing trend" implies that the magnitude of acceleration gradually decreases over time. Lastly, the feature of "few increasing values" implies that there are no sudden increases in acceleration. This combination of features suggests that the user is moving the device towards the left in a smooth and gradual manner.
+
+[Class: move to left]
+Based on the given features description, this data sample can be classified as 'move to left'. The reason is that there are few changes in the direction and a big decreasing trend, which means that there is a general movement towards the left direction. Additionally, there are few increasing values, which suggests that the movement is not abrupt or sudden. 
+
+[Class: move to left]
+Based on the description of classes, the given data sample can be classified as 'move to left' gesture. This is because the data has few changes in direction, a big decreasing trend, and few increasing values. A big decreasing trend suggests that the movement is in the left direction. The fact that there are few changes in the direction indicates that the movement is continuous in the left direction. Finally, the small number of increasing values indicates that the movement is not ambiguous and it is highly likely that the subject is moving to the left.
+
+[Class: move to left]
+Based on the given description, the data sample can be classified as 'move to left' gesture because there are few changes in the direction, and a big decreasing trend, and few increasing values. This means that acceleration values are mostly decreasing with a few instances of slight increase in values. The movement is towards the left with a few changes in direction. This corresponds to the description of 'move to left' gesture.
+
+[Class: move to left]
+Based on the given description of classes, we can infer that the given data sample falls under the class 'move to left'. This is because the data has few changes in direction, a big decreasing trend, and few increasing values. These features suggest that the gesture is moving towards the left direction with a consistent decrease in acceleration in the x-axis. 
+
+[Class: move to left, gesture]

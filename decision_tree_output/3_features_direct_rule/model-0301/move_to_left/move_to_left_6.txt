@@ -1,0 +1,16 @@
+Based on the given description, the given data sample can be classified as "move to left". The reason behind this classification is that there are only a few changes in the direction, indicating that the movement is primarily in one direction i.e. towards left. The data also exhibits a big decreasing trend, which means that the acceleration values are decreasing over time. And finally, there are only a few instances of increasing values, indicating that the movement is not towards the right. 
+
+[Class: move to left]
+Based on the given description of classes, this data sample can be classified as [Class: move to left].
+The reason behind this classification is that there are few changes in the direction, which eliminates the possibility of the gesture being 'shake hand'. Additionally, there are few increasing values which eliminates the possibility of the gesture being 'move to right'. Finally, there is a big decreasing trend which indicates a motion towards left, making it highly likely that the gesture is 'move to left'.
+Based on the given description of classes, this data sample can be classified as [Class: move to left]. 
+
+The given data sample has few changes in direction, indicating that the movement is mostly in one direction. Additionally, there is a big decreasing trend, which implies that the overall trend of acceleration values is decreasing. There are also few increasing values, which suggests that the movement is predominantly in one direction with only occasional slight movements in the opposite direction. 
+
+These features collectively suggest that the gesture being performed is a movement to the left, which fits the criteria for the 'move to left' class.
+Based on the given description, this sample belongs to the 'move to left' class. This is because there are few changes in the direction, indicating a consistent movement towards the left. The big decreasing trend suggests that the acceleration is gradually decreasing over time, indicative of the movement slowing down. Finally, the few increasing values indicate minor fluctuations in acceleration towards the left. [Class: move to left].
+Based on the given description, the given data sample would belong to 'move to left' gesture. 
+
+The reason for this classification is that there are few changes in the direction, indicating that the hand movement is relatively consistent. Additionally, there's a big decreasing trend, suggesting that the hand is moving in a particular direction with a consistent force. Finally, there are few increasing values, which could indicate a slight deviation in the hand movement but overall the direction is towards left.
+
+[Class: move to left]

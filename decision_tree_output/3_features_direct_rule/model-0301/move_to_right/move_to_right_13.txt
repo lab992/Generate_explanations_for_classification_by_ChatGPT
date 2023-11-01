@@ -1,0 +1,14 @@
+Based on the given description of classes and their features, the given data sample can be classified as 'move to right' gesture. 
+
+Explanation: 
+The data sample shows that there are few changes in the direction, which means that the acceleration in x-axis dimension is mostly in one direction (either positive or negative). Also, there is a slight decreasing trend observed in the values of the sample, which shows that the acceleration is decreasing slowly over time. Moreover, there are only a few increasing values, which represent the rare moments of acceleration in the opposite direction. 
+
+Therefore, these features can infer that the movement is towards the right side as there is a continuous decrease in acceleration towards that direction, and there are only few instances of acceleration in the opposite direction. 
+
+[Class: move to right]
+Based on the given description of classes, it appears that this data sample corresponds to the gesture 'move to right'. The reason being that there are few changes in the direction, which rules out 'shake hand'. The slight decreasing trend with few increasing values matches the description of 'move to right' as opposed to 'move to left' which has a big decreasing trend and few increasing values. 
+
+[Class: move to right]
+This sample can be classified as 'move to right' based on the description of classes provided. The feature of few changes in direction indicates that the movement is relatively consistent, which agrees with a 'move to right' gesture. The slight decreasing trend and few increasing values may indicate a gradual slowdown of the movement, which aligns with a 'move to right' gesture as opposed to a more abrupt change in direction or a large decreasing trend. Therefore, this data sample can be classified as [Class: move to right].
+Based on the given description of classes, this data sample can be classified as [Class: move to right]. The reason for this classification is that the sample has few changes in the direction which rules out the possibility of 'shake hand' gesture since that requires a lot of changes. The slight decreasing trend and few increasing values rule out the 'move to left' gesture as it has a big decreasing trend with few or a lot of increasing values. However, the slight decreasing trend and few increasing values matches the criteria for 'move to right' gesture.
+Based on the given description of classes, the given data sample can be classified as [Class: move to right]. This is because there are few changes in the direction, a slight decreasing trend, and there are few increasing values. According to the description of 'move to right', this gesture has few changes in the direction, a slight decreasing trend, and few increasing values which matches the given data sample.

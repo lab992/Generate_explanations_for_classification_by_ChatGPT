@@ -1,0 +1,12 @@
+This data sample can be classified as [Class: move to right] based on the given descriptions of the three gestures. The feature of few changes in direction and a slight decreasing trend aligns with 'move to right', and the presence of few increasing values further supports this classification. This is because when a person moves to the right, there aren't many directional changes in the acceleration on x-axis, there can be a minor decreasing trend if the person started with a high acceleration and slowly eases off, and there may be few instances of increasing acceleration, but not too many since the movement is towards the right direction.
+The given data sample has a slight decreasing trend and few increasing values, which indicates the gesture of 'move to right'. The description of this gesture matches the given features of the data sample as it shows few changes in direction, a slight decreasing trend, and few increasing values. Therefore, the classification for this data sample is:
+
+[Class: move to right]
+Based on the description provided, the given data sample can be classified as [Class: move to right] as it has few changes in direction, a slight decreasing trend and few increasing values. The description suggests that 'move to right' has few changes in the direction, a slight decreasing trend, and few increasing values. The data sample matches the criteria of the 'move to right' class, therefore it is classified as such.
+Based on the given description, the sample can be classified as 'move to right'. 
+Explanation: The sample has few changes in direction, which means the acceleration has mostly been constant in the same direction. There's also a slight decreasing trend, indicating the overall acceleration has been reducing with time. Additionally, there are few increasing values which means the acceleration has not varied much in magnitude. These features match the description provided for the class 'move to right'. 
+
+[Class: move to right].
+Based on the given description of classes, the given data sample falls into the category of 'move to right'. This is because the sample has few changes in the direction, which means the accelerometer is more or less moving in one consistent direction. There's a slight decreasing trend as the values are decreasing slightly overall, however, it is not a big trend. Lastly, there are few increasing values which indicates a transition to a different gesture is not occurring. 
+
+[Class: move to right]

@@ -6,36 +6,34 @@ def feature_to_prompt(dataset):
         feature_1 = row[0]
         feature_2 = row[1]
         feature_3 = row[2]
-        feature_4 = row[3]
-        feature_5 = row[4]
+        # feature_4 = row[3]
+        # feature_5 = row[4]
         if feature_1 > 4.5:
             sentence += "There's a lot of changes in the direction."
         else:
             sentence += "There's few changes in the direction."
         if feature_2 <= -0.438:
             sentence += "There's a big decreasing trend."
-        elif feature_2 > -0.157:
-            sentence += "There's a slight decreasing trend."
         else:
-            sentence += "There's a medium decreasing trend."
+            sentence += "There's a slight decreasing trend."
         if feature_3 > 99.5:
             sentence += "There's a lot of increasing values."
         else:
             sentence += "There's few increasing values."
-        if feature_4 > 0.249:
-            sentence += "The sample is complex."
-        elif feature_4 <= 0.204:
-            sentence += "The sample is stable."
-        else:
-            sentence += "The sample is dynamic."
-        if feature_5 > 1.737:
-            sentence += "There's a significant periodic pattern."
-        elif feature_5 > 1.627 and feature_5 <= 1.737:
-            sentence += "There's a normal periodic pattern."
-        elif feature_5 <= 0.432:
-            sentence += "There's no periodic pattern."
-        else:
-            sentence += "There's a slight periodic pattern."
+        # if feature_4 > 0.249:
+        #     sentence += "The sample is complex."
+        # elif feature_4 <= 0.204:
+        #     sentence += "The sample is stable."
+        # else:
+        #     sentence += "The sample is dynamic."
+        # if feature_5 > 1.737:
+        #     sentence += "There's a significant periodic pattern."
+        # elif feature_5 > 1.627 and feature_5 <= 1.737:
+        #     sentence += "There's a normal periodic pattern."
+        # elif feature_5 <= 0.432:
+        #     sentence += "There's no periodic pattern."
+        # else:
+        #     sentence += "There's a slight periodic pattern."
         sentence += '\n'
         return sentence
     
@@ -70,7 +68,7 @@ def gen_context():
              "Don't show me the code. "
              "At the end of your explanation. You must repeat your answer in format: [Class: gesture].\n")
     
-    return mission_5 + class_description_5 + rules
+    return mission_3 + class_description_3 + rules
 
 def array_to_query(dataset):
     array = dataset.iloc[list(range(0,50)) + list(range(70,120)) + list(range(140,190))].to_numpy()

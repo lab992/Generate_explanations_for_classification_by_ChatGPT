@@ -50,16 +50,6 @@ def extract_important_features(X, y, feature_amount):
 
     return selected_features
 
-    # fig = plt.figure(figsize=(50, 40))
-    # _ = plot_tree(
-    #     clf,
-    #     feature_names = X.columns.to_list(),
-    #     class_names = ["2","3","4"],
-    #     filled = True
-    # )
-
-    # fig.savefig("decision_tree.png")
-
 
 
 

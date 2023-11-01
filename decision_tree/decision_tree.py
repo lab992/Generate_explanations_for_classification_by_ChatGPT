@@ -59,11 +59,11 @@ def accuracy():
     # accuracy = accuracy_score(y_test, y_pred)
     # print(f'Accuracy: {accuracy}')
 
-    rules = get_rules(clf, X_train.columns.to_numpy(), ["2","3","4"])
+    # rules = get_rules(clf, X_train.columns.to_numpy(), ["2","3","4"])
     
-    merged_rules = merge_rules(rules)
+    # merged_rules = merge_rules(rules)
     
-    # test_sets = feature_to_prompt(X_test).to_numpy()
+    test_sets = feature_to_prompt(X_test).to_numpy()
     # # test_test_sets = array_to_query(test_sets)
 
     # context = '\n'.join(merged_rules) + each_feature_description_context()
@@ -72,10 +72,10 @@ def accuracy():
 
 
 
-    # context = gen_context()
+    context = gen_context()
 
 
-    # gpt_execution(context, test_sets)
+    gpt_execution(context, test_sets)
 
     
     # with open("prompt_test_0.txt", "a") as file:
@@ -117,5 +117,5 @@ def to_gpt_method():
     gpt_execution(context, sentences_array)
 
 if __name__ == "__main__":
-    # accuracy()
-    to_gpt_method()
+    accuracy()
+    # to_gpt_method()

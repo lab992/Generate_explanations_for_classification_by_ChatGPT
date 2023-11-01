@@ -1,0 +1,17 @@
+Based on the given description, the sample can be classified as 'move to left'. The reason for this classification is that there are few changes in the direction, but there is a slight decreasing trend and a lot of increasing values. This matches the criteria for 'move to left' gesture. 
+
+[Class: move to left]
+Based on the given description of the three classes and analyzing the given data sample, we can classify the sample to 'move to left' gesture because there are few changes in direction and a slight decreasing trend, but there are also a lot of increasing values. The slight decrease in values indicates that the movement is towards the left in the x-axis direction. 
+
+[Class: move to left]
+Based on the given description, the sample can be classified as [Class: shake hand]. 
+
+The description mentions that there are a lot of changes in the direction of the acceleration in x-axis dimension. This could be indicative of a person shaking hands. In addition, there is a slight decreasing trend in the data, which could be due to the act of shaking hands starting and then slowly ending. Finally, there are a lot of increasing values, which could be due to the jerky movements during the handshake.
+
+Therefore, based on the given description and the sample data provided, the classification of the gesture is [Class: shake hand].
+Based on the provided descriptions, the sample can be classified as [Class: shake hand]. 
+
+The description states that if there are a lot of changes in the direction, it indicates shaking of the hand. Moreover, there is a slight decreasing trend and a lot of increasing values. This can be interpreted as a person shaking hands with someone while moving forward, leading to a decrease in acceleration in the x-axis due to deceleration, and then increasing acceleration due to the forward movement. Therefore, based on these features, the gesture can be classified as 'shake hand'.
+Based on the description provided, the given data sample seems to be of the 'move to left' category. This is because there are a lot of changes in the direction, which rules out the possibility of it being a 'move to right' gesture. Also, presence of decreasing trend and increasing values indicate that it is not 'shake hand' gesture as there are few changes in the direction. Finally, it is classified as 'move to left' because a slight decreasing trend combined with a lot of increasing values could also indicate a 'move to left' gesture. 
+
+[Class: move to left].

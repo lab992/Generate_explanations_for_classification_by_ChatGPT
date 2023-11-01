@@ -24,7 +24,7 @@ def pure_decision_tree_method(context, query):
         try:
             for i in range(5):
                 completion = openai.ChatCompletion.create(
-                    model="gpt-3.5-turbo-0613",
+                    model="gpt-3.5-turbo-0301",
                     messages=[
                         {"role": "system", "content": roll2},
                         {"role": "user", "content": context + query[count]},
@@ -101,7 +101,7 @@ def gpt_execution(context, query):
 
     openai.api_key = "sk-jusJclmsI4KD70DqAdFcDe7a97344a898e9791464367Bb36"
 
-    count = 0
+    count = 4
 
     run_times = 60
 
@@ -109,7 +109,7 @@ def gpt_execution(context, query):
         try:
             for i in range(5):
                 completion = openai.ChatCompletion.create(
-                    model="gpt-3.5-turbo-0613",
+                    model="gpt-4",
                     messages=[
                         {"role": "system", "content": roll2},
                         {"role": "user", "content": context + query[count]},

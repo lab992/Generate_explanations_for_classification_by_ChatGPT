@@ -35,10 +35,13 @@ def read_file_acc():
     structured_train = data_format_acc(train_data, 30)
     structured_test = data_format_acc(test_data, 70)
 
+    structured_train['lable'] = structured_train['lable'].replace({2: 'shake_hand', 3: 'move_to_left', 4: 'move_to_right'})
+    structured_test['lable'] = structured_test['lable'].replace({2: 'shake_hand', 3: 'move_to_left', 4: 'move_to_right'})
+
     X_train = structured_train.iloc[:, 1:]
     X_test = structured_test.iloc[:, 1:]
-    y_train = train_data.iloc[:, 0]
-    y_test = test_data.iloc[:, 0]
+    y_train = structured_train.iloc[:, 0]
+    y_test = structured_test.iloc[:, 0]
     
     return X_train, X_test, y_train, y_test
     

@@ -1,0 +1,16 @@
+Based on the given descriptions, the sample is most likely classified as [Class: move to left]. 
+
+The description mentions a few changes in the direction, which means that the accelerometer readings are mostly showing a constant direction over time. The big decreasing trend suggests that the sample represents a pattern of decreasing values over time. Finally, there were only a few instances of increasing values in the sample. 
+
+These features align closely with the given description for the 'move to left' gesture, which has few changes in direction and a big decreasing trend on x-axis indicating movement in an overall leftwards direction. So, the sample is most likely classified as [Class: move to left].
+Based on the given features, we can infer that the given data sample represents 'move to left' gesture. The reason is that there are few changes in the direction, indicating a consistent movement in one direction (left). The big decreasing trend suggests a movement that is decreasing in the x-axis dimension. Finally, the presence of few increasing values indicates that there might be some noise or small fluctuations in the data, but the overall direction of movement is towards the left.
+
+[Class: move to left]
+Based on the given features description, this data sample belongs to 'move to left' gesture. As there are few changes in the direction, i.e. the data is mostly moving in one direction, which is left. Additionally, there's a big decreasing trend which means that the acceleration values are decreasing over time. Also, there are only few increasing values which means that there aren't many abrupt or sharp movements in the opposite direction. 
+
+[Class: move to left]
+Based on the given description, the data sample can be classified as [Class: move to left] gesture. 
+There are few changes in the direction, indicating that the movement is mainly towards one direction (left), and there is a big decreasing trend which represents deceleration or decrease in acceleration values. Moreover, there are few increasing values which indicates that the movement wasn't a sudden jerk but rather a smooth slow movement.
+Based on the given description, the sample can be classified as 'move to left'. The reason is that there are few changes in the direction along with a big decreasing trend, which matches the description for 'move to left'. 
+
+[Class: move to left]

@@ -1,0 +1,21 @@
+Based on the given description of classes, the given data sample can be classified into the 'move to left' gesture. This is because the data has a lot of changes in direction which eliminate the possibility of 'move to right' gesture. There is a slight decreasing trend, which rules out the possibility of 'shake hand' gesture. Finally, there are a lot of increasing values, which also eliminates the possibility of 'shake hand' gesture. Thus, the given data sample is classified as [Class: move to left] gesture.
+Based on the given description of classes, the given data sample can be classified as [Class: shake hand]. 
+
+The reasoning behind this classification is as follows:
+- There are a lot of changes in the direction of the acceleration in the x-axis dimension, which indicates that the motion is not consistently in any one direction.
+- There is a slight decreasing trend, which means that the overall acceleration is decreasing gradually over time.
+- There are a lot of increasing values, indicating that the acceleration is frequently increasing in magnitude.
+
+This description matches the features of the "shake hand" gesture, which typically involves a lot of movement and changes in direction, as well as a gradual decrease in motion as the hand shake comes to a close.
+Based on the given description, this data sample can be classified as [Class: shake hand]. This is because, as per the given features for shake hand, there are a lot of changes in the direction, indicating a hand movement of shaking. The slight decreasing trend might be due to the gradual reduction in the force of the handshaking motion. Additionally, the high number of increasing values may be due to the vibration caused by shaking hand.
+Based on the given description, the data sample can be classified as [Class: shake hand]. 
+
+The presence of a lot of changes in direction indicates that the hand is shaking and thus, the first condition of the shake hand gesture is met. The slight decreasing trend indicates that the acceleration values are decreasing over time, which is common in handshakes where the hand movement slows down gradually to stop. Finally, the presence of a lot of increasing values indicates that the hand moves in various directions and speeds during the handshake. 
+
+Therefore, we can conclude that the given data sample belongs to the shake hand gesture.
+Based on the description provided, the sample data can be classified as "move to left". 
+
+Explanation: 
+There's a lot of changes in the direction which means the data is not moving in a specific direction. There is a slight decreasing trend, which means the data is overall decreasing over the time. Finally, there's a lot of increasing values which means the movement is towards left direction. 
+
+[Class: move to left]
