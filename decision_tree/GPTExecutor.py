@@ -16,7 +16,7 @@ def gpt_result_to_array(string):
 def pure_decision_tree_method(context, query):
     roll2 = "You are a data analyst."
 
-    count = 0
+    count = 20
 
     run_times = 60
 
@@ -101,15 +101,15 @@ def gpt_execution(context, query):
 
     openai.api_key = "sk-jusJclmsI4KD70DqAdFcDe7a97344a898e9791464367Bb36"
 
-    count = 4
+    count = 51
 
-    run_times = 60
+    run_times = 52
 
     while (count < run_times):
         try:
             for i in range(5):
                 completion = openai.ChatCompletion.create(
-                    model="gpt-4",
+                    model="gpt-3.5-turbo-0613",
                     messages=[
                         {"role": "system", "content": roll2},
                         {"role": "user", "content": context + query[count]},
@@ -132,7 +132,7 @@ def gpt_execution(context, query):
                         file.write("\n")
 
                 print(str(count))
-                time.sleep(1)
+                time.sleep(0.5)
             count += 1
             
         except ValueError:

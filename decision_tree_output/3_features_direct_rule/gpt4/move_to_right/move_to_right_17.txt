@@ -1,0 +1,57 @@
+Based on the description of the data sample, the behaviour of signal matches the description of the 'move to right' class. Here is the reasoning:
+
+1. Few changes in direction: The description states that there are few changes in the direction of the acceleration signal. This corresponds to the 'move to left' and 'move to right' classes, because these two classes are described as gestures with few direction changes.
+
+2. Slight decreasing trend: The signal shows a slight decreasing trend over time. According to the description, 'move to left' and 'move to right' often have this characteristic, which aligns the data further with these two classes.
+
+3. Few increasing values: This particular characteristic matches only with 'move to right' class. According to the given rules, when there are few increasing values along with the two above mentioned, it signals a 'move to right'.
+
+In conclusion, the data sample shares all its features with the 'move to right' class.
+[Class: move to right]
+Based on the provided descriptions, the data sample that you described can be classified as 'move to right'. Here's why:
+
+1. There are few changes in the direction: The data sample is primarily moving in one direction, which helps to rule out 'shake hand', as that gesture is characterized by many changes in direction.
+2. There is a slight decreasing trend: This indicates the values are dropping, but not significantly. Both 'move to left' and 'move to right' fit the bill here, however, the nature of the increasing values brings us to the final point...
+3. There are few increasing values: This fact shows that the magnitude or acceleration in the positive x direction is less, which aligns with the description of 'move to right'.
+
+Therefore, this matches the description provided for the 'move to right' gesture. To summarize:
+
+[Class: Move to Right]
+Based on the data description you've provided, this sample would be classified as "move to right". 
+
+The reasoning involves following the rules you have shared:
+
+1. There are few changes in the direction: Both "move to right", "move to left" and last condition of "shake hand" match with this criteria.
+2. There's a slight decreasing trend: Here, "move to right" and "move to left" (with many increasing values) align with these conditions. However, as you've shared that there are not many increasing values, we can then discounted the "move to left" (with many increasing values) possibility.
+3. Few increasing values: This is the defining element for "move to right" as per your rules.
+
+So, based on the description and sorting process above, your described sample can be classified as a "move to right".
+
+[Class: move to right]
+
+Based on the rules you have given, this particular scenario falls under the class 'move to right'. 
+
+Here is how this classification was derived:
+
+1. The first feature mentioned is 'there's few changes in the direction.' This means it could either be 'move to left' or 'move to right' because both of these classes feature few changes in direction, while 'shake hand' exhibits a lot of changes in the direction.
+   
+2. The next feature is 'there's a slight decreasing trend.' This affirms that the data cannot belong to 'move to left' class as it requires a 'big decreasing trend'. Thus, the only two remaining options are 'shake hand' or 'move to right'.
+
+3. The last feature you mention is 'there's few increasing values.' This further strengthens the claim that the data points to the 'move to right' class because this class features few increasing values. 'Shake Hand' isn't suitable here because it doesn't meet the previous condition (it doesn't relate to the trend of the data). 
+
+So after considering all these features, we can infer that 'move to right' is the best fit for the description.
+
+[Class: 'move to right']
+Based on the given classifications and your data sample, the gesture class for this would be 'move to right'. 
+
+Here is the reasoning based on each of the characteristics:
+
+1. Few Changes in Direction: This characteristic aligns with 'move to left' and 'move to right' as per the definitions. 'Shake hand' can be ruled out as it is associated with a lot of changes in direction, which isn't the case here.
+
+2. Slight Decreasing Trend: Both 'move to left' and 'move to right' are aligned with this criterion. However, it's notable that 'move to left' would typically demonstrate a big decreasing trend which is not the case here.
+
+3. Few Increasing Values: This is the characteristic that essentially distinguishes between 'move to right' and 'move to left'. According to the definitions, 'move to left' is associated with a lot of increasing values while 'move to right' is more aligned with few increasing values which matches our criteria.
+
+Piece these all together, we can infer that the gesture for the provided data sample can be classified as 'move to right' according to the provided descriptions.
+
+[Class: Move to Right]

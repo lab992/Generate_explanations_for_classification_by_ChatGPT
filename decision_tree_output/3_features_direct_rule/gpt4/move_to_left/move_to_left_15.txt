@@ -1,0 +1,43 @@
+Based on your descriptions of the classes and the features given in the data sample, we can classify this data sample as 'move to left'. This classification is as such because the data fits with the conditions described for this class. Specifically, there are few changes in direction, a big decreasing trend, and few increasing values, which fits the criteria provided for 'move to left'. 
+
+Therefore, considering all features of the data sample, I would categorize this as a 'move to left' gesture, as the description of the trends in values and changes in direction align precisely with the specifications you provided for that gesture class.
+
+[Class: move to left]
+Based on the descriptions provided, the given data sample can be classified as 'move to left' gesture. 
+
+The explanation of this classification is as given below:
+- There are few changes in direction. This removes the option of 'shake hand' classification as it requires a lot of changes in the direction.
+- There's a big decreasing trend, which is a defining feature for 'move to left' gesture according to your description.
+- Few increasing values, this too aligns with 'move to left' classification as per the descriptions provided.
+
+In conclusion, considering all the features and your given descriptions, the classification for the given data is the 'move to left' gesture.
+
+[Class: move to left]
+Based on the descriptions given, the sample described matches the characteristics of the 'move to left' gesture. 
+
+Explanation:
+- The sample has few changes in direction. This matches both 'move to left' and 'move to right' gestures, but rules out 'shake hand' which is characterized by a lot of changes in direction.
+- The sample has a big decreasing trend, which only matches with the 'move to left' gesture described above.
+- The sample has few increasing values, which again match with 'move to left' and 'move to right', but since there's a big decreasing trend, it narrows down to 'move to left' gesture.
+
+So, based on the conditions provided for each class of gesture, frequent direction changes, trends in values (increasing or decreasing), the most suitable class for this sample is 'move to left'.
+
+[Class: 'move to left'].
+Based on the provided descriptions of the classes, the following inference can be made:
+
+The data sample is described as having few changes in direction, a big decreasing trend and few increasing values. The classifying features closely match the description for "move to left" class. As there are few changes in direction indicating that a hand motion is linear rather than erratic, and a big decreasing trend in the acceleration in the x-axis signifies a movement towards the left. Furthermore, few increasing values also suggest a clear move in one direction, in this case, left, instead of shaking or moving right.
+
+Therefore, this data sample can be classified as the 'move to left' gesture. 
+
+[Class: move to left]
+Based on your provided descriptions, the data sample can be classified as 'move to left'. 
+
+Explanation:
+The following points are indicative of this classification:
+1. 'Few changes in the direction': This matches the description for 'move to left' as well as 'move to right'.
+2. 'Big decreasing trend': This is specific to the 'move to left' gesture. Neither 'shake hand' nor 'move to right' possesses this characteristic.
+3. 'Few increasing values': This is true for both 'move to left' and 'move to right'. However, coupled with the 'big decreasing trend', it clearly indicates 'move to left'.
+
+In summary, the data sample matches the description of the 'move to left' gesture according to your classifications.
+
+[Class: 'move to left']
