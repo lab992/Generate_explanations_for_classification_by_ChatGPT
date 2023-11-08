@@ -1,0 +1,10 @@
+feature,meaning,type,tf
+number_crossing_m__m_1,changes in the direction,n,0
+agg_linear_trend__attr_"intercept"__chunk_len_5__f_agg_"min",decreasing trend,adj,1
+range_count__max_1000000000000.0__min_0,increasing values,n,0
+agg_linear_trend__attr_"stderr"__chunk_len_5__f_agg_"max",irregularity,n,0
+fft_coefficient__attr_"abs"__coeff_30,periodic pattern,adj,0
+number_crossing_m__m_0, changes in the direction,n,0
+quantile__q_0.1,events at the beginning of the observed period,n,0
+agg_linear_trend__attr_"intercept"__chunk_len_50__f_agg_"min",decreasing trend,adj,1
+value_count__value_0,periods of inactivity,n,0

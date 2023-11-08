@@ -9,13 +9,13 @@ def prompt_gen():
 def context_gen(train_data):
     role = "You are a data analyst, your job is to classify time series by the given features."
     background = ("The gesture acquisition device is a Nintendo Wiimote remote controller with built-in three-axis accelerometer."
-                    "Data is acceleration in x-axis dimension. It is classified to 2 gestures"
+                    "Data is acceleration in x-axis dimension. It is classified to 3 gestures"
                     )
     classes = ("The gestures are (class label - English translation): "
                 # "1 – pick-up"
                 "2 – shake"
                 "3 – one move to the right"
-                # "4 – one move to the left"
+                "4 – one move to the left"
                 # "5 – one move to up"
                 # "6 – one move to down"
                 # "7 – one left circle"
@@ -25,32 +25,32 @@ def context_gen(train_data):
                 )
     
     # decision tree
-    # features = ("The dataset has 11 columns. The first column is label and the rest are 10 features in order: "
-    #             'standard_deviation, '
-    #             'number_crossing_m__m_1, '
-    #             'fft_coefficient__attr_"angle"__coeff_1, '
-    #             'fourier_entropy__bins_5, '
-    #             'linear_trend__attr_"slope", '
-    #             'fourier_entropy__bins_2, '
-    #             'range_count__max_0__min_-1000000000000.0, '
-    #             'autocorrelation__lag_5, '
-    #             'index_mass_quantile__q_0.4, '
-    #             'mean_n_absolute_max__number_of_maxima_7. '
-    #             )
+    features = ("The dataset has 11 columns. The first column is label and the rest are 3 features in order: "
+                'standard_deviation, '
+                'number_crossing_m__m_1, '
+                'fft_coefficient__attr_"angle"__coeff_1, '
+                'fourier_entropy__bins_5, '
+                'linear_trend__attr_"slope", '
+                'fourier_entropy__bins_2, '
+                'range_count__max_0__min_-1000000000000.0, '
+                'autocorrelation__lag_5, '
+                'index_mass_quantile__q_0.4, '
+                'mean_n_absolute_max__number_of_maxima_7. '
+                )
 
     # Gradient
-    features = ("The dataset has 11 columns. The first column is label and the rest are 10 features in order: "
-            'cid_ce__normalize_False, '
-            'agg_linear_trend__attr_"slope"__chunk_len_10__f_agg_"var", '
-            'cwt_coefficients__coeff_4__w_20__widths_(2, 5, 10, 20), '
-            'linear_trend__attr_"pvalue", '
-            'permutation_entropy__dimension_7__tau_1, '
-            'fft_coefficient__attr_"real"__coeff_5, '
-            'agg_linear_trend__attr_"stderr"__chunk_len_5__f_agg_"var", '
-            'root_mean_square, '
-            'number_crossing_m__m_1, '
-            'change_quantiles__f_agg_"var"__isabs_True__qh_1.0__ql_0.4. '
-            )
+    # features = ("The dataset has 11 columns. The first column is label and the rest are 10 features in order: "
+    #         'cid_ce__normalize_False, '
+    #         'agg_linear_trend__attr_"slope"__chunk_len_10__f_agg_"var", '
+    #         'cwt_coefficients__coeff_4__w_20__widths_(2, 5, 10, 20), '
+    #         'linear_trend__attr_"pvalue", '
+    #         'permutation_entropy__dimension_7__tau_1, '
+    #         'fft_coefficient__attr_"real"__coeff_5, '
+    #         'agg_linear_trend__attr_"stderr"__chunk_len_5__f_agg_"var", '
+    #         'root_mean_square, '
+    #         'number_crossing_m__m_1, '
+    #         'change_quantiles__f_agg_"var"__isabs_True__qh_1.0__ql_0.4. '
+    #         )
 
     # Random Forest
     # features = ("The dataset has 11 columns. The first column is label and the rest are 10 features in order: "

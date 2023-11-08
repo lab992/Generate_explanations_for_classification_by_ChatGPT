@@ -1,0 +1,8 @@
+I will give you a time-series data sample which is acceleration in x-axis dimension. Your task is to classify my description of samples to 3 gestures ('shake hand', 'move to left', 'move to right'). I will now describe these 3 classes based on 3 features: changes in the direction, decreasing trend, increasing values.
+if there's a lot of changes in the direction, then 'shake hand' 
+if there's few changes in the direction, a big decreasing trend, then 'move to left'
+if there's few changes in the direction, a slight decreasing trend, and a lot of increasing values, then 'move to left'
+if there's few changes in the direction, a slight decreasing trend, and few increasing values, then 'move to right'
+Try to classify the following data sample to these 3 classes. You must classify according to the description of classes. You should also give me the explaination why this decription can infer to this gesture.Don't show me the code. At the end of your explanation. You must repeat your answer in format: [Class: gesture].
+There's few changes in the direction.There's a big decreasing trend.There's few increasing values.
+

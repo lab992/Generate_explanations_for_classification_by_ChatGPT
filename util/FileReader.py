@@ -27,21 +27,26 @@ def read_file_acc():
         result = result.dropna().reset_index(drop=True)
         return result
     
+    def get_lable(data):
+        df_y = data.drop_duplicates(subset='id', keep='first')
+        y = df_y.iloc[:, 0].reset_index(drop=True)
+        return y
+
     # Select Class 2,3,4
     train_data = train_data.iloc[30:120]
-    test_data = test_data.iloc[70:280]
-    # test_data = test_data.iloc[list(range(70,90)) + list(range(140,160)) + list(range(210,230))]
+    # test_data = test_data.iloc[70:280]
+    test_data = test_data.iloc[list(range(70,90)) + list(range(140,160)) + list(range(210,230))]
 
     structured_train = data_format_acc(train_data, 30)
     structured_test = data_format_acc(test_data, 70)
 
-    structured_train['lable'] = structured_train['lable'].replace({2: 'shake_hand', 3: 'move_to_left', 4: 'move_to_right'})
-    structured_test['lable'] = structured_test['lable'].replace({2: 'shake_hand', 3: 'move_to_left', 4: 'move_to_right'})
+    # structured_train['lable'] = structured_train['lable'].replace({2: 'shake_hand', 3: 'move_to_left', 4: 'move_to_right'})
+    # structured_test['lable'] = structured_test['lable'].replace({2: 'shake_hand', 3: 'move_to_left', 4: 'move_to_right'})
 
     X_train = structured_train.iloc[:, 1:]
     X_test = structured_test.iloc[:, 1:]
-    y_train = structured_train.iloc[:, 0]
-    y_test = structured_test.iloc[:, 0]
+    y_train = train_data.iloc[:, 0]
+    y_test = test_data.iloc[:, 0]
     
     return X_train, X_test, y_train, y_test
     

@@ -34,7 +34,7 @@ def gpt_execution(context, query):
 
             filename = "explain.txt"
 
-            answer = [2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3]
+            answer = [2,2,2,2,2,3,3,3,3,3,4,4,4,4,4]
 
             with open(filename, "a") as file:
                 file.write(gpt_result)

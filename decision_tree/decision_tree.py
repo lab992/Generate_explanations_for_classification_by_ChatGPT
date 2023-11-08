@@ -6,9 +6,10 @@ from sklearn import datasets
 from sklearn.tree import DecisionTreeClassifier, export_graphviz, plot_tree, export_text
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
-from decision_rule import get_rules,merge_nodes, merge_rules
-from feature_to_prompt import feature_to_prompt, gen_context, array_to_query, each_feature_description_context, class_description_context
+from decision_rule import get_rules,merge_nodes, merge_rules, to_conditions, transfer_conditions, translation_to_rules
+from feature_to_prompt import feature_to_prompt, gen_context, array_to_query, each_feature_description_context, class_description_context, gen_query
 from GPTExecutor import gpt_execution
+import re
 
 def split(dataset):
     X = dataset.iloc[:, 1:]
@@ -45,7 +46,7 @@ def accuracy():
 
     le = LabelEncoder()
     y_train = le.fit_transform(y_train)
-    y_test = le.fit_transform(y_test)
+    # y_test = le.fit_transform(y_test)
     # 训练模型
     clf = model.fit(X_train, y_train)
 
@@ -59,23 +60,35 @@ def accuracy():
     # accuracy = accuracy_score(y_test, y_pred)
     # print(f'Accuracy: {accuracy}')
 
-    # rules = get_rules(clf, X_train.columns.to_numpy(), ["2","3","4"])
+    rules = get_rules(clf, X_train.columns.to_numpy(), ["2","3","4"])
     
-    # merged_rules = merge_rules(rules)
+    merged_rules = merge_rules(rules)
+
+    conditions = to_conditions(merged_rules)
+
+    translations, temp_lookup_table = transfer_conditions(conditions)
+
+    translated_rules = translation_to_rules(translations)
+
+    queries = gen_query(X_test, temp_lookup_table).to_list()
+
+    # print(conditions)
+
+
     
-    test_sets = feature_to_prompt(X_test).to_numpy()
+    test_sets = feature_to_prompt(X_test).to_list()
     # # test_test_sets = array_to_query(test_sets)
 
     # context = '\n'.join(merged_rules) + each_feature_description_context()
   
     # gpt_execution(context, X_test.to_numpy())
 
-
+    
 
     context = gen_context()
 
-
-    gpt_execution(context, test_sets)
+    
+    # gpt_execution(context, test_sets)
 
     
     # with open("prompt_test_0.txt", "a") as file:
@@ -97,6 +110,9 @@ def accuracy():
     # )
 
     # fig.savefig("decision_tree_f_5_min_8_MERGED.png")
+
+
+
 
 def to_gpt_method():
     root = tk.Tk()

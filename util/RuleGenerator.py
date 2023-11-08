@@ -1,14 +1,159 @@
 import numpy as np
 from sklearn.tree import DecisionTreeClassifier, _tree
+import re
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 
-def generate_rules(train_set, y_train):
+def gen_rules(X_train, y_train):
 
-    model = DecisionTreeClassifier(random_state=42)
-    clf = model.fit(train_set, y_train)
+    model = DecisionTreeClassifier(random_state=42, min_samples_leaf=7)
 
+    class_names = y_train.unique()
+    
+    le = LabelEncoder()
+    y_train = le.fit_transform(y_train)
+
+    clf = model.fit(X_train, y_train)
+
+    # Apply the merge function
     merge_nodes(clf.tree_)
-    rules = get_rules(clf, train_set.columns.to_numpy(), ["2","3","4"])
-    merged_rules = merge_rules(rules)
+
+    rules = get_rules(clf, X_train.columns.to_numpy(), class_names)
+    
+    merged_rules = merge_rules(merge_rules(rules))
+
+    conditions = to_conditions(merged_rules)
+
+    translations, temp_lookup_table = transfer_conditions(conditions)
+
+    return translations, temp_lookup_table
+
+def translation_to_rules(translations):
+
+    sentences = []
+    sorted_translations = sorted(translations, key=len)
+
+    for translation in sorted_translations:
+
+        sentence = "If there's "
+        class_name = translation[0]
+        rest_array = translation[1:]
+
+        if len(rest_array) == 1:
+            sentence += rest_array[0]
+        else:
+            for i in range(len(rest_array)):
+                if len(rest_array) != 1:
+                    sentence += "and " + rest_array[i]
+                else:
+                    sentence += rest_array[i] + ", "
+
+        sentence += ", then '" + class_name + "'."
+        sentences.append(sentence)
+    
+    result_rules = "\n".join(sentences)
+    return result_rules
+
+def transfer_conditions(conditions):
+
+    lookup_table = pd.read_csv('selected_dataset/lookup_table.csv', sep = ',')
+
+    pattern = re.compile(r'(\S+)\s*([<>]=?)\s*([-+]?\d*\.?\d+|\.\d+)')
+
+    result = []
+
+    temp_lookup_table = pd.DataFrame(columns=['feature', 'meaning', 'type', 'tf', 'value'])
+
+    for condition in conditions:
+
+        classification = condition[0]
+        situations = condition[1:]
+        temp_result = []
+        temp_result.append(classification)
+
+        for situation in situations:
+
+            match = pattern.match(situation)
+
+            feature_name = ""
+            operator = ""
+            value = ""
+
+            if match:
+                feature_name += match.group(1)
+                operator += match.group(2)
+                value += match.group(3)
+            else:
+                raise ValueError("Not match.")
+
+            feature_list = lookup_table['feature']
+            row_index = -1
+            for i in range(len(feature_list)):
+                if feature_list.iloc[i] in feature_name:
+                    row_index += i + 1
+                    break
+            
+            if row_index == -1:
+                raise ValueError("Not in lookup table.")
+
+            filtered_rows = lookup_table.iloc[row_index]
+            meaning = filtered_rows['meaning']
+            type = filtered_rows['type']
+            tf = filtered_rows['tf']
+
+            describe = []
+            if type == "adj":
+                describe.append("a slight ")
+                describe.append("a big ")
+            elif type == "n":
+                describe.append("few ")
+                describe.append("a lot of ")
+
+            translation = ""
+
+            if operator == "<=":
+                if tf == 0:
+                    translation += describe[0] + meaning
+                elif tf == 1:
+                    translation += describe[1] + meaning
+                else:
+                    raise ValueError("tf should be 0 or 1.")
+            else:
+                if tf == 0:
+                    translation += describe[1] + meaning
+                elif tf == 1:
+                    translation += describe[0] + meaning
+                else:
+                    raise ValueError("tf should be 0 or 1.")
+            
+            if not any(temp_lookup_table['feature'] == filtered_rows['feature']):
+                new_row = pd.Series({'feature': filtered_rows['feature'], 
+                                    'meaning': meaning, 
+                                    'type': type, 
+                                    'tf': tf, 
+                                    'value': value})
+                temp_lookup_table = pd.concat([temp_lookup_table, pd.DataFrame([new_row])], ignore_index=True)
+            
+            temp_result.append(translation)
+        
+        result.append(temp_result)
+        
+    return result, temp_lookup_table
+        
+
+def to_conditions(merged_rules):
+    
+    conditions = []
+    for i in range(len(merged_rules)):
+        condition = []
+        class_index = merged_rules[i].find("class: ") + len("class: ")
+        class_word = merged_rules[i][class_index:].split()[0]
+        condition.append(class_word)
+        matches = re.findall(r'\((.*?)\)', merged_rules[i])
+        condition.extend(matches)
+        conditions.append(condition)
+    
+    return conditions
 
 # Function to merge nodes with the same class
 def merge_nodes(tree, node_id=0):
@@ -96,9 +241,3 @@ def compare_strings(str1, str2):
         return True
     else:
         return False
-
-def dictionary():
-    level_2 = ["low", "high"]
-    level_3 = ["low", "medium", "high"]
-    level_4 = ["very low", "low", "high", "very high"]
-    level_5 = ["very low", "low", "medium", "high", "very high"]

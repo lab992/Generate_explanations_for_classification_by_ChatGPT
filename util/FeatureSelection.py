@@ -6,10 +6,11 @@ import pandas as pd
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from matplotlib import pyplot as plt
 
-def feature_selection(X_train, X_test, y_train, y_test, feature_amount):
+def feature_selection(X_train, X_test, y_train, feature_amount):
     extracted_train = cal_extracted_features(X_train)
-    extracted_test = cal_extracted_features(X_test)
+    
     filtered_train = cal_filtered_features(extracted_train, y_train)
+    extracted_test = cal_extracted_features(X_test)
     selected_feature = extract_important_features(filtered_train, y_train, feature_amount)
 
     train_set = extracted_train[selected_feature]

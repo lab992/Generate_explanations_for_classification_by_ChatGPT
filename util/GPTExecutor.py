@@ -68,8 +68,8 @@ def gpt_execution(context, query):
 
                 gpt_result = completion.choices[0].message["content"]
 
-                acc_output(count, gpt_result)
-                # basket_output(count, gpt_result)
+                # acc_output(count, gpt_result)
+                basket_output(count, gpt_result)
                 # HMP_output(count, gpt_result)
 
                 print(str(count))
