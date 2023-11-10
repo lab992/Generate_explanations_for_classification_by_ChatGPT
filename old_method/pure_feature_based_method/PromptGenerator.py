@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
 import pandas as pd
+import numpy as np
 
 def prompt_gen():
     train_data, test_data = feature_gen()
@@ -25,18 +26,24 @@ def context_gen(train_data):
                 )
     
     # decision tree
-    features = ("The dataset has 11 columns. The first column is label and the rest are 3 features in order: "
-                'standard_deviation, '
-                'number_crossing_m__m_1, '
-                'fft_coefficient__attr_"angle"__coeff_1, '
-                'fourier_entropy__bins_5, '
-                'linear_trend__attr_"slope", '
-                'fourier_entropy__bins_2, '
-                'range_count__max_0__min_-1000000000000.0, '
-                'autocorrelation__lag_5, '
-                'index_mass_quantile__q_0.4, '
-                'mean_n_absolute_max__number_of_maxima_7. '
-                )
+    # features = ("The dataset has 11 columns. The first column is label and the rest are 3 features in order: "
+    #             'standard_deviation, '
+    #             'number_crossing_m__m_1, '
+    #             'fft_coefficient__attr_"angle"__coeff_1, '
+    #             'fourier_entropy__bins_5, '
+    #             'linear_trend__attr_"slope", '
+    #             'fourier_entropy__bins_2, '
+    #             'range_count__max_0__min_-1000000000000.0, '
+    #             'autocorrelation__lag_5, '
+    #             'index_mass_quantile__q_0.4, '
+    #             'mean_n_absolute_max__number_of_maxima_7. '
+                # )
+    # features = ("The dataset has 4 columns. The first column is lable and the rest are 3 features in order: "
+    #         'number_crossing_m__m_1, '
+    #         'agg_linear_trend__attr_"intercept"__chunk_len_5__f_agg_"min", '
+    #         'range_count__max_1000000000000.0__min_0. '
+    #         )
+    features = ("The dataset has 11 columns. The first column is lable and the rest are 10 features in order. ")
 
     # Gradient
     # features = ("The dataset has 11 columns. The first column is label and the rest are 10 features in order: "
@@ -66,7 +73,7 @@ def context_gen(train_data):
     #     'agg_autocorrelation__f_agg_"var"__maxlag_40. '
     #     )
                 
-    data_description = ("Following is the dataset of 300 data: \n")
+    data_description = ("Following is the dataset of 60 data: \n")
     
     # 280 tokens
     # 预留 1000 token给query和回答
@@ -75,10 +82,11 @@ def context_gen(train_data):
     return role + "\n" + background + "\n" + classes + "\n" + features + "\n" + data_description + "\n" + feature_to_txt(train_data)
 
 def query_gen(test_data):
-    task = ("Try to classify following 20 data to these 2 classes, with the help of dataset given above."
+    task = ("Try to classify following 15 data to these 3 classes, with the help of dataset given above."
+            "The following data have no lable. They have only 10 features. You should classify them to lable 2, 3, or 4."
                "You should not show the code but give the answer directly."
-               "You must give me the label in format: [label 1, label 2, ..., label 20]"
-               "You must check whether there are exactly 20 labels in your answer." + "\n")
+               "You must give me the label in format: [label 1, label 2, ..., label 15]"
+               "You must check whether there are exactly 15 labels in your answer." + "\n")
     return task + feature_to_txt(test_data)
 
 def feature_gen():
@@ -86,50 +94,44 @@ def feature_gen():
     root.withdraw()
 
     # Open file selection window
-    file = filedialog.askopenfilename()
-    data = pd.read_csv(file)
+    train_file = filedialog.askopenfilename()
+    train_data = pd.read_csv(train_file)
+
+    test_file = filedialog.askopenfilename()
+    test_data = pd.read_csv(test_file)
 
     # 去除id
-    data = data.iloc[: , 1:]
-
-    # 取三分之一
-    # train_rows = pd.concat([data.iloc[0:15], 
-    #                            data.iloc[30:45], 
-    #                            data.iloc[60:75],
-    #                            data.iloc[90:105], 
-    #                            data.iloc[120:135]
-    #                            ])
-    
-    # test_rows = pd.concat([data.iloc[20:25], 
-    #                            data.iloc[50:55], 
-    #                            data.iloc[80:85],
-    #                            data.iloc[110:115], 
-    #                            data.iloc[140:145]
-    #                            ])
+    train_data = train_data.iloc[: , 1:].iloc[list(range(0,20)) + list(range(30,50)) + list(range(60,80))]
+    test_data = test_data.iloc[: , 1:].iloc[list(range(5,10)) + list(range(75,80)) + list(range(145,150))]
 
     # 定义格式化函数
     def format_number(num):
         formatted_num = float(f'{num:.4f}')  # 格式化为保留四位小数
         return format(formatted_num, ".4g")
     
-    formatted_data = data.applymap(format_number)
+    formatted_train_data = train_data.applymap(format_number)
+    formatted_test_data = test_data.applymap(format_number)
 
     # 使用 apply 函数将每一行转换为数组
-    array_series = formatted_data.apply(lambda row: row.to_numpy(), axis=1)
+    train_array_series = formatted_train_data.apply(lambda row: row.to_numpy(), axis=1)
+    test_array_series = formatted_test_data.apply(lambda row: row.to_numpy(), axis=1)
 
     # 将包含数组的 Series 转换为列表
-    array_list = array_series.tolist()
+    train_array_list = train_array_series.tolist()
+    test_array_list = test_array_series.tolist()
 
-    # 取label 1-4，每个15个 （train）
-    # train_data = array_list[0:15] + array_list[30:45] + array_list[60:75] + array_list[90:105]
-    # 取label 1-4，每个5个 （tesr）
-    # test_temp_data = array_list[20:25] + array_list[50:55] + array_list[80:85] + array_list[110:115]
+    for i in range(0, len(train_array_list)):
+        start_value = 2
+        if i < 20 :
+            start_value += 0
+        elif i < 40:
+            start_value += 1
+        else:
+            start_value += 2
 
-    train_data = array_list[30:50] + array_list[60:80]
-    test_temp_data = array_list[50:60] + array_list[80:90]
-    test_data = [array[1:] for array in test_temp_data]
+        train_array_list[i] = np.insert(train_array_list[i], 0, str(start_value))
 
-    return train_data, test_data
+    return train_array_list, test_array_list
 
 def feature_to_txt(array_list):
     result = ""

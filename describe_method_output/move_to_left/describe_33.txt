@@ -1,0 +1,116 @@
+To classify the given array, we need to check if it satisfies both Situation 1 and Situation 2. 
+
+For Situation 1:
+1. Step 1: Find a 0 - We have a 0 at index 21.
+2. Step 2: Find if there's a 9 after 0 - There is a 9 at index 27.
+3. Step 3: Check whether the index of 9 is greater than the index of 0 - The index of 9 is greater than the index of 0.
+
+For Situation 2:
+1. Step 1: Find a 9 - We have a 9 at index 26.
+2. Step 2: Find if there's a 0 after 9 - There is a 0 at index 22.
+3. Step 3: Check whether the index of 0 is greater than the index of 9 - The index of 0 is greater than the index of 9.
+
+Based on the above analysis, the given array satisfies both Situation 1 and Situation 2, so the answer is 'Result: Class 2'.
+------------------------
+To classify the given array into one of the classes, we need to determine if the array satisfies 'Situation 1' and 'Situation 2' as described. 
+
+For 'Situation 1':
+Step 1: Find a 0 first.
+The first occurrence of 0 is at index 21.
+
+Step 2: Find if there's a 9 after 0.
+Yes, there is a 9 after 0.
+
+Step 3: Check whether the index of 9 is greater than the index of 0.
+The index of 9 is 26, which is greater than the index of 0.
+
+Based on these results, we can conclude that the given array satisfies 'Situation 1'.
+
+For 'Situation 2':
+Step 1: Find a 9 first.
+The first occurrence of 9 is at index 26.
+
+Step 2: Find if there's a 0 after 9.
+Yes, there is a 0 after 9.
+
+Step 3: Check whether the index of 0 is greater than the index of 9.
+The index of 0 is 22, which is greater than the index of 9.
+
+Based on these results, we can conclude that the given array satisfies 'Situation 2'.
+
+Since the given array satisfies both 'Situation 1' and 'Situation 2', the classification is: 'Result: Class 2'.
+------------------------
+To determine the class that the given array belongs to, let's analyze the array based on the provided rules.
+
+Question 1: Is there a 'Situation 1'?
+
+Step 1: Find a 0 first.
+The array contains 0 at index 21.
+
+Step 2: Find if there's a 9 after 0.
+The array contains 9 after 0 at index 26.
+
+Step 3: Check whether the index of 9 is greater than the index of 0.
+The index of 9 (26) is greater than the index of 0 (21).
+
+Since all the conditions for 'Situation 1' are satisfied in this array, we can conclude that it belongs to 'Class 3'.
+
+Now, let's move on to Question 2.
+
+Question 2: Is there a 'Situation 2'?
+
+Step 1: Find a 9 first.
+The array contains 9 at index 26.
+
+Step 2: Find if there's a 0 after 9.
+The array does not contain 0 after 9.
+
+The conditions for 'Situation 2' are not satisfied in this array.
+
+Based on the results, we can classify the given array as 'Class 3'.
+
+Result: Class3
+------------------------
+To determine which class the given array belongs to, we need to analyze the array based on the given criteria.
+First, let's check for 'Situation 1':
+
+Step 1: Find a 0. - We find a 0 at index 21.
+Step 2: Check if there's a 9 after 0. - We find a 9 at index 27.
+Step 3: Check whether the index of 9 is greater than the index of 0. - The index of 9 is greater than the index of 0.
+
+Since all the conditions for 'Situation 1' are satisfied, we can conclude that the given array satisfies 'Situation 1'.
+
+Next, let's check for 'Situation 2':
+
+Step 1: Find a 9. - We find a 9 at index 26.
+Step 2: Check if there's a 0 after 9. - There is no 0 after 9.
+Step 3: Check whether the index of 0 is greater than the index of 9. - Since there is no 0 after 9, this condition is not applicable.
+
+The given array does not satisfy 'Situation 2' as there is no 0 after the 9 found at index 26.
+
+Based on the analysis, we can conclude that the given array belongs to 'Class 3' because it satisfies 'Situation 1' but does not satisfy 'Situation 2'.
+
+Therefore, the answer is: 'Result: Class3'.
+------------------------
+To classify the given array into the appropriate class, we need to verify if 'Situation 1' and 'Situation 2' are present in the array.
+
+For 'Situation 1':
+
+Step 1: Find a 0 first. Looking at the array, we find a 0 at index 21.
+
+Step 2: Find if there's a 9 after 0. Continuing from index 21, we find a 9 at index 27.
+
+Step 3: Check whether the index of 9 is greater than the index of 0. The index of 9 (27) is indeed greater than the index of 0 (21).
+
+Since 'Situation 1' is satisfied, we move on to check 'Situation 2':
+
+Step 1: Find a 9 first. Looking at the array, we find a 9 at index 26.
+
+Step 2: Find if there's a 0 after 9. Continuing from index 26, we find a 0 at index 22.
+
+Step 3: Check whether the index of 0 is greater than the index of 9. The index of 0 (22) is indeed greater than the index of 9 (26).
+
+Both 'Situation 1' and 'Situation 2' are satisfied, indicating that the array belongs to 'Class 2'.
+
+Therefore, the answer is: Result: Class2.
+------------------------

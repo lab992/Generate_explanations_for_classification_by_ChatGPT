@@ -43,7 +43,7 @@ def translation_to_rules(translations):
             sentence += rest_array[0]
         else:
             for i in range(len(rest_array)):
-                if len(rest_array) != 1:
+                if i == len(rest_array) - 1:
                     sentence += "and " + rest_array[i]
                 else:
                     sentence += rest_array[i] + ", "

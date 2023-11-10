@@ -3,6 +3,8 @@ import glob
 import tkinter as tk
 from tkinter import filedialog
 import pandas as pd
+import numpy as np
+import random
 
 def read_file_acc():
 
@@ -27,15 +29,39 @@ def read_file_acc():
         result = result.dropna().reset_index(drop=True)
         return result
     
-    def get_lable(data):
-        df_y = data.drop_duplicates(subset='id', keep='first')
-        y = df_y.iloc[:, 0].reset_index(drop=True)
-        return y
+    def random_disturb(row):
+        max_values = row.max()
+        min_values = row.min()
+        noise = np.random.normal(0.006 * min_values, 0.006 * max_values, size=len(row))
+        return noise + row
+    
+    def sudden_disturb(row):
+        max_values = row.max()
+        min_values = row.min()
+        length = 1
+        abrupt_noise = np.zeros_like(len(row))
+        random_start = random.randint(0, len(row) - length - 1)
+        abrupt_noise[random_start:random_start + length] = 0.5  # 在时间点70到80之间引入扰动
+
+        series_with_abrupt_noise = row + abrupt_noise
+        return series_with_abrupt_noise
+
+    def periodic_disturb(row):
+        period = 24  # 周期为24个时间点，假设代表一天
+        periodic_noise = 0.2 * np.sin(2 * np.pi * time / period)
+
+        series_with_periodic_noise = series + periodic_noise    
 
     # Select Class 2,3,4
     train_data = train_data.iloc[30:120]
     # test_data = test_data.iloc[70:280]
     test_data = test_data.iloc[list(range(70,90)) + list(range(140,160)) + list(range(210,230))]
+
+    # robust_train_data = train_data.apply(random_disturb, axis=1)
+    # robust_test_data = test_data.apply(random_disturb, axis=1)
+
+    # structured_train = data_format_acc(robust_train_data, 30)
+    # structured_test = data_format_acc(robust_test_data, 70)
 
     structured_train = data_format_acc(train_data, 30)
     structured_test = data_format_acc(test_data, 70)

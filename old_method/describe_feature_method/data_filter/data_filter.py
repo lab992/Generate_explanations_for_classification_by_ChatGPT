@@ -41,18 +41,21 @@ def average(intervall):
         single_array = []
         while (not (np.isnan(min_max[i][j + intervall]))):
             num = (sum(min_max[i][j : j + intervall])) / intervall
-            single_array.append(int(round(num * 10, 0)) - 5)
+            single_array.append(int(round(num * 9, 0)))
             j += intervall
         average_array.append(single_array)
     
+    # df1 = average_array[30:60]
+    # df2 = average_array[60:90]
+    # df3 = average_array[90:120]
 
-    df1 = average_array[30:60]
-    df2 = average_array[60:90]
-    df3 = average_array[90:120]
+    result = average_array[70:90] + average_array[140:160] + average_array[210:230]
 
-    result_array_1 = [trim_sequence(subarray) for subarray in df1]
-    result_array_2 = [trim_sequence(subarray) for subarray in df2]
-    result_array_3 = [trim_sequence(subarray) for subarray in df3]
+    return result
+
+    # result_array_1 = [trim_sequence(subarray) for subarray in df1]
+    # result_array_2 = [trim_sequence(subarray) for subarray in df2]
+    # result_array_3 = [trim_sequence(subarray) for subarray in df3]
 
     # with open('class_2_trend_2.txt', "a") as file:
     #     for j in range(len(df1)):

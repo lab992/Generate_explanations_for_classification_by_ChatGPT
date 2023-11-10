@@ -1,0 +1,117 @@
+To classify the given array, we need to go through the steps for both Situation 1 and Situation 2.
+
+Situation 1:
+Step 1: Finding a 0 - We find a 0 at index 8.
+Step 2: Finding a 9 after 0 - We find a 9 after 0.
+Step 3: Checking the indices - The index of 9 (20) is greater than the index of 0 (8).
+
+Situation 2:
+Step 1: Finding a 9 - We find a 9 at index 19.
+Step 2: Finding a 0 after 9 - We find a 0 after 9.
+Step 3: Checking the indices - The index of 0 (9) is greater than the index of 9 (19).
+
+Based on the results of Situation 1 and Situation 2, we can see that the array satisfies both situations. Therefore, the array belongs to 'Class2'.
+
+Result: Class2
+------------------------
+To classify the given array, we will follow the steps for each question:
+
+Question 1: Is there a 'Situation 1'?
+Step 1: Find a 0 first. We find a 0 at index 8.
+Step 2: Find if there's a 9 after 0. We find a 9 after the 0 at index 19.
+Step 3: Check whether the index of 9 is greater than the index of 0. Index of 9 (19) is greater than the index of 0 (8).
+
+Therefore, 'Situation 1' is satisfied.
+
+Question 2: Is there a 'Situation 2'?
+Step 1: Find a 9 first. We find a 9 at index 19.
+Step 2: Find if there's a 0 after 9. There is no 0 after the 9.
+
+Therefore, 'Situation 2' is not satisfied.
+
+Since the array satisfies 'Situation 1' but not 'Situation 2', it belongs to 'Class 3'.
+
+Result: Class3
+------------------------
+To classify which class the given array belongs to, we will follow the steps provided:
+
+Question 1: Is there a 'Situation 1'?
+
+Step 1: Find a 0 first. The array contains a 0 at index 8.
+
+Step 2: Find if there's a 9 after 0. The array contains a 9 after the 0 at index 19.
+
+Step 3: Check whether the index of 9 is greater than the index of 0. In this case, the index of 9 (19) is greater than the index of 0 (8).
+
+Since we have satisfied all steps of Question 1, there is a 'Situation 1' in the given array.
+
+Question 2: Is there a 'Situation 2'?
+
+Step 1: Find a 9 first. The array contains a 9 at index 19.
+
+Step 2: Find if there's a 0 after 9. The array does not contain a 0 after the 9 at index 19.
+
+Since we failed to find a 0 after the 9, we cannot satisfy all steps of Question 2. Therefore, there is no 'Situation 2' in the given array.
+
+Based on the results:
+
+- Class 2 satisfies both 'Situation 1' and 'Situation 2'
+- Class 3 satisfies only 'Situation 1'
+- Class 4 satisfies only 'Situation 2'
+
+Since the given array satisfies only 'Situation 1' and does not satisfy 'Situation 2', the array belongs to 'Class 3'.
+
+Result: Class3
+------------------------
+To classify the given array, we need to go through the process outlined for 'Situation 1' and 'Situation 2'.
+
+For 'Situation 1':
+Step 1: Find a 0 first.
+Step 2: Find if there's a 9 after 0.
+Step 3: Check whether the index of 9 is greater than the index of 0.
+
+For 'Situation 2':
+Step 1: Find a 9 first.
+Step 2: Find if there's a 0 after 9.
+Step 3: Check whether the index of 0 is greater than the index of 9.
+
+Let's go through each step for the given array:
+
+For 'Situation 1':
+Step 1: We can see that there is a 0 at index 8.
+
+Step 2: After the 0, the next number is 1, not 9. So, 'Situation 1' is not satisfied.
+
+For 'Situation 2':
+Step 1: We can see several 9s in the array.
+
+Step 2: After the first occurrence of 9, the next number is 8, not 0. So, 'Situation 2' is not satisfied.
+
+Based on the analysis, this array does not satisfy either 'Situation 1' or 'Situation 2'. Therefore, the answer is 'Result: Class 1'.
+------------------------
+To classify the given array, we can follow the steps mentioned for each class.
+
+Step 1: Checking for 'Situation 1'
+- Find a 0 first
+- Check if there is a 9 after 0
+- Check if the index of 9 is greater than the index of 0
+
+Step 2: Checking for 'Situation 2'
+- Find a 9 first
+- Check if there is a 0 after 9
+- Check if the index of 0 is greater than the index of 9
+
+Let's follow these steps to determine the class of the array [6, 6, 5, 4, 3, 1, 1, 1, 0, 1, 2, 1, 2, 3, 4, 7, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8]:
+
+Question 1: Is there a 'Situation 1'?
+- Yes, we find a 0 at index 8.
+- We find a 9 after the 0 at index 19.
+- The index of 9 (19) is greater than the index of 0 (8).
+
+Question 2: Is there a 'Situation 2'?
+- Yes, we find a 9 at index 19.
+- We find a 0 after the 9 at index 29.
+- The index of 0 (29) is greater than the index of 9 (19).
+
+Based on the answers to both questions, the array satisfies both 'Situation 1' and 'Situation 2'. Therefore, the result is: 'Result: Class2'
+------------------------

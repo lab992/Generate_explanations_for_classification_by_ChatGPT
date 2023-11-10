@@ -99,7 +99,7 @@ def gpt_execution(context, query):
         "Current date: 2023-10-15\n" )
     roll2 = "You are a data analyst."
 
-    openai.api_key = "sk-jusJclmsI4KD70DqAdFcDe7a97344a898e9791464367Bb36"
+    openai.api_key = "sk-UPt4ekXsKt94OR9NB3D24eEb05F8462c96D9B0B8CeFa7cE0"
 
     count = 51
 

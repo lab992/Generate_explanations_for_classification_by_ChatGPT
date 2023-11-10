@@ -1,0 +1,114 @@
+To classify the given array, we will follow the steps outlined in the question.
+
+For Question 1:
+Step 1: Find a 0 first.
+The array does contain 0.
+
+Step 2: Find if there's a 9 after 0.
+The array does contain a 9 after 0.
+
+Step 3: Check whether the index of 9 is greater than the index of 0.
+The index of 9 (51st element) is greater than the index of 0 (46th element).
+
+Therefore, the array satisfies 'Situation 1'.
+
+For Question 2:
+Step 1: Find a 9 first.
+The array does contain a 9.
+
+Step 2: Find if there's a 0 after 9.
+The array does contain a 0 after 9.
+
+Step 3: Check whether the index of 0 is greater than the index of 9.
+The index of 0 (48th element) is greater than the index of 9 (46th element).
+
+Therefore, the array satisfies 'Situation 2'.
+
+Since the given array satisfies both 'Situation 1' and 'Situation 2', the result is:
+
+Result: Class 2
+------------------------
+Result: Class2
+------------------------
+To classify the given array, we need to determine if it satisfies 'Situation 1' and 'Situation 2'.
+
+For 'Situation 1', we need to check if there is a 0 followed by a 9 with the index of 9 greater than the index of 0.
+
+For 'Situation 2', we need to check if there is a 9 followed by a 0 with the index of 0 greater than the index of 9.
+
+Let's go through the steps:
+
+For 'Situation 1':
+Step 1: Find a 0.
+Step 2: Find if there's a 9 after 0.
+Step 3: Check whether the index of 9 is greater than the index of 0.
+
+For 'Situation 2':
+Step 1: Find a 9.
+Step 2: Find if there's a 0 after 9.
+Step 3: Check whether the index of 0 is greater than the index of 9.
+
+Now let's classify the given array:
+
+[5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 7, 7, 7, 7, 6, 4, 4, 3, 2, 1, 1, 1, 1, 1, 2, 3, 5, 6, 6, 7, 9, 9, 7, 5, 4, 3, 1, 0, 0, 0, 1, 1, 2, 3, 4, 5, 6, 7, 9, 9, 8, 6, 4, 2, 1, 1, 1, 2, 2, 2]
+
+1. For 'Situation 1':
+   - Step 1: Find a 0. Index: 40
+   - Step 2: Find if there's a 9 after 0. Index: 43
+   - Step 3: Check whether the index of 9 is greater than the index of 0. Index: 43 > Index: 40 - True
+
+2. For 'Situation 2':
+   - Step 1: Find a 9. Index: 41
+   - Step 2: Find if there's a 0 after 9. Index: 42
+   - Step 3: Check whether the index of 0 is greater than the index of 9. Index: 42 > Index: 41 - True
+
+The given array satisfies both 'Situation 1' and 'Situation 2', so the result is: Class 2
+------------------------
+To classify the given array, we need to analyze it based on the given conditions:
+
+Question 1: Is there a 'Situation 1'?
+To check if there is a 'Situation 1', we need to follow the steps:
+Step 1: Find a 0 first. (index 45)
+Step 2: Find if there's a 9 after 0. (index 47)
+Step 3: Check whether the index of 9 is greater than the index of 0. (index 47 > index 45)
+
+Since all three steps are satisfied, we can conclude that 'Situation 1' exists.
+
+Question 2: Is there a 'Situation 2'?
+To check if there is a 'Situation 2', we need to follow the steps:
+Step 1: Find a 9 first. (index 40)
+Step 2: Find if there's a 0 after 9. (index 41)
+Step 3: Check whether the index of 0 is greater than the index of 9. (index 41 > index 40)
+
+Since all three steps are satisfied, we can conclude that 'Situation 2' exists.
+
+Based on the analysis, the given array satisfies both 'Situation 1' and 'Situation 2', which means it belongs to 'Class 2'.
+
+Result: Class 2
+------------------------
+Question 1: Is there a 'Situation 1'?
+- Step 1: Find a 0.
+- Step 2: Find if there's a 9 after 0.
+- Step 3: Check whether the index of 9 is greater than the index of 0.
+
+Question 2: Is there a 'Situation 2'?
+- Step 1: Find a 9.
+- Step 2: Find if there's a 0 after 9.
+- Step 3: Check whether the index of 0 is greater than the index of 9.
+
+Given the array [5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 7, 7, 7, 7, 6, 4, 4, 3, 2, 1, 1, 1, 1, 1, 2, 3, 5, 6, 6, 7, 9, 9, 7, 5, 4, 3, 1, 0, 0, 0, 1, 1, 2, 3, 4, 5, 6, 7, 9, 9, 8, 6, 4, 2, 1, 1, 1, 2, 2, 2], we can go through each step:
+
+Question 1: 'Situation 1'
+Step 1: There is at least one 0 in the array.
+Step 2: There is a 9 after the first 0.
+Step 3: The index of 9 (42) is greater than the index of 0 (42), so 'Situation 1' is satisfied.
+
+Question 2: 'Situation 2'
+Step 1: There is at least one 9 in the array.
+Step 2: There is a 0 after the first 9.
+Step 3: The index of 0 (46) is greater than the index of 9 (40), so 'Situation 2' is satisfied.
+
+Based on the results of both questions, the array [5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 7, 7, 7, 7, 6, 4, 4, 3, 2, 1, 1, 1, 1, 1, 2, 3, 5, 6, 6, 7, 9, 9, 7, 5, 4, 3, 1, 0, 0, 0, 1, 1, 2, 3, 4, 5, 6, 7, 9, 9, 8, 6, 4, 2, 1, 1, 1, 2, 2, 2] belongs to 'Class 2'.
+
+Result: Class2
+------------------------

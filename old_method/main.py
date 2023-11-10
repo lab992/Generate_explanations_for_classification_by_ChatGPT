@@ -14,7 +14,7 @@ import pandas as pd
 
 def pipeline():
 
-    X_train, X_test, y_train, y_test = FileReader.read_file_acc()
+    # X_train, X_test, y_train, y_test = FileReader.read_file_acc()
 
     # X, y = FileReader.read_file_basket()
 
@@ -28,10 +28,10 @@ def pipeline():
     #     ('GPT', GPTExecutor())
     # ])
 
-    # context, query = PromptGenerator.prompt_gen()
-    # GPTExecutor.gpt_execution(context, query)
+    context, query = PromptGenerator.prompt_gen()
+    GPTExecutor.gpt_execution(context, query)
 
-    # with open("prompt_RF.txt", "w") as f:
+    # with open("prompt_pure.txt", "w") as f:
     #     f.writelines(context)
     #     f.writelines(query)
 
@@ -39,7 +39,7 @@ def pipeline():
 
     # FeatureSelection.cal_features(X_test, y_test)
 
-    FeatureSelection.cal_features(X_train, y_train)
+    # FeatureSelection.cal_features(X_train, y_train)
 
     # FeatureSelection.n_features_selection()
 

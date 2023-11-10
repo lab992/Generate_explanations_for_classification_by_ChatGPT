@@ -8,6 +8,8 @@ def find_result(text):
         return 2
     elif "Result: Class3" in text:
         return 3
+    elif "Result: Class4" in text:
+        return 4
     else:
         return 0
 
@@ -51,26 +53,27 @@ def generate_context():
             )
     
     class_pattern_2 = "'Class 2' must satisfy both 'Situation 1' and 'Situation 2'.\n"
-    class_pattern_3 = "'Class 3' must only satisfy 'Situation 1'.\n"
+    class_pattern_3 = "'Class 3' can only satisfy 'Situation 1'.\n"
+    class_pattern_4 = "'Class 4' can only satisfy 'Situation 2'.\n"
 
     rule = ("Now I will give you one array. You should help me to classify which class this array belongs to. " 
             "Don't show me the code or curve graph.\n"
-            "You should answer at the very end. The answer format should be: 'Result: Class2' or 'Result: Class3'.\n")
-    return background + definition2 + question + stepA2 + stepB2 + class_pattern_2 + class_pattern_3 + rule
+            "You should answer at the very end. The answer format should be: 'Result: Class2', 'Result: Class3', or 'Result: Class4'.\n")
+    return background + definition2 + question + stepA2 + stepB2 + class_pattern_2 + class_pattern_3 + class_pattern_4 + rule
     
-def generate_query(number):
+def generate_query():
     array = data_filter.average(2)
-    query = []
-    if number == 23:
-        query.extend(array[70:120])
-        query.extend(array[140:190])
-    elif number == 34:
-        query.extend(array[140:190])
-        query.extend(array[210:260])
-    elif number == 24:
-        query.extend(array[70:120])
-        query.extend(array[210:260])
-    return query
+    # query = []
+    # if number == 23:
+    #     query.extend(array[70:120])
+    #     query.extend(array[140:190])
+    # elif number == 34:
+    #     query.extend(array[140:190])
+    #     query.extend(array[210:260])
+    # elif number == 24:
+    #     query.extend(array[70:120])
+    #     query.extend(array[210:260])
+    return array
 
 def gpt_execution(context, query):
 
@@ -81,36 +84,39 @@ def gpt_execution(context, query):
 
     openai.api_key = "sk-jusJclmsI4KD70DqAdFcDe7a97344a898e9791464367Bb36"
 
-    count = 19
+    count = 20
 
-    run_times = 100
+    run_times = 60
 
     while (count < run_times):
         try:
-            completion = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": roll1},
-                    {"role": "user", "content": context + str(query[count])},
-                ]
-            )
+            for i in range(5):
+                completion = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo",
+                    messages=[
+                        {"role": "system", "content": roll2},
+                        {"role": "user", "content": context + str(query[count])},
+                    ]
+                )
 
-            gpt_result = completion.choices[0].message["content"]
+                gpt_result = completion.choices[0].message["content"]
 
-            result = find_result(gpt_result)
+                # result = find_result(gpt_result)
 
-            if (result != 0):
-                filename = "class23.txt"
+                filename = "describe_" + str(count) + ".txt"
 
                 with open(filename, "a") as file:
-                    file.write(str(result))
+                    file.write(gpt_result)
+                    file.write("\n")
+                    file.write("------------------------")
                     file.write("\n")
 
+
                 print("OK: " + str(count))
-                count += 1
+                    
 
-            time.sleep(22)
-
+                time.sleep(1)
+            count += 1
         except ValueError:
             print("error: " + str(count))
             pass
@@ -120,5 +126,6 @@ def gpt_execution(context, query):
 
 if __name__ == "__main__":
     context = generate_context()
-    query = generate_query(23)
+    query = generate_query()
+    print(context)
     gpt_execution(context, query)

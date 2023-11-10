@@ -48,9 +48,9 @@ def gpt_execution(context, query):
 
     roll = "You are a data analyst."
 
-    openai.api_key = "sk-jusJclmsI4KD70DqAdFcDe7a97344a898e9791464367Bb36"
+    openai.api_key = "sk-UPt4ekXsKt94OR9NB3D24eEb05F8462c96D9B0B8CeFa7cE0"
 
-    count = 0
+    count = 13
     run_times = len(query)
 
     while (count < run_times):
@@ -69,8 +69,8 @@ def gpt_execution(context, query):
                 gpt_result = completion.choices[0].message["content"]
 
                 # acc_output(count, gpt_result)
-                basket_output(count, gpt_result)
-                # HMP_output(count, gpt_result)
+                # basket_output(count, gpt_result)
+                HMP_output(count, gpt_result)
 
                 print(str(count))
                 time.sleep(1)

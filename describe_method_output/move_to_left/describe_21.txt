@@ -1,0 +1,100 @@
+To classify the given array, we need to apply the rules mentioned for each class.
+
+According to 'Situation 1', we need to check if there is a 0 in the array, and if there is, we need to check if there is a 9 after the 0, and if the index of 9 is greater than the index of 0.
+
+According to 'Situation 2', we need to check if there is a 9 in the array, and if there is, we need to check if there is a 0 after the 9, and if the index of 0 is greater than the index of 9.
+
+Let's apply these rules to the given array:
+
+1) 'Situation 1':
+- There is a 0 present at index 27.
+- After the 0, there is a 2 at index 30, but not a 9.
+
+2) 'Situation 2':
+- There is a 9 present at index 36.
+- After the 9, there are other numbers present but not a 0.
+
+Based on the results, the given array does not satisfy both 'Situation 1' and 'Situation 2' to be categorized as 'Class 2'.
+
+Now let's check if the given array satisfies the conditions for 'Class 3' and 'Class 4':
+
+3) 'Class 3':
+- There is a 0 present at index 27.
+- After the 0, there is a 2 at index 30, but not a 9.
+- Therefore, the given array does satisfy 'Situation 1', but it does not satisfy 'Situation 2'.
+
+4) 'Class 4':
+- There is a 9 present at index 36.
+- After the 9, there are other numbers present but not a 0.
+- Therefore, the given array does not satisfy 'Situation 1', but it does satisfy 'Situation 2'.
+
+Based on the above analysis, the given array belongs to 'Class 4' since it satisfies 'Situation 2' but does not satisfy 'Situation 1'.
+
+Result: Class4
+------------------------
+Result: Class4
+------------------------
+To classify which class the given array belongs to, we need to check if it satisfies 'Situation 1' and 'Situation 2' as described.
+
+First, let's check for 'Situation 1':
+
+Step 1: Find a 0.
+Step 2: Find if there's a 9 after 0.
+Step 3: Check whether the index of 9 is greater than the index of 0.
+
+In the given array, we can see that there is a 0 at index 29, and there is a 9 at index 37, which is greater than the index of 0. Therefore, the given array satisfies 'Situation 1'.
+
+Next, let's check for 'Situation 2':
+
+Step 1: Find a 9.
+Step 2: Find if there's a 0 after 9.
+Step 3: Check whether the index of 0 is greater than the index of 9.
+
+In the given array, we can see that there is a 9 at index 38, and there is a 0 at index 28, which is lesser than the index of 9. Therefore, the given array satisfies 'Situation 2'.
+
+Since the given array satisfies both 'Situation 1' and 'Situation 2', the result is:
+
+Result: Class 2
+------------------------
+To classify the given array into one of the classes, we need to check if the array satisfies either 'Situation 1' or 'Situation 2'.
+
+First, let's check for 'Situation 1':
+Step 1: Find a 0 first.
+Step 2: Find if there's a 9 after 0.
+Step 3: Check whether the index of 9 is greater than the index of 0.
+
+In the given array [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 3, 3, 3, 1, 0, 0, 2, 3, 6, 6, 7, 8, 9, 9, 9, 8, 8, 7, 7, 6, 6, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], we can see that there is a 0 at index 28. Hence, 'Situation 1' is satisfied.
+
+Now, let's check for 'Situation 2':
+Step 1: Find a 9 first.
+Step 2: Find if there's a 0 after 9.
+Step 3: Check whether the index of 0 is greater than the index of 9.
+
+In the given array, there are multiple occurrences of 9's but none of them have a 0 after them. Hence, 'Situation 2' is not satisfied.
+
+Based on the above analysis, the given array [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 3, 3, 3, 1, 0, 0, 2, 3, 6, 6, 7, 8, 9, 9, 9, 8, 8, 7, 7, 6, 6, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5] belongs to 'Class 3'.
+
+Therefore, the answer is: 'Result: Class 3'.
+------------------------
+To determine the class this array belongs to, we need to follow the steps outlined for both Situation 1 and Situation 2. 
+
+For Situation 1:
+1. We need to find a 0 in the array.
+2. After finding the 0, we need to check if there is a 9 after it.
+3. Finally, we need to check if the index of 9 is greater than the index of 0.
+
+For Situation 2:
+1. We need to find a 9 in the array.
+2. After finding the 9, we need to check if there is a 0 after it.
+3. Finally, we need to check if the index of 0 is greater than the index of 9.
+
+Now let's go through the array step by step to determine the class it belongs to.
+
+1. Find a 0: The first occurrence of 0 is at index 28.
+2. Check if there is a 9 after 0: Yes, there is a 9 at index 35.
+3. Check if the index of 9 is greater than the index of 0: Yes, the index of 9 is greater than the index of 0.
+
+Since the array satisfies all the conditions for Situation 1, it belongs to Class 3. 
+
+Therefore, the result is: Result: Class3
+------------------------
