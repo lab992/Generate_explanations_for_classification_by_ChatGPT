@@ -59,14 +59,14 @@ def read_file_acc():
     # test_data = test_data.iloc[70:280]
     test_data = test_data.iloc[list(range(70,90)) + list(range(140,160)) + list(range(210,230))]
 
-    robust_train_data = train_data.apply(sudden_disturb, axis=1)
-    robust_test_data = test_data.apply(sudden_disturb, axis=1)
+    # robustness test
+    # robust_train_data = train_data.apply(sudden_disturb, axis=1)
+    # robust_test_data = test_data.apply(sudden_disturb, axis=1)
+    # structured_train = data_format_acc(robust_train_data, 30)
+    # structured_test = data_format_acc(robust_test_data, 70)
 
-    structured_train = data_format_acc(robust_train_data, 30)
-    structured_test = data_format_acc(robust_test_data, 70)
-
-    # structured_train = data_format_acc(train_data, 30)
-    # structured_test = data_format_acc(test_data, 70)
+    structured_train = data_format_acc(train_data, 30)
+    structured_test = data_format_acc(test_data, 70)
 
     # structured_train['lable'] = structured_train['lable'].replace({2: 'shake_hand', 3: 'move_to_left', 4: 'move_to_right'})
     # structured_test['lable'] = structured_test['lable'].replace({2: 'shake_hand', 3: 'move_to_left', 4: 'move_to_right'})
