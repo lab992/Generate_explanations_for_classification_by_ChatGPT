@@ -1,0 +1,19 @@
+Based on the given description, the data sample can be classified as 'dribble'. The reason being, the sample has few irregularities, indicating a smooth motion. However, it has a lot of changes in direction which is common in dribbling activities while playing basketball, where the player changes the direction of the ball frequently to avoid the defenders or to move towards the basket. 
+
+[Class: dribble]
+-----------------------
+Based on the given description, the sample would fall under the category of 'dribble'. This is because of the presence of a lot of changes in the direction. A basketball player usually dribbles the ball while running or walking towards the court. During this activity, the player can change the direction multiple times while keeping the ball in control. Therefore, the presence of a lot of changes in the direction is a feature common to the 'dribble' category. 
+[Class: dribble]
+-----------------------
+According to the given description of classes, the data sample would fall under the class 'dribble'. This is because of the presence of a lot of changes in direction despite the lack of irregularity. Dribbling involves changing direction frequently while maintaining control of the ball. 
+
+[Class: dribble]
+-----------------------
+Based on the given description, the sample can be classified as 'dribble'. The reason for this is because there are few irregularities which rules out the 'pass' class, however there are a lot of changes in the direction which is a characteristic of the 'dribble' class. 
+
+[Class: dribble]
+-----------------------
+Based on the given description of classes, the sample would be classified as 'dribble'. This is because the description mentions that if there are few irregularities and a lot of changes in direction, then the motion is classified as 'dribble'. In this sample, even though there are few irregularities, there are a lot of changes in direction which leads to the conclusion that the motion is 'dribble'. 
+
+[Class: dribble]
+-----------------------

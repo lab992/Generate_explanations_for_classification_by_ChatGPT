@@ -1,0 +1,4 @@
+I will give you a time-series data sample which is acceleration in x-axis dimension. Your task is to classify my description of samples to 3 human motions ('comb hair', 'descend stairs', 'lie down bed'). I will now describe these 3 classes based on 2 features: events at the beginning of the observed period, decreasing trend.
+If there's few events at the beginning of the observed period, then 'Comb_hair'.
+If there's a lot of events at the beginning of the observed period, and a slight decreasing trend, then 'Descend_stairs'.
+If there's a lot of events at the beginning of the observed period, and a big decreasing trend, then 'Liedown_bed'.Try to classify the following data sample to these 3 classes. You must classify according to the description of classes. You should also give me the explaination why this decription can infer to this motion.Don't show me the code. At the end of your explanation. You must repeat your answer in format: [Class: motion].

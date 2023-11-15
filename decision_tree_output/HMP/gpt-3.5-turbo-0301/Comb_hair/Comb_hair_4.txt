@@ -1,0 +1,12 @@
+Based on the given description, the sample can be classified as [Class: Liedown_bed]. Since there's few events at the beginning of the observed period, it cannot be classified as 'Descend_stairs' or 'Comb_hair'. But the presence of a big decreasing trend indicates a gradual decrease in acceleration values which can be related to the motion of lying down on a bed.
+-----------------------
+Based on the provided description of the classes, the sample belongs to the 'Comb_hair' class. This is because it has few events at the beginning of the observed period and a big decreasing trend, which matches the description of the 'Comb_hair' class where the sample has very little motion (few events) with a decreasing trend in the acceleration (due to the slowing down of hand after the initial combing action). 
+
+[Class: Comb_hair].
+-----------------------
+Based on the given description, the data sample can be classified as [Class: Liedown_bed]. The reason for this classification is that the description mentions few events at the beginning of the observed period and a big decreasing trend. This suggests that the motion being observed is a person lying down on a bed and gradually becoming still.
+-----------------------
+Based on the description of the classes, this data sample belongs to [Class: Comb_hair]. The reason is that there are very few events at the beginning of the observed period, which fits the criteria for identifying 'Comb_hair' motion. The big decreasing trend supports this classification as well, as it can be indicative of the motion slowing down as the task is completed.
+-----------------------
+Based on the given description of the classes, the sample can be classified as [Class: Liedown_bed]. The fact that there are few events at the beginning of the observed period matches the condition for 'Comb_hair'. However, the big decreasing trend indicates that this is not the case. The decreasing trend matches the condition for 'Liedown_bed' and the absence of a lot of events at the beginning of the observed period eliminates 'Descend_stairs'. Therefore, the sample can be classified as [Class: Liedown_bed].
+-----------------------

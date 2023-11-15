@@ -4,6 +4,9 @@ import re
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
+# The general pipeline of extraction rules from decision tree
+# transfrom desicion tree to the class description in context
+# lookup table is to help transfer test samples
 def gen_rules(X_train, y_train):
 
     model = DecisionTreeClassifier(random_state=42, min_samples_leaf=7)
@@ -18,9 +21,10 @@ def gen_rules(X_train, y_train):
     # Apply the merge function
     merge_nodes(clf.tree_)
 
+    # get rough classification rules
     rules = get_rules(clf, X_train.columns.to_numpy(), class_names)
     
-    merged_rules = merge_rules(merge_rules(rules))
+    merged_rules = merge_rules(rules)
 
     conditions = to_conditions(merged_rules)
 
@@ -28,6 +32,7 @@ def gen_rules(X_train, y_train):
 
     return translations, temp_lookup_table
 
+# Assemble description of classification rules to a complete text.
 def translation_to_rules(translations):
 
     sentences = []
@@ -54,10 +59,13 @@ def translation_to_rules(translations):
     result_rules = "\n".join(sentences)
     return result_rules
 
+# Transfer conditions to a description of classification rules.
+# This process create a lookup table which help transform test samples later.
 def transfer_conditions(conditions):
 
     lookup_table = pd.read_csv('selected_dataset/lookup_table.csv', sep = ',')
 
+    # find feature like 'agg_linear_trend__attr_"intercept"__chunk_len_5__f_agg_"min"'
     pattern = re.compile(r'(\S+)\s*([<>]=?)\s*([-+]?\d*\.?\d+|\.\d+)')
 
     result = []
@@ -140,7 +148,9 @@ def transfer_conditions(conditions):
         
     return result, temp_lookup_table
         
-
+# break down classification rules to conditions
+# e.g. if (acceleration__number_crossing_m__m_1 <= 4.5) and (acceleration__agg_linear_trend__attr_"intercept"__chunk_len_5__f_agg_"min" > -0.438) then class: 3
+# To ['3', 'acceleration__number_crossing_m__m_1 <= 4.5', 'acceleration__agg_linear_trend__attr_"intercept"__chunk_len_5__f_agg_"min" > -0.438']
 def to_conditions(merged_rules):
     
     conditions = []
@@ -169,6 +179,7 @@ def merge_nodes(tree, node_id=0):
             # Make the left child point to the right child
             tree.children_left[node_id] = tree.children_right[node_id]
 
+# Extract classification rules from decision tree
 def get_rules(tree, feature_names, class_names):
     tree_ = tree.tree_
     feature_name = [
@@ -179,6 +190,7 @@ def get_rules(tree, feature_names, class_names):
     paths = []
     path = []
     
+    # record each path
     def recurse(node, path, paths):
         
         if tree_.feature[node] != _tree.TREE_UNDEFINED:
@@ -200,6 +212,7 @@ def get_rules(tree, feature_names, class_names):
     ii = list(np.argsort(samples_count))
     paths = [paths[i] for i in reversed(ii)]
     
+    # transform to sentence
     rules = []
     for path in paths:
         rule = "if "
@@ -222,6 +235,12 @@ def get_rules(tree, feature_names, class_names):
         
     return rules
 
+# merge rules
+# merged rules should satisfy both 3 situations:
+# 1) 2 rules have the same class
+# 2) conditions beside the last condition should be the same
+# 3) the last condition of 2 rules should be like: 1. feature_1 <= 3, 2. feature_1 > 3
+
 def merge_rules(rules):
     for i in range(len(rules)):
         fst = rules[i].split('and')
@@ -236,6 +255,8 @@ def merge_rules(rules):
                 rules[j] = final_result
     return list(set(rules))
                         
+# compare whether the difference of length of 2 string equals 1
+# this to compare whether 2 condition are describing same feature but one is '<=' and the other one is '>'
 def compare_strings(str1, str2):
     if abs(len(str1) - len(str2)) == 1:
         return True

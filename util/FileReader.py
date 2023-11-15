@@ -1,11 +1,12 @@
 import os
 import glob
-import tkinter as tk
-from tkinter import filedialog
 import pandas as pd
-import numpy as np
-import random
 
+# In this class, I transform original data to TSFRESH format. 
+# If you want to use a new dataset, you need to add a function.
+# Since different datasets have different format, I can't program a universal method.
+
+# read dataset AllGestureWiimoteX
 def read_file_acc():
 
     train_data = None
@@ -14,6 +15,9 @@ def read_file_acc():
     train_data = pd.read_table('selected_dataset/acc/AllGestureWiimoteX_TRAIN.txt', sep = '\s+', header=None)
     test_data = pd.read_table('selected_dataset/acc/AllGestureWiimoteX_TEST.txt', sep = '\s+', header=None)
 
+    # transform original dataset to tsfresh format.
+    # bias is because I don't select data from the first class.
+    # tsfresh demand that the index of dataset should be equal to target, use bias can avoid this error.
     def data_format_acc(data, bias):
         num_rows, num_columns = data.shape
         result = pd.DataFrame(columns=['lable', 'id', 'time', 'acceleration'])
@@ -28,48 +32,15 @@ def read_file_acc():
             result = pd.concat([result, df])
         result = result.dropna().reset_index(drop=True)
         return result
-    
-    def random_disturb(row):
-        max_values = row.max()
-        min_values = row.min()
-        noise = np.random.normal(0.007 * min_values, 0.007 * max_values, size=len(row))
-        return noise + row
-    
-    def sudden_disturb(row):
-        max_values = row.max()
-        min_values = row.min()
-        length = 50
-        abrupt_noise = [0] * len(row)
-        random_start = random.randint(0, len(row) - length - 1)
-
-        for i in range(random_start, random_start + length):
-            abrupt_noise[i] += 0.04 * (max_values - min_values)
-
-        series_with_abrupt_noise = row + abrupt_noise
-        return series_with_abrupt_noise
-
-    # def periodic_disturb(row):
-    #     period = 24  
-    #     periodic_noise = 0.2 * np.sin(2 * np.pi * time / period)
-
-    #     series_with_periodic_noise = series + periodic_noise    
 
     # Select Class 2,3,4
+    # In original dataset, each class 30 train samples and 70 test samples.
     train_data = train_data.iloc[30:120]
     # test_data = test_data.iloc[70:280]
     test_data = test_data.iloc[list(range(70,90)) + list(range(140,160)) + list(range(210,230))]
 
-    # robustness test
-    # robust_train_data = train_data.apply(sudden_disturb, axis=1)
-    # robust_test_data = test_data.apply(sudden_disturb, axis=1)
-    # structured_train = data_format_acc(robust_train_data, 30)
-    # structured_test = data_format_acc(robust_test_data, 70)
-
     structured_train = data_format_acc(train_data, 30)
     structured_test = data_format_acc(test_data, 70)
-
-    # structured_train['lable'] = structured_train['lable'].replace({2: 'shake_hand', 3: 'move_to_left', 4: 'move_to_right'})
-    # structured_test['lable'] = structured_test['lable'].replace({2: 'shake_hand', 3: 'move_to_left', 4: 'move_to_right'})
 
     X_train = structured_train.iloc[:, 1:]
     X_test = structured_test.iloc[:, 1:]
@@ -79,12 +50,13 @@ def read_file_acc():
     return X_train, X_test, y_train, y_test
     
 
-
+# read dataset basketball motion
 def read_file_basket():
 
     train_files = glob.glob(os.path.join('selected_dataset/basket/train', '*.txt'))
     test_files = glob.glob(os.path.join('selected_dataset/basket/test', '*.txt'))
 
+    # split file name
     def file_name_classifier(file_name):
         split = file_name[:-4].split('_')
         user = split[0]
@@ -92,6 +64,7 @@ def read_file_basket():
         label = split[1][:-1]
         return user, frequency, label
 
+    # transform original dataset to tsfresh format.
     def read_dataset(files):
 
         result = None
@@ -111,6 +84,7 @@ def read_file_basket():
         
         result['id'] = (result['Frequency'] != result['Frequency'].shift()).cumsum() - 1
         new_df = result[['id', 'Time (s)', ' X (m/s2)']]
+        # uniform column name from 'Time(s)' to time
         new_df.rename(columns={'Time (s)': 'time', ' X (m/s2)': 'x'}, inplace=True)
         new_df = new_df.dropna().reset_index(drop=True)
         result_y = pd.Series(y)
@@ -123,7 +97,7 @@ def read_file_basket():
     return X_train, X_test, y_train, y_test
 
 
-        
+# read dataset HMP
 def read_file_HMP():
 
     train_folders = []
@@ -144,12 +118,13 @@ def read_file_HMP():
         for folder_path in folders:
             folder_name = os.path.basename(folder_path)
 
-            # 遍历文件夹中的所有文件
+            # read all files in the folder
             for file_name in os.listdir(folder_path):
                 if file_name.endswith('.txt'):
                     file_path = os.path.join(folder_path, file_name)
                     file_pair.append((folder_name, file_path))
 
+        # transform original dataset to tsfresh format.
         for i in range(len(file_pair)):
             folder_name, file_path = file_pair[i]
             data = pd.read_table(file_path, sep = ' ', header=None)

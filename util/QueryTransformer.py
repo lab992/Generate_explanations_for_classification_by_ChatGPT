@@ -1,5 +1,8 @@
 import pandas as pd
 
+# Find the feature written in the lookup table
+# lookup table record the split value
+# feature value will be transformed by split value
 def find_row(lookup_table, feature_name):
     feature_list = lookup_table['feature']
     row_index = -1
@@ -15,10 +18,11 @@ def find_row(lookup_table, feature_name):
 
     return filtered_rows
 
-
+# Generate query part
 def gen_query(dataset, lookup_table):
 
-    
+    # There's a situation that even I set feature amount as 3, desicion tree use only 2 features to classify
+    # Thus, use this function to delete excessive features.
     def dataset_filter(dataset):
 
         filtered = []
@@ -30,7 +34,7 @@ def gen_query(dataset, lookup_table):
         result = pd.concat(filtered, axis=1)
         return result
 
-
+    # transfer array to a sentence according to lookup table
     def row_to_sentence(row):
         sentence = ''
         

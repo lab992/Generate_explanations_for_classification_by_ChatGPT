@@ -1,5 +1,5 @@
 from util.RuleGenerator import gen_rules, translation_to_rules
-
+# Generate background of each dataset
 def gen_background(dataset):
 
     background = ""
@@ -23,6 +23,8 @@ def gen_background(dataset):
     
     return background
 
+# Generate context part: background, rules and regulation
+# lookup_table is a esssential part for query part.
 def gen_context(dataset, train_set, y_train):
 
     background = gen_background(dataset)
