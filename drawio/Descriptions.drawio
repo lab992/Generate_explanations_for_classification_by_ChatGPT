@@ -1,0 +1,97 @@
+<mxfile host="app.diagrams.net" modified="2024-04-12T10:35:48.300Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15" etag="QJzYAzm8IeB4W4dDjK2Z" version="24.2.3" type="device">
+  <diagram name="第 1 页" id="OAv1ezwvdk0a0M2xHN7i">
+    <mxGraphModel dx="984" dy="667" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-2" value="Lookup&amp;nbsp;&lt;div&gt;table&lt;/div&gt;" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.6;dx=40;notch=0;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="450" y="135" width="70" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-4" value="" style="group;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="530" y="100" width="280" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-5" value="If there are a lot of changes in the direction, then class 2." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-4">
+          <mxGeometry x="20" y="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-6" value="If there are few changes in the direction and a big decreasing trend, then class 3." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-4">
+          <mxGeometry x="20" y="80" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-7" value="......" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-4">
+          <mxGeometry x="20" y="120" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-8" value="Description of classification rules" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=140;height=30;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-4">
+          <mxGeometry width="280" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-9" value="" style="group;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="20" y="100" width="420" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-10" value="&lt;p style=&quot;text-align: start; margin: 0in;&quot;&gt;&lt;font face=&quot;Helvetica&quot; style=&quot;font-size: 12px;&quot;&gt;number_crossing &amp;gt; 6.0&lt;/font&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-9">
+          <mxGeometry x="20" y="40" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-11" value="&lt;p style=&quot;text-align: start; margin: 0in;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot; face=&quot;Helvetica&quot;&gt;agg_linear_trend&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;text-align: start; margin: 0in;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot; face=&quot;Helvetica&quot;&gt;__attr_&quot;intercept &amp;gt; 0.4&lt;/font&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-9">
+          <mxGeometry x="200" y="80" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-13" value="Classification rules" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=120;height=30;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-9">
+          <mxGeometry width="420" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-34" value="&lt;p style=&quot;text-align: start; margin: 0in;&quot;&gt;......&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-9">
+          <mxGeometry x="20" y="120" width="310" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-35" value="Class 2" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-9">
+          <mxGeometry x="360" y="40" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-36" value="&lt;p style=&quot;text-align: start; margin: 0in;&quot;&gt;&lt;font face=&quot;Helvetica&quot; style=&quot;font-size: 12px;&quot;&gt;number_crossing &amp;lt; 6.0&lt;/font&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-9">
+          <mxGeometry x="20" y="80" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-37" value="" style="shape=cross;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-9">
+          <mxGeometry x="170" y="85" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-38" value="Class 3" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-9">
+          <mxGeometry x="360" y="80" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-39" value="Class..." style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-9">
+          <mxGeometry x="360" y="120" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-23" value="" style="group;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="530" y="300" width="280" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-24" value="A lot of changes in the direction" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-23">
+          <mxGeometry x="19.999999999999996" y="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-25" value="Big decreasing trend" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-23">
+          <mxGeometry x="19.999999999999996" y="80" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-26" value="A lot of increasing values" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-23">
+          <mxGeometry x="19.999999999999996" y="120" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-27" value="Description of test data sample" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=140;height=30;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-23">
+          <mxGeometry width="280" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-28" value="" style="group;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="20" y="300" width="420" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-29" value="&lt;p style=&quot;text-align: start; margin: 0in;&quot;&gt;&lt;font face=&quot;Helvetica&quot; style=&quot;font-size: 12px;&quot;&gt;number_crossing = 9.0&lt;/font&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-28">
+          <mxGeometry x="27" y="40" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-30" value="&lt;p style=&quot;text-align: start; margin: 0in;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot; face=&quot;Helvetica&quot;&gt;agg_linear_trend&lt;/font&gt;__attr_&quot;intercept = 0.233&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-28">
+          <mxGeometry x="27" y="80" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-31" value="&lt;p style=&quot;text-align: start; margin: 0in;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;range_count = 50.0&lt;/font&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-28">
+          <mxGeometry x="27" y="120" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-32" value="Test data sample" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=120;height=30;" vertex="1" parent="cKbTaB6IUz4bR88QMU-x-28">
+          <mxGeometry width="420" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-40" value="Lookup&amp;nbsp;&lt;div&gt;table&lt;/div&gt;" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.6;dx=40;notch=0;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="450" y="330" width="70" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="cKbTaB6IUz4bR88QMU-x-41" value="" style="endArrow=none;dashed=1;html=1;rounded=0;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="20" y="280" as="sourcePoint" />
+            <mxPoint x="810" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,58 @@
+<mxfile host="app.diagrams.net" modified="2024-04-12T10:45:33.789Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15" etag="GKu8KHSuKsBj3uRhEAb7" version="24.2.3" type="device">
+  <diagram name="第 1 页" id="cGuFJklDMUNyxnTxCOgl">
+    <mxGraphModel dx="984" dy="667" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="98jbPCP6QxxznVIENEEs-1" value="" style="group;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="40" y="155" width="149" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-2" value="If feature_1 &amp;gt; 6.0 &amp;amp; feature_2 &amp;lt; 0.233, then: Class 2" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="98jbPCP6QxxznVIENEEs-1">
+          <mxGeometry x="10.636534653465345" y="46.875" width="127.71217821782176" height="63.75" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-3" value="Classification Rules" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=110;height=30;" vertex="1" parent="98jbPCP6QxxznVIENEEs-1">
+          <mxGeometry width="149" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-4" value="......" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="98jbPCP6QxxznVIENEEs-1">
+          <mxGeometry x="9.933333333333334" y="120" width="127.71286666666666" height="20.625" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-90" value="Lookup table" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;fillColor=#fad7ac;strokeColor=#b46504;" vertex="1" parent="1">
+          <mxGeometry x="540" y="200" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-92" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="260" y="45" width="210" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-110" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="280.00000000000006" y="80" width="170.55999999999995" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-102" value="Feature name" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontSize=18;rotation=0;" vertex="1" parent="98jbPCP6QxxznVIENEEs-110">
+          <mxGeometry width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-103" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.48;dx=26;notch=0;fillColor=#f8cecc;strokeColor=#b85450;rotation=90;" vertex="1" parent="98jbPCP6QxxznVIENEEs-110">
+          <mxGeometry x="8" y="90" width="74" height="16.56" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-104" value="Meaning" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontSize=18;rotation=0;" vertex="1" parent="98jbPCP6QxxznVIENEEs-110">
+          <mxGeometry y="140" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-105" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.48;dx=26;notch=0;fillColor=#f8cecc;strokeColor=#b85450;rotation=90;" vertex="1" parent="98jbPCP6QxxznVIENEEs-110">
+          <mxGeometry x="8" y="230" width="74" height="16.56" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-106" value="Type of feature" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontSize=18;rotation=0;" vertex="1" parent="98jbPCP6QxxznVIENEEs-110">
+          <mxGeometry y="280" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-107" value="Record type of meaning manually" style="ellipse;whiteSpace=wrap;html=1;rotation=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="98jbPCP6QxxznVIENEEs-110">
+          <mxGeometry x="60" y="200" width="110.56" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-108" value="Explain feature&amp;nbsp;&lt;div&gt;by ChatGPT&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;rotation=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="98jbPCP6QxxznVIENEEs-110">
+          <mxGeometry x="60" y="60" width="110.56" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-111" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.48;dx=26;notch=0;fillColor=#f8cecc;strokeColor=#b85450;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="221.72" width="52" height="16.56" as="geometry" />
+        </mxCell>
+        <mxCell id="98jbPCP6QxxznVIENEEs-112" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.48;dx=26;notch=0;fillColor=#f8cecc;strokeColor=#b85450;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="480" y="221.72" width="52" height="16.56" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,5 +1,5 @@
 # from util import FileReader, FeatureSelection
-from util import FileReader, FeatureSelection, GPTExecutor, DecisionTree, ContextGenerator, QueryTransformer
+from util import FileReader, FeatureSelection, GPTExecutor, DecisionTree, ContextGenerator, QueryTransformer, GUI
 
 # General pipeline
 def pipeline(dataset, model):
@@ -32,4 +32,5 @@ def pipeline(dataset, model):
 if __name__ == "__main__":
     dataset = input("Enter the name of dataset: 'acc', 'basketball', or 'HMP'")
     model = input("Enter the name of model: 'gpt-3.5-turbo-0301', 'gpt-3.5-turbo-0613', or 'gpt-4'")
+    # GUI.open_gui()
     pipeline(dataset, model)
