@@ -77,7 +77,7 @@ def gpt_execution(context, query, dataset, given_model):
     # Enter API key here.
     openai.api_key = ""
 
-    if open.api_key == "":
+    if openai.api_key == "":
         raise ValueError("Please enter API key!")
 
     count = 0
